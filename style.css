@@ -1,0 +1,63 @@
+/*
+ Theme Name:   Twenty Fifteen Child
+ Theme URI:    http://example.com/twenty-fifteen-child/
+ Description:  Twenty Fifteen Child Theme
+ Author:       John Doe
+ Author URI:   http://example.com
+ Template:     twentyfifteen
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  twenty-fifteen-child
+*/
+
+
+/* Source: http://jonathannicol.com/blog/2014/06/16/centre-crop-thumbnails-with-css/ */
+
+.circle-img {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 100%;
+    margin: 0 auto;
+    background: #404040;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    font-size: 60px;
+    color: white;
+}
+
+.circle-img img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.circle-img>img {
+    max-width: inherit;
+}
+
+.post-title {
+    margin-top: 20px !important;
+    font-size: 22px !important;
+}
+
+.description p {
+    font-size: 17px;
+}
+
+.post-meta {
+    list-style-type: none;
+}
+
+.post-meta-key {
+    font-weight: bold;
+}
