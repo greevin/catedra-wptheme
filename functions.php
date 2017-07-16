@@ -9,20 +9,33 @@ function theme_enqueue_styles() {
         array( $parent_style ),
         wp_get_theme()->get('Version')
     );
+
+	wp_enqueue_script( 'jquery');
+    wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery'), true);
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 /**
- * Filter the except length to 20 words.
+ * Filter the except length to 30 words.
  *
  * @param int $length Excerpt length.
  * @return int (Maybe) modified excerpt length.
  */
 function wpdocs_custom_excerpt_length( $length ) {
-    return 20;
+    return 50;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
+function twentyfifteen_excerpt_more( $more ) {
+	$link = sprintf( '<div class="more-link-container"><a href="%1$s">%2$s</a></div>',
+		esc_url( get_permalink( get_the_ID() ) ),
+		/* translators: %s: Name of current post */
+		sprintf( __( 'Leia Mais', 'twentyfifteen' ), '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span>' )
+		);
+	return ' &hellip; ' . $link;
+}
+add_filter( 'excerpt_more', 'twentyfifteen_excerpt_more' );
 
 /*
 	==========================================
@@ -110,5 +123,18 @@ function projetos_custom_post_type (){
 	register_post_type('projetos',$args);
 }
 add_action('init','projetos_custom_post_type');
+
+
+function bla() {
+
+	$id = get_the_ID();
+	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+
+	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( get_current_blog_id() ));
+	$css .= '.bla { background-image: url(' . esc_url( $thumb ) . '); border-top: 0; background: black;}'; 
+
+	wp_add_inline_style( 'child-style', $css );
+}
+add_action( 'wp_enqueue_scripts', 'bla' );
 
 ?>
