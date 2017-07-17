@@ -19,16 +19,16 @@
 					the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 				endif;
 				the_content( );
-			?>
+?>
 		</header><!-- .entry-header -->
 
 		<!-- Relativo aos posts nessa página -->
-        <div class="entry-content entry-projects" style="text-align: center;">
+        <div class="entry-content entry-projects owl-carousel owl-theme" style="text-align: center;">
 			<?php 
 				$args = array( 'post_type' => 'projetos', 'showposts'=>4);
 				$my_projetos = get_posts( $args );
 				if($my_projetos) : foreach($my_projetos as $post) : setup_postdata( $post );?>
-                   <div class="col-sm-6 col-md-6 col-lg-6" style="height: 550px;">
+                   <div class="col-sm-12 col-md-12 col-lg-12" style="height: 500px;">
 					   <div class="projects-thumbnail" style="border-top-left-radius: 10px;border-top-right-radius: 10px;">
 							<div>
 								<span> 

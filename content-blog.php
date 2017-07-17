@@ -21,29 +21,24 @@
 		?>
 	</header><!-- .entry-header -->
 
-        <div class="entry-content" style="text-align: center;">
+        <div class="entry-content">
 			<?php 
 				$args = array( 'post_type'=> array('post', 'pessoa', 'projetos'), 
-					'showposts'=>4);
+					'showposts'=>10);
 				$my_projetos = get_posts( $args );
 				if($my_projetos) : foreach($my_projetos as $post) : setup_postdata( $post );?>
 
-                   <div class="col-sm-12 col-md-12 col-lg-12" style="border:1px solid;margin-bottom: 20px;">
-						 <div class="col-sm-4 col-md-4 col-lg-4">
-						  <a href="#">
-							<?php the_post_thumbnail(false, array('class'=>'img-responsive responsive--full')); ?>
-						 </a> 
-					   </div>
-					    <div class="col-sm-8 col-md-8 col-lg-8">
-								<h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-								<div class="content"><?php the_excerpt(); ?></div>
-							</div> 
+                   <div class="col-sm-6 col-md-6 col-lg-6" style="margin-bottom: 20px;">
 
-					   <!-- <div>
-  							<!-- <?php the_post_thumbnail(false, array('class'=>'img-responsive responsive--full')); ?>   -->
-						<!-- </div> -->
-				<!-- <h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3> -->
-				<!-- <div class="content"><?php the_excerpt(); ?></div> -->
+					<div style="background: #404040;">
+						<?php $urlImg = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ); ?>
+						<div class="blog-element" style="border:1px solid;background-image: url(<?php echo $urlImg; ?>);">
+							
+							<?php the_title( sprintf('<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h2>' ); ?>
+							<!-- <div class="content"><?php the_excerpt(); ?></div> -->
+							<small><?php the_category(' '); ?></small>
+						</div>
+					</div>
 					
 		</div>
 			 <?php

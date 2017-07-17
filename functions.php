@@ -10,8 +10,12 @@ function theme_enqueue_styles() {
         wp_get_theme()->get('Version')
     );
 
+	// wp_enqueue_style( 'owl-carousel-css', get_template_directory_uri() . '/owlcarousel/assets/owl.carousel.min.css' );
+	// wp_enqueue_style( 'owl-carousel-theme-css', get_template_directory_uri() . '/css/owl.theme.default.css' );
+
 	wp_enqueue_script( 'jquery');
-    wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery'), true);
+    wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery'), false, true);
+	wp_enqueue_script( 'owl-carousel-js', get_stylesheet_directory_uri() . '/js/owl.carousel.min.js', array('jquery'), false, true);
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
@@ -23,9 +27,13 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
  * @return int (Maybe) modified excerpt length.
  */
 function wpdocs_custom_excerpt_length( $length ) {
-    return 50;
+    return 25;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
+register_nav_menus( array(
+		'primary_custom' => __( 'Menu Página Inicial', 'twentyfifteen' ),
+	) );
 
 function twentyfifteen_excerpt_more( $more ) {
 	$link = sprintf( '<div class="more-link-container"><a href="%1$s">%2$s</a></div>',

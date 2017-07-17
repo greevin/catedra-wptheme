@@ -88,3 +88,16 @@
 </div>
 
 <?php get_footer(); ?>
+
+-------------------
+
+<div class="col-sm-12 col-md-12 col-lg-12" style="border:1px solid;margin-bottom: 20px;">
+						 <div class="col-sm-4 col-md-4 col-lg-4">
+						  <a href="#">
+							<!-- <?php the_post_thumbnail(false, array('class'=>'img-responsive responsive--full')); ?> -->
+						 </a> 
+					   </div>
+					    <div class="col-sm-8 col-md-8 col-lg-8">
+								<h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+								<div class="content"><?php the_excerpt(); ?></div>
+							</div> 

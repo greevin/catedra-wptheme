@@ -35,4 +35,27 @@ jQuery(document).ready(function ($) {
                 }
             }
         });
+
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        items: 2,
+        nav: true,
+        navText: [
+            "<i class='icon-chevron-left icon-white'><</i>",
+            "<i class='icon-chevron-right icon-white'>></i>"
+        ],
+        navClass: ['owl-prev', 'owl-next'],
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: true
+            },
+            600: {
+                items: 2,
+                nav: true
+            },
+        }
+    })
 });

@@ -21,12 +21,12 @@
 		?>
 	</header><!-- .entry-header -->
 
-        <div class="entry-content" style="text-align: center;">
+        <div class="entry-content owl-carousel owl-theme" style="text-align: center;">
 			<?php 
 				$args = array( 'post_type' => 'pessoa', 'showposts'=>4);
 				$my_projetos = get_posts( $args );
 				if($my_projetos) : foreach($my_projetos as $post) : setup_postdata( $post );?>
-                   <div class="col-sm-6 col-md-6 col-lg-6 legal" style="height: 450px;">
+                   <div class="col-sm-12 col-md-12 col-lg-12" style="height: 450px;">
 					   <div class="circle-img">
 						  <span> <?php 
 						   		$title = get_the_title();
