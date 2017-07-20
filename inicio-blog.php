@@ -8,19 +8,6 @@
  */
 ?>
 
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    
-	<header class="entry-header">
-		<?php
-			if ( is_single() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			else :
-				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
-			endif;
-			the_content( );
-		?>
-	</header><!-- .entry-header -->
-
         <div class="entry-content">
 			<?php 
 				$args = array( 'post_type'=> array('post', 'pessoa', 'projetos'), 
@@ -49,5 +36,3 @@
 		<!-- <div class="link"><a class="leia-mais" href="<?php echo the_title(); ?>">VER TODOS</a></div> -->
         </div>
         <!-- .entry-content -->
-    </article>
-    <!-- #post-## -->

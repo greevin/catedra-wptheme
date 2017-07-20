@@ -10,10 +10,10 @@
 if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) || is_active_sidebar( 'sidebar-1' )  ) : ?>
 	<div id="secondary" class="secondary">
 
-		<?php if ( has_nav_menu( 'primary' ) && is_page(2) ) : ?>
+		<?php if ( has_nav_menu( 'primary' ) && is_front_page() ) : ?>
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<?php
-					// Primary navigation menu.
+					// Menu para o front-page.
 					wp_nav_menu( array(
 						'menu_class'     => 'nav-menu',
 						'theme_location' => 'primary',
@@ -23,7 +23,7 @@ if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) || is_active_sidebar(
 			<?php else : ?>
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<?php
-					// Primary navigation menu.
+					// Menu para as páginas internas.
 					wp_nav_menu( array(
 						'menu_class'     => 'nav-menu',
 						'theme_location' => 'primary_custom',

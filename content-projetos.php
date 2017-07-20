@@ -27,15 +27,14 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
+		<h1>oi glr</h1>
 		<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
 				__( 'Continue reading %s', 'twentyfifteen' ),
 				the_title( '<span class="screen-reader-text">', '</span>', false )
 			) );
-		?>	
-					
-		<?php
+
 			wp_link_pages( array(
 				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
 				'after'       => '</div>',
@@ -53,5 +52,10 @@
 			get_template_part( 'author-bio' );
 		endif;
 	?>
+
+	<footer class="entry-footer">
+		<?php twentyfifteen_entry_meta(); ?>
+		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
+	</footer><!-- .entry-footer -->
 
 </article><!-- #post-## -->

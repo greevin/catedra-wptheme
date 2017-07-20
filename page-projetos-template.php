@@ -10,6 +10,8 @@ get_header(); ?>
 		
 	$args = array('post_type' => 'projetos', 'post_per_page' => 3 );
 	$loop = new WP_Query( $args );
+
+	echo 'legal';
 	
 	if( $loop->have_posts() ):
 		

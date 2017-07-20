@@ -9,8 +9,9 @@ function theme_enqueue_styles() {
         array( $parent_style ),
         wp_get_theme()->get('Version')
     );
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Playfair+Display:700', false );
 
-	// wp_enqueue_style( 'owl-carousel-css', get_template_directory_uri() . '/owlcarousel/assets/owl.carousel.min.css' );
+	// wp_enqueue_style( 'owl-carousel-css', get_stylesheet_directory_uri() . '/owlcarousel/assets/owl-carousel.css' );
 	// wp_enqueue_style( 'owl-carousel-theme-css', get_template_directory_uri() . '/css/owl.theme.default.css' );
 
 	wp_enqueue_script( 'jquery');
@@ -20,6 +21,16 @@ function theme_enqueue_styles() {
 
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
+function theme_admin_scripts() {
+	wp_enqueue_script( 'jquery');
+  	wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
+	wp_enqueue_script( 'wp-jquery-date-picker', get_stylesheet_directory_uri() . '/js/admin.js' );
+
+	wp_enqueue_style('jquery-ui-css', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');	
+
+}
+add_action('admin_enqueue_scripts', 'theme_admin_scripts');
+
 /**
  * Filter the except length to 30 words.
  *
@@ -27,12 +38,13 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
  * @return int (Maybe) modified excerpt length.
  */
 function wpdocs_custom_excerpt_length( $length ) {
-    return 25;
+    return 20;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
+// Menu para o front-page
 register_nav_menus( array(
-		'primary_custom' => __( 'Menu Página Inicial', 'twentyfifteen' ),
+		'primary_custom' => __( 'Menu Inicial', 'twentyfifteen' ),
 	) );
 
 function twentyfifteen_excerpt_more( $more ) {
@@ -81,7 +93,8 @@ function pessoas_custom_post_type (){
 			'editor',
 			'thumbnail',
 			'revisions',
-			'custom-fields'
+			'custom-fields',
+			'comments' 
 		),
 		'taxonomies' => array('category', 'post_tag'),
 		'menu_position' => 5,
@@ -90,6 +103,32 @@ function pessoas_custom_post_type (){
 	register_post_type('pessoa',$args);
 }
 add_action('init','pessoas_custom_post_type');
+
+function set_pessoa_contact_columns( $columns ){
+	$newColumns = array();
+	$newColumns['title'] = 'Nome';
+	$newColumns['resumo'] = 'Resumo';
+	$newColumns['instituicao'] = 'Instituição';
+	$newColumns['date'] = 'Criado em';
+	return $newColumns;
+}
+
+add_filter( 'manage_edit-pessoa_columns', 'set_pessoa_contact_columns' );
+add_action( 'manage_posts_custom_column', 'pessoa_custom_column', 10, 2);
+
+function pessoa_custom_column( $column, $post_id ){
+	switch( $column ){
+			
+		case 'resumo' :
+			echo get_the_excerpt();
+			break;
+
+		case 'instituicao' :
+			echo get_post_meta( $post_id, '_instituicao_input', true );
+			break;	
+	}
+	
+}
 
 function projetos_custom_post_type (){
 	
@@ -122,7 +161,6 @@ function projetos_custom_post_type (){
 			'editor',
 			'thumbnail',
 			'revisions',
-			'custom-fields'
 		),
 		'taxonomies' => array('category', 'post_tag'),
 		'menu_position' => 5,
@@ -132,17 +170,7 @@ function projetos_custom_post_type (){
 }
 add_action('init','projetos_custom_post_type');
 
-
-function bla() {
-
-	$id = get_the_ID();
-	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-
-	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( get_current_blog_id() ));
-	$css .= '.bla { background-image: url(' . esc_url( $thumb ) . '); border-top: 0; background: black;}'; 
-
-	wp_add_inline_style( 'child-style', $css );
-}
-add_action( 'wp_enqueue_scripts', 'bla' );
+require get_stylesheet_directory() . '/inc/custom-fields-project.php';
+require get_stylesheet_directory() . '/inc/custom-fields-people.php';
 
 ?>

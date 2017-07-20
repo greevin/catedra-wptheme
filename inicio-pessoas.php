@@ -1,3 +1,4 @@
+
 <?php
 /**
  * The template used for displaying people content
@@ -8,25 +9,12 @@
  */
 ?>
 
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    
-	<header class="entry-header">
-		<?php
-			if ( is_single() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			else :
-				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
-			endif;
-			the_content( );
-		?>
-	</header><!-- .entry-header -->
-
-        <div class="entry-content owl-carousel owl-theme" style="text-align: center;">
+        <div class="entry-content" style="text-align: center;">
 			<?php 
-				$args = array( 'post_type' => 'pessoa', 'showposts'=>4);
+				$args = array( 'post_type' => 'pessoa', 'showposts'=>10);
 				$my_projetos = get_posts( $args );
 				if($my_projetos) : foreach($my_projetos as $post) : setup_postdata( $post );?>
-                   <div class="col-sm-12 col-md-12 col-lg-12" style="height: 450px;">
+                   <div class="col-sm-4 col-md-4 col-lg-4" style="height: 450px;">
 					   <div class="circle-img">
 						  <span> <?php 
 						   		$title = get_the_title();
@@ -55,5 +43,3 @@
 		<!-- <div class="link"><a class="leia-mais" href="<?php echo the_title(); ?>">VER TODOS</a></div> -->
         </div>
         <!-- .entry-content -->
-    </article>
-    <!-- #post-## -->
