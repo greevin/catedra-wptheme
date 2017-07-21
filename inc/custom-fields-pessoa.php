@@ -1,35 +1,35 @@
 <?php
-// Criando um meta box do projeto
-function add_people_info_meta_box() {
+// Criando um meta box do pessoa
+function adicionar_pessoa_info_meta_box() {
 
     add_meta_box(
         'project-info', 
-		'Adicionar Informações do Pessoa',
-        'add_people_info_meta_box_callback',
-        'pessoa',
+		'Informações da Pessoa',
+        'adicionar_pessoa_info_meta_box_callback',
+        'wp_pessoa',
 		'normal',
 		'high'
     );
 }
 
-add_action( 'add_meta_boxes', 'add_people_info_meta_box' );
+add_action( 'add_meta_boxes', 'adicionar_pessoa_info_meta_box' );
 
-function add_people_info_meta_box_callback($post) {
+function adicionar_pessoa_info_meta_box_callback($post) {
 	// Add a nonce field so we can check for it later.
-    wp_nonce_field( 'people_info_nonce', 'people_info_meta_box_nonce' );
+    wp_nonce_field( 'pessoa_info_nonce', 'pessoa_info_meta_box_nonce' );
 
     $value = get_post_meta( $post->ID );
 
     $args = array(
         'numberposts' => -1,
-        'post_type'   => 'pessoa',
+        'post_type'   => 'wp_projeto',
     );
  
-    $people = get_posts( $args );
+    $projects_array = get_posts( $args );
 
 	$instituicao = isset( $value['_instituicao_input'] ) ? esc_attr( $value['_instituicao_input'][0] ) : '';
 	$email_contato = isset( $value['_email_contato_input'] ) ? esc_attr( $value['_email_contato_input'][0] ) : '';
-    $projetos = isset( $value['_people'] ) ? get_post_meta( $post->ID, '_people', true ) : array();
+    $projetos = isset( $value['_projetos_input'] ) ? get_post_meta( $post->ID, '_projetos_input', true ) : array();
 	$links_contato = isset( $value['links_contato_input'] ) ? esc_attr( $value['links_contato_input'][0] ) : '';
 	$linhas_pesquisa = isset( $value['_linhas_pesquisa_input'] ) ? esc_attr( $value['_linhas_pesquisa_input'][0] ) : '';
 	$periodo_inicio = isset( $value['_periodo_inicio_input'] ) ? esc_attr( $value['_periodo_inicio_input'][0] ) : '';
@@ -58,15 +58,15 @@ function add_people_info_meta_box_callback($post) {
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="people[]"><b>Projetos</b></label>
+            <label for="projetos[]"><b>Projetos</b></label>
         </td>
         <td colspan="4">
             <?php
-                foreach ( $people as $person ) {
-                    $person = get_the_title( $person->ID );
+                foreach ( $projects_array as $project ) {
+                    $project = get_the_title( $project->ID );
             ?>
             <label> 
-                <input type="checkbox" name="people[]" value="<?php echo $person; ?>" <?php checked( ( in_array( $person, $projetos ) ) ? $person : '', $person ); ?> /><?php echo $person; ?> <br />
+                <input type="checkbox" name="projetos[]" value="<?php echo $project; ?>" <?php checked( ( in_array( $project, $projetos ) ) ? $project : '', $project ); ?> /><?php echo $project; ?> <br />
             </label>
             <?php    
                 }
@@ -82,7 +82,6 @@ function add_people_info_meta_box_callback($post) {
             <input type="text" name="linhas_pesquisa_input" class="regular-text" value="<?php echo $linhas_pesquisa; ?>">
         </td>
     </tr>
-
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
@@ -111,8 +110,6 @@ function add_people_info_meta_box_callback($post) {
             </label>
         </td>
     </tr>
-
-
 </table>
 
 <?php
@@ -123,11 +120,11 @@ function add_people_info_meta_box_callback($post) {
  *
  * @param int $post_id
  */
-function save_people_info_meta_box_data( $post_id ) {
+function salvar_pessoa_info_meta_box_data( $post_id ) {
 
 	$is_autosave = wp_is_post_autosave( $post_id );
 	$is_revision = wp_is_post_revision( $post_id );
-	$is_valid_once = (isset( $_POST['people_info_nonce']) && wp_verify_nonce( $_POST['people_info_nonce'] )); 
+	$is_valid_once = (isset( $_POST['pessoa_info_nonce']) && wp_verify_nonce( $_POST['pessoa_info_nonce'] )); 
 
     if ( $is_autosave || $is_revision || $is_valid_once ) {
         return;
@@ -139,8 +136,8 @@ function save_people_info_meta_box_data( $post_id ) {
     $periodo_fim_input = sanitize_text_field( $_POST['periodo_fim_input'] );
 	$situacao_input = sanitize_text_field( $_POST['situacao_input'] );
     $linhas_pesquisa_input = sanitize_text_field( $_POST['linhas_pesquisa_input'] );
-    $people = (array) $_POST['people'];
-    $people = array_map( 'sanitize_text_field', $people);
+    $projetos = (array) $_POST['projetos'];
+    $projetos = array_map( 'sanitize_text_field', $projetos);
 
 	// cria o meta_key no banco
 	if ( isset( $_POST['instituicao_input'] ) ) {
@@ -163,8 +160,8 @@ function save_people_info_meta_box_data( $post_id ) {
         update_post_meta( $post_id, '_linhas_pesquisa_input', $linhas_pesquisa_input);
     }
 
-    if ( isset( $_POST['people'] ) ) {
-        update_post_meta( $post_id, '_people', $people);
+    if ( isset( $_POST['projetos'] ) ) {
+        update_post_meta( $post_id, '_projetos_input', $projetos);
     }
 
     if ( isset( $_POST['situacao_input'] ) ) {
@@ -173,5 +170,5 @@ function save_people_info_meta_box_data( $post_id ) {
 
 }
 
-add_action( 'save_post', 'save_people_info_meta_box_data' );
+add_action( 'save_post', 'salvar_pessoa_info_meta_box_data' );
 

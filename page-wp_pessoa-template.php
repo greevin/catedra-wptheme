@@ -1,14 +1,14 @@
 <?php 
 	
 /*
-	Template Name: Template Blog
+	Template Name: Template Pessoa
 */
 	
 get_header(); ?>
 
-
 	<?php 
-	$args = array('post_type'=> array('post', 'wp_pessoa', 'wp_projeto'), 'showposts'=>-1 );
+		
+	$args = array('post_type' => 'wp_pessoa', 'post_per_page' => 3 );
 	$loop = new WP_Query( $args );
 	?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -27,8 +27,7 @@ get_header(); ?>
 
 		</div>
     </article>
-
-	<?php 
+	<?php
 	
 	if( $loop->have_posts() ):
 		
@@ -45,5 +44,3 @@ get_header(); ?>
 	?>
 
 <?php get_footer(); ?>
-
- <!-- 'post_type'=> array('post', 'pessoa', 'projetos'), 'showposts'=>2  -->

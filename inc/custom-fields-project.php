@@ -4,9 +4,9 @@ function add_projects_info_meta_box() {
 
     add_meta_box(
         'project-info', 
-		'Adicionar Informações do Projeto',
+		'Informações do Projeto',
         'add_projects_info_meta_box_callback',
-        'projetos',
+        'wp_projeto',
 		'normal',
 		'high'
     );
@@ -20,75 +20,128 @@ function add_projects_info_meta_box_callback($post) {
 
     $value = get_post_meta( $post->ID);
 
-	$text = isset( $value['_texto_meta_box'] ) ? esc_attr( $value['_texto_meta_box'][0] ) : '';
-	$secondtext = isset( $value['_second_texto_meta_box'] ) ? esc_attr( $value['_second_texto_meta_box'][0] ) : '';
+    $args_pessoas = array(
+        'numberposts' => -1,
+        'post_type'   => 'wp_pessoa',
+    );
+ 
+    $people = get_posts( $args_pessoas );
 
+    $args_equipes = array(
+        'numberposts' => -1,
+        'post_type'   => 'wp_pessoa',
+    );
+    $equipes = get_posts( $args_equipes );
+
+    $args_posts = array(
+        'numberposts' => -1,
+        'post_type'   => 'post',
+    );
+ 
+    $posts = get_posts( $args_posts );
+
+
+    $agencia_financiadora = isset( $value['_agencia_financiadora_input'] ) ? esc_attr( $value['_agencia_financiadora_input'][0] ) : '';
+    $projetos = isset( $value['_people'] ) ? get_post_meta( $post->ID, '_people', true ) : array();
+    $equipe_array = isset( $value['_equipes'] ) ? get_post_meta( $post->ID, '_equipes', true ) : array();
+	$periodo_inicio = isset( $value['_periodo_inicio_input'] ) ? esc_attr( $value['_periodo_inicio_input'][0] ) : '';
+	$periodo_fim = isset( $value['_periodo_fim_input'] ) ? esc_attr( $value['_periodo_fim_input'][0] ) : '';
+    $situacao = isset( $value['_situacao_input'] ) ? esc_attr( $value['_situacao_input'][0] ) : '';
+    $noticias = isset( $value['_checked_posts'] ) ? get_post_meta( $post->ID, '_checked_posts', true ) : array();
+
+	
  ?>
 	 <table class="form-table">
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="instituicao_input"><b>Agência(s) financiadora(s)</b></label>
+            <label for="agencia_financiadora_input"><b>Agência(s) financiadora(s)</b></label>
         </td>
         <td colspan="4">
-            <input type="text" name="instituicao_input" class="regular-text" value="<?php echo $instituicao; ?>">
+            <input type="text" name="agencia_financiadora_input" class="regular-text" value="<?php echo $agencia_financiadora; ?>">
         </td>
     </tr>
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="profile_facebook"><b>Período</b></label>
+            <label for="periodo_checkbox"><b>Período</b></label>
         </td>
         <td colspan="4">
             <span> de </span>
-            <input type="text" class="datepicker" name="start_date_input" value="<?php echo $periodo_inicio; ?>" placeholder="Data de Inicio"/>
+            <input type="text" class="datepicker" name="periodo_inicio_input" value="<?php echo $periodo_inicio; ?>" placeholder="Data de Inicio"/>
             <span> até </span>
-            <input type="text" class=" datepicker" name="end_date_input" value="<?php echo $periodo_fim; ?>" placeholder="Data de Fim"/>
+            <input type="text" class="datepicker" name="periodo_fim_input" value="<?php echo $periodo_fim; ?>" placeholder="Data de Fim"/>
         </td>
     </tr>
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="profile_facebook"><b>Situação</b></label>
+            <label for="situacao_input"><b>Situação</b></label>
         </td>
         <td colspan="4">
             <label for="ativo">
-                <input type="radio" name="situacao_input" id="ativo" value="ativo" <?php checked( $situacao, 'ativo' ); ?>>
+                <input type="radio" name="situacao_input" id="ativo" value="Ativo" <?php checked( $situacao, 'Ativo' ); ?>>
                 Ativo
             </label>
             <label for="inativo">
-                <input type="radio" name="situacao_input" id="inativo" value="inativo" <?php checked( $situacao, 'inativo' ); ?>>
+                <input type="radio" name="situacao_input" id="inativo" value="Inativo" <?php checked( $situacao, 'Inativo' ); ?>>
                 Inativo
             </label>
         </td>
-	</tr>
-	
-	<tr>
+    </tr>
+
+    <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="email_contato_input"><b>Coodernador(es)</b></label>
+            <label for="people[]"><b>Coodernador(es)</b></label>
         </td>
         <td colspan="4">
-            <input type="text" name="email_contato_input" class="regular-text" value="<?php echo $email_contato; ?>">
+            <?php
+                foreach ( $people as $person ) {
+                    $person = get_the_title( $person->ID );
+            ?>
+            <label> 
+                <input type="checkbox" name="people[]" value="<?php echo $person; ?>" <?php checked( ( in_array( $person, $projetos ) ) ? $person : '', $person ); ?> /><?php echo $person; ?> <br />
+            </label>
+            <?php    
+                }
+            ?>
         </td>
     </tr>
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="profile_twitter"><b>Equipe</b></label>
+            <label for="equipe[]"><b>Equipe</b></label>
         </td>
         <td colspan="4">
-	
+            <?php
+                foreach ( $equipes as $equipe ) {
+                    $equipe = get_the_title( $equipe->ID );
+            ?>
+            <label> 
+                <input type="checkbox" name="equipe[]" value="<?php echo $equipe; ?>" <?php checked( ( in_array( $equipe, $equipe_array ) ) ? $equipe : '', $equipe ); ?> /><?php echo $equipe; ?> <br />
+            </label>
+            <?php    
+                }
+            ?>
         </td>
     </tr>
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="profile_facebook"><b>Notícias</b></label>
+            <label for="post_news[]"><b>Notícias</b></label>
         </td>
         <td colspan="4">
-            <input type="text" name="profile_facebook" class="regular-text" value="<?php echo $facebook; ?>">
+            <?php
+                foreach ( $posts as $post ) {
+                    $post = get_the_title( $post->ID );
+            ?>
+            <label> 
+                <input type="checkbox" name="post_news[]" value="<?php echo $post; ?>" <?php checked( ( in_array( $post, $noticias ) ) ? $post : '', $post ); ?> /><?php echo $post; ?> <br />
+            </label>
+            <?php    
+                }
+            ?>
         </td>
     </tr>
-
 
 </table>
 	
@@ -110,18 +163,48 @@ function save_project_info_meta_box_data( $post_id ) {
         return;
     }
 
-	$my_data = sanitize_text_field( $_POST['texto_meta_box'] );
-	$my_second_data = sanitize_text_field( $_POST['second_texto_meta_box'] );
+    $agencia_financiadora_input = sanitize_text_field( $_POST['agencia_financiadora_input'] );
+    $periodo_inicio_input = sanitize_text_field( $_POST['periodo_inicio_input'] );
+    $periodo_fim_input = sanitize_text_field( $_POST['periodo_fim_input'] );
+    $situacao_input = sanitize_text_field( $_POST['situacao_input'] );
+    $people = (array) $_POST['people'];
+    $people = array_map( 'sanitize_text_field', $people);
+    $equipes = (array) $_POST['equipe'];
+    $equipes = array_map( 'sanitize_text_field', $equipes);
+    $posts_news = (array) $_POST['post_news'];
+    $posts_news = array_map( 'sanitize_text_field', $posts_news);
 
-	// cria o meta_key no banco
-    if ( isset( $_POST['texto_meta_box'] ) ) {
-        update_post_meta( $post_id, '_texto_meta_box', $my_data);
+
+    // cria o meta_key no banco
+	if ( isset( $_POST['agencia_financiadora_input'] ) ) {
+        update_post_meta( $post_id, '_agencia_financiadora_input', $agencia_financiadora_input);
     }
 
-	// cria o meta_key no banco
-    if ( isset( $_POST['second_texto_meta_box'] ) ) {
-        update_post_meta( $post_id, '_second_texto_meta_box', $my_second_data);
+    if ( isset( $_POST['periodo_inicio_input'] ) ) {
+        update_post_meta( $post_id, '_periodo_inicio_input', $periodo_inicio_input);
     }
+
+    if ( isset( $_POST['periodo_fim_input'] ) ) {
+        update_post_meta( $post_id, '_periodo_fim_input', $periodo_fim_input);
+    }
+
+    if ( isset( $_POST['situacao_input'] ) ) {
+        update_post_meta( $post_id, '_situacao_input', $situacao_input);
+    }
+
+    if ( isset( $_POST['people'] ) ) {
+        update_post_meta( $post_id, '_people', $people);
+    }
+
+    if ( isset( $_POST['equipe'] ) ) {
+        update_post_meta( $post_id, '_equipes', $equipes);
+    }
+
+    if ( isset( $_POST['post_news'] ) ) {
+        update_post_meta( $post_id, '_checked_posts', $posts_news);
+    }
+
+	
 }
 
 add_action( 'save_post', 'save_project_info_meta_box_data' );

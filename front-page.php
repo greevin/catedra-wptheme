@@ -35,17 +35,18 @@ get_header(); ?>
 		<div id="<?php echo $page->post_name; ?>">
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-				<header class="entry-header">
+				<!-- Layout padrão da página -->
+				<div class="entry-header">
 					<h2 class="entry-title">
 						<a href="<?php echo get_page_link( $page->ID ); ?>"><?php echo $page->post_title; ?></a>
 					</h2>
 					<?php echo $content; ?>
-				</header>
+				</div>
 				<!-- .entry-header -->
 
-				<!-- Relativo aos posts nessa página -->
-				<div class="entry-content entry-projects">
-					<?php get_template_part( 'inicio', $page->post_name ); ?>
+				<!-- Template para mostrar o tipo associado -->
+				<div class="entry-content">
+					<?php get_template_part( 'inicio', $page->post_name ); ?>	
 				</div>
 				<!-- .entry-content -->
 			</article>
@@ -55,8 +56,6 @@ get_header(); ?>
 		}
 
 		?>
-		
-
 	</main><!-- .site-main -->
 </div><!-- .content-area -->
 

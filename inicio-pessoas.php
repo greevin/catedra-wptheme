@@ -1,17 +1,13 @@
 
 <?php
 /**
- * The template used for displaying people content
+ * Template usado para mostrar as pessoas na página inicial (front-page.php)
  *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
  */
 ?>
-
         <div class="entry-content" style="text-align: center;">
 			<?php 
-				$args = array( 'post_type' => 'pessoa', 'showposts'=>10);
+				$args = array( 'post_type' => 'wp_pessoa', 'showposts'=>10);
 				$my_projetos = get_posts( $args );
 				if($my_projetos) : foreach($my_projetos as $post) : setup_postdata( $post );?>
                    <div class="col-sm-4 col-md-4 col-lg-4" style="height: 450px;">

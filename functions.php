@@ -57,120 +57,16 @@ function twentyfifteen_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'twentyfifteen_excerpt_more' );
 
-/*
-	==========================================
-	 Custom Post Type
-	==========================================
-*/
-function pessoas_custom_post_type (){
-	
-	$labels = array(
-		'name' => 'Pessoas',
-		'singular_name' => 'Pessoa',
-		'add_new' => 'Adicionar Pessoa',
-		'all_items' => 'Todas as Pessoas',
-		'add_new_item' => 'Adicionar Pessoa',
-		'edit_item' => 'Editar Pessoa',
-		'new_item' => 'Adicionar Pessoa',
-		'view_item' => 'Visualizar Pessoa',
-		'search_item' => 'Pesquisar Pessoa',
-		'not_found' => 'Nenhum item encontrado',
-		'not_found_in_trash' => 'Nenhum item encontrado no Lixo',
-		'parent_item_colon' => 'Parent Item'
-	);
-	$args = array(
-		'labels' => $labels,
-		'public' => true,
-		'has_archive' => true,
-		'publicly_queryable' => true,
-        'menu_icon' => 'dashicons-id-alt',
-		'query_var' => true,
-		'rewrite' => true,
-		'capability_type' => 'post',
-		'hierarchical' => false,
-		'supports' => array(
-			'title',
-			'editor',
-			'thumbnail',
-			'revisions',
-			'custom-fields',
-			'comments' 
-		),
-		'taxonomies' => array('category', 'post_tag'),
-		'menu_position' => 5,
-		'exclude_from_search' => false
-	);
-	register_post_type('pessoa',$args);
-}
-add_action('init','pessoas_custom_post_type');
-
-function set_pessoa_contact_columns( $columns ){
-	$newColumns = array();
-	$newColumns['title'] = 'Nome';
-	$newColumns['resumo'] = 'Resumo';
-	$newColumns['instituicao'] = 'Instituição';
-	$newColumns['date'] = 'Criado em';
-	return $newColumns;
+function _get_excerpt($limit = 100) {
+    return has_excerpt() ? get_the_excerpt() : wp_trim_words(strip_shortcodes(get_the_content()),$limit);
 }
 
-add_filter( 'manage_edit-pessoa_columns', 'set_pessoa_contact_columns' );
-add_action( 'manage_posts_custom_column', 'pessoa_custom_column', 10, 2);
+/* Custom Post Type */
+require get_stylesheet_directory() . '/inc/wp-pessoa-custom-post-type.php';
+require get_stylesheet_directory() . '/inc/wp-projeto-custom-post-type.php';
 
-function pessoa_custom_column( $column, $post_id ){
-	switch( $column ){
-			
-		case 'resumo' :
-			echo get_the_excerpt();
-			break;
-
-		case 'instituicao' :
-			echo get_post_meta( $post_id, '_instituicao_input', true );
-			break;	
-	}
-	
-}
-
-function projetos_custom_post_type (){
-	
-	$labels = array(
-		'name' => 'Projetos',
-		'singular_name' => 'Projeto',
-		'add_new' => 'Adicionar Projeto',
-		'all_items' => 'Todos os Projetos',
-		'add_new_item' => 'Adicionar Projeto',
-		'edit_item' => 'Editar Projeto',
-		'new_item' => 'Novo Projeto',
-		'view_item' => 'Visualizar Projeto',
-		'search_item' => 'Pesquisar Projetos',
-		'not_found' => 'Nenhum item encontrado',
-		'not_found_in_trash' => 'Nenhum item encontrado no Lixo',
-		'parent_item_colon' => 'Parent Item'
-	);
-	$args = array(
-		'labels' => $labels,
-		'public' => true,
-		'has_archive' => true,
-		'publicly_queryable' => true,
-        'menu_icon' => 'dashicons-book-alt',
-		'query_var' => true,
-		'rewrite' => true,
-		'capability_type' => 'post',
-		'hierarchical' => false,
-		'supports' => array(
-			'title',
-			'editor',
-			'thumbnail',
-			'revisions',
-		),
-		'taxonomies' => array('category', 'post_tag'),
-		'menu_position' => 5,
-		'exclude_from_search' => false
-	);
-	register_post_type('projetos',$args);
-}
-add_action('init','projetos_custom_post_type');
-
+/* Custom Fields */
+require get_stylesheet_directory() . '/inc/custom-fields-pessoa.php';
 require get_stylesheet_directory() . '/inc/custom-fields-project.php';
-require get_stylesheet_directory() . '/inc/custom-fields-people.php';
 
 ?>
