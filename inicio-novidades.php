@@ -12,17 +12,18 @@
 				$my_projetos = get_posts( $args );
 			if($my_projetos) : foreach($my_projetos as $post) : setup_postdata( $post );?>
 
-		<div class="col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 20px;">
+		<div class="col-sm-12 col-md-6 col-lg-6 post-content" style="margin-bottom: 20px;">
+			<div style="background: #404040;">
+				<?php $urlImg = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ); ?>
+				<div class="blog-element" style="background-image: url(<?php echo $urlImg; ?>);"></div>
+			</div>
 
-			<div class="image-div thumbnail">
-
-    			<?php the_post_thumbnail( array(250, 250) ); ?>
-
+			<div class="thumbnail">
+				<p class="circle-date"><?php echo get_the_date('j M Y'); ?></p>
 				<div class="sideText">
 					<?php the_title( sprintf('<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h2>' ); ?>
-					<?php echo get_the_date(); ?>
-					<?php the_author (); ?>
-					<?php the_category(); ?>
+					<p><span class="dashicons dashicons-admin-users"></span> <?php the_author (); ?></p>
+					 <p><?php the_category(); ?></p> 
 					<p><?php echo _get_excerpt(35); ?></p> 
 					<div class="more-link-container">
 						<a href="<?php the_permalink(); ?>">Leia Mais</a>
