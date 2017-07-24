@@ -31,6 +31,7 @@ function wp_projeto_custom_post_type (){
 			'editor',
 			'thumbnail',
 			'revisions',
+			'comments'
 		),
 		'taxonomies' => array('category', 'post_tag'),
 		'rewrite'     => ['slug' => 'projetos'],

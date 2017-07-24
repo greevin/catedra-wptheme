@@ -16,12 +16,15 @@ h1,
 h2,
 h2 a,
 span {
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
+    /* font-family: 'Fjalla One', sans-serif; */
+    font-family: "Noto Serif", serif;
 }
 
 p {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.75rem;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.65rem;
 }
 
 h2 {
@@ -33,17 +36,22 @@ h2 {
 
 .circle-img {
     position: relative;
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
     width: 120px;
     height: 120px;
     overflow: hidden;
     border-radius: 100%;
     margin: 0 auto;
-    background: #404040;
+    background: #123652;
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
-    font-size: 60px;
+    font-size: 50px;
     border: 1px solid;
+}
+
+.sobre p {
+    text-align: left;
 }
 
 .projects-thumbnail {
@@ -114,6 +122,7 @@ h2 {
 
 .entry-header p {
     color: #7b7b7b;
+    line-height: 1.62em;
 }
 
 .entry-header {
@@ -125,7 +134,7 @@ h2 {
 }
 
 .more-link-container {
-    padding: 10px 0 20px 0;
+    padding: 0px 0 20px 0;
 }
 
 .more-link-container a {
@@ -155,21 +164,12 @@ h2 {
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 350px;
+    height: 250px;
     overflow: hidden;
 }
 
-.blog-element a {
-    /* text-shadow: 0 1px 3px rgba(0, 0, 0, .5); */
-    /* background-color: #7d7879; */
-    color: #fff;
-    /* display: inline; */
-    /* padding: 0.5rem; */
-    border-bottom: 0;
-}
-
 .blog-element a:hover {
-    /* background-color: #8283a7; */
+    /* background-color: #8283a7;  */
 }
 
 
@@ -183,11 +183,60 @@ small {
     line-height: 1.6;
 } */
 
-.blog-element>h2 {
+.project-title {
     position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: #fff;
+    padding: 18px 25px;
+    margin: 15px;
+    width: 210px;
+    font-size: 1.85rem;
+    transition: all 0.5s ease 0s;
+    cursor: pointer;
+}
+
+.project-title:hover {
+    background: #8da4b6;
+    color: white;
+}
+
+.project-title h2:hover {
+    color: white;
+}
+
+.project-title h2 {
+    font-size: 1.75rem;
+}
+
+.project-title a {
+    color: black;
+}
+
+.project-title p {
+    margin-bottom: 0px;
+    font-size: 1.35rem;
+}
+
+.blog-element>h2 {
+    /* position: absolute;
     width: 100%;
-    padding: 20px;
-    line-height: 1.6;
+    padding: 15px;
+    right: 35px;
+    left: 35px;
+    line-height: 1.5;
+    bottom: 10px;
+    width: auto;
+    background: black;
+    font-size: 1em; */
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: #fff;
+    padding: 18px 25px;
+    margin: 35px;
+    width: 210px;
+    font-size: 1em;
 }
 
 
@@ -240,32 +289,42 @@ small {
 }
 
 .thumbnail {
-    margin: -5em 10px 0 10px;
+    /* margin: -5em 10px 0 10px; */
     background: #fff;
     padding: 20px;
     border: 0;
     border-radius: 0;
 }
 
-#novidades .hentry {
-    background-color: #f1f1f1;
+#novidades .hentry,
+#projetos .hentry {
+    background-color: transparent;
 }
 
 .circle-date {
     position: relative;
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     border-radius: 100%;
     margin: 0 auto;
-    background: #404040;
+    background: #123652;
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
-    font-size: 16px;
+    font-size: 1.35rem;
     border: 2px solid;
     color: white;
     text-align: center;
     margin-top: -50px;
+}
+
+ul,
+ol {
+    margin: 0 0 1.6em 0;
+}
+
+.site-main {
+    padding-top: 0px;
 }
 
 .entry-content a,
@@ -277,7 +336,9 @@ small {
 }
 
 .sideText .entry-title {
-    margin-top: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 .entry-header {
@@ -289,12 +350,14 @@ small {
 }
 
 .sideText p {
-    font-size: 1.5rem;
     margin-bottom: 10px;
+    color: #7b7b7b;
+    line-height: 1.62em;
+    font-size: 1.65rem;
 }
 
 .sideText h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .post-categories li,
@@ -305,14 +368,19 @@ small {
     list-style-type: none;
 }
 
-.post-categories a,
-.category p {
+.post-categories {
+    text-align: center;
+}
+
+.post-categories a {
     border: 1px solid black;
     border-radius: 99em;
     display: inline-block;
     line-height: 1.4;
     padding: 6px 12px;
     text-align: center;
+    transition: all 0.5s ease 0s;
+    cursor: pointer;
 }
 
 .post-categories a:hover {
@@ -330,6 +398,21 @@ small {
     display: inline;
 }
 
+.content-pessoa p {
+    font-size: 1.5rem;
+    color: #7b7b7b;
+    line-height: 1.5;
+}
+
+#pessoas article,
+#sobre article,
+#projetos article,
+#novidades article {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 8%;
+}
+
 @media screen and (min-width: 38.75em) {
     .hentry,
     .page-header,
@@ -342,6 +425,25 @@ small {
     .entry-title,
     .widecolumn h2 {
         margin-bottom: 1em;
+        font-size: 3.5rem;
+    }
+    .nav-links {
+        display: flex;
+    }
+    .nav-previous {
+        width: 50%;
+        margin-right: 10px;
+        background: white;
+    }
+    .nav-next {
+        width: 50%;
+        background: white;
+        margin-left: 10px;
+    }
+    .comments-area,
+    .post-navigation {
+        background-color: transparent;
+        box-shadow: 0 0 0;
     }
 }
 
@@ -362,10 +464,23 @@ small {
     .sideText {
         padding: 0;
     }
-
     .post-content {
         padding-left: 0;
-    padding-right: 0;
+        padding-right: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .row-equal {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+    }
+    .fix-safari {
+        flex: 1 0 20em;
+    }
+    .fix-safari-3 {
+        flex: 1 0 15em;
     }
 }
 
@@ -693,4 +808,77 @@ small {
     width: 35px;
     height: 35px;
     font-size: 18px !important;
+}
+
+
+/* Reduzir o tamanho da sidebar: 
+http://blog.abhishekpriyam.com/code-snippet/change-sidebar-width-in-twentyfifteen-wordpress/
+*/
+
+body:before {
+    max-width: 285px;
+}
+
+#sidebar {
+    left: 0;
+}
+
+#page {
+    margin-left: 0;
+}
+
+@media screen and (min-width: 77.5em) {
+    .site-content {
+        margin-left: 22%;
+        width: 78%;
+    }
+}
+
+@media screen and (min-width: 59.6875em) {
+    .sidebar {
+        max-width: 313px;
+    }
+    .site-footer {
+        /* Not pixel perfect */
+        margin: 0 0 0 25.8%;
+        width: 71.5%;
+    }
+    .entry-footer {
+        padding: 4% 5%;
+        background: #294F6D;
+        color: white;
+    }
+    .entry-footer p {
+        margin-bottom: 10px;
+    }
+    .entry-footer a {
+        color: white;
+    }
+    .entry-footer h2 {
+        font-size: 1.5em;
+        margin-bottom: 0px;
+    }
+    .hentry,
+    .page-header,
+    .page-content {
+        margin: 0;
+    }
+    .comments-area,
+    .post-navigation {
+        margin: 8.3333% 3.3333% 0;
+    }
+    .entry-content,
+    .entry-summary {
+        padding: 0 2% 2%;
+    }
+    .entry-header {
+        padding: 0 3%;
+    }
+    .comments-area,
+    .post-navigation {
+        margin: 0 3.3333%;
+    }
+    .comments-area {
+        padding: 2%;
+    }
 }

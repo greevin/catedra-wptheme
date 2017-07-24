@@ -9,7 +9,8 @@ function theme_enqueue_styles() {
         array( $parent_style ),
         wp_get_theme()->get('Version')
     );
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Playfair+Display:700', false );
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Fjalla+One|Nunito:400,400i,700,700i', false );
+	wp_enqueue_style( 'dashicons' );
 
 	// wp_enqueue_style( 'owl-carousel-css', get_stylesheet_directory_uri() . '/owlcarousel/assets/owl-carousel.css' );
 	// wp_enqueue_style( 'owl-carousel-theme-css', get_template_directory_uri() . '/css/owl.theme.default.css' );
@@ -38,7 +39,7 @@ add_action('admin_enqueue_scripts', 'theme_admin_scripts');
  * @return int (Maybe) modified excerpt length.
  */
 function wpdocs_custom_excerpt_length( $length ) {
-    return 20;
+    return 35;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
@@ -68,5 +69,59 @@ require get_stylesheet_directory() . '/inc/wp-projeto-custom-post-type.php';
 /* Custom Fields */
 require get_stylesheet_directory() . '/inc/custom-fields-pessoa.php';
 require get_stylesheet_directory() . '/inc/custom-fields-project.php';
+
+/* Add CPTs to author archives */
+function custom_post_author_archive($query) {
+    if ($query->is_author)
+        $query->set( 'post_type', array('wp_projeto', 'wp_pessoa', 'post') );
+    remove_action( 'pre_get_posts', 'custom_post_author_archive' );
+}
+add_action('pre_get_posts', 'custom_post_author_archive');
+
+add_action('wp_footer', 'add_back_to_top');
+    function add_back_to_top(){
+        ?>
+        <style type="text/css"> 
+        .go-top {
+                position: fixed;
+                bottom: 3em;
+                right: 3em;
+                text-decoration: none;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.3);
+                font-size: 12px;
+				padding: 1em;
+				border-radius: 100%;
+                display: none;
+                z-index: 999999;
+			}
+			
+            .go-top:hover {
+				background-color: rgba(0, 0, 0, 0.6);
+				color: white;
+            }
+        </style>
+        <script type="text/javascript">
+                    jQuery(document).ready(function() {
+                        jQuery('body').append('<a href="#" class="go-top"><span class="dashicons dashicons-arrow-up-alt2"></span></a>')
+                        // Show or hide the sticky footer button
+                        jQuery(window).scroll(function() {
+                            if (jQuery(this).scrollTop() > 400) {
+                                jQuery('.go-top').fadeIn();
+                            } else {
+                                jQuery('.go-top').fadeOut();
+                            }
+                        });
+
+                        // Animate the scroll to top
+                        jQuery('.go-top').click(function(event) {
+                            event.preventDefault();
+
+                            jQuery('html, body').animate({scrollTop: 0}, 800);
+                        })
+                    });
+        </script>
+        <?php
+    }
 
 ?>

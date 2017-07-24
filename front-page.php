@@ -15,7 +15,7 @@
 get_header(); ?>
 
 <div id="primary" class="content-area">
-	<main id="main" class="site-main" role="main">
+	<main id="main" role="main">
 
 		<?php
 
@@ -36,7 +36,7 @@ get_header(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 				<!-- Layout padrão da página -->
-				<div class="entry-header">
+				<div class="entry-header <?php echo $page->post_name; ?>">
 					<h2 class="entry-title">
 						<a href="<?php echo get_page_link( $page->ID ); ?>"><?php echo $page->post_title; ?></a>
 					</h2>
