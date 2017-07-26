@@ -1,47 +1,60 @@
-
 <?php
 /**
  * Template usado para mostrar as pessoas na página inicial (front-page.php)
  *
  */
 ?>
-        <div class="entry-content row-equal" style="text-align: center;">
-			<?php 
-				$args = array( 'post_type' => 'wp_pessoa', 'showposts'=>10);
-				$my_projetos = get_posts( $args );
-				if($my_projetos) : foreach($my_projetos as $post) : setup_postdata( $post );?>
-                   <div class="col-sm-4 col-md-4 col-lg-4 fix-safari-3">
-					   <div class="circle-img">
-						  <span> <?php 
-						   		$title = get_the_title();
-								$words = explode(" ", $title, 2);
-								$acronym = "";
+	<div class="entry-people row-equal" style="text-align: center;">
+		<?php 
+			$args = array( 'post_type' => 'wp_pessoa', 'showposts'=>-1);
+			$my_projetos = get_posts( $args );
+			if($my_projetos) : foreach($my_projetos as $post) : setup_postdata( $post );
 
-								foreach ($words as $w) {
-									$acronym .= $w[0];
-								}
+			$periodo_fim = get_post_meta( $post->ID, '_periodo_fim_input', true );
+			$today =  date(get_option( 'date_format' ));
+			$situacao = get_post_meta( $post->ID, '_situacao_input', true );
 
-								echo $acronym;
+			if( $periodo_fim >= $today) :
+		?>
+		<div class="col-sm-4 col-md-4 col-lg-4 fix-safari-3" style="padding-bottom: 15px;">
+			<div class="circle-img fundo-gradiente">
+				<a href="<?php the_permalink(); ?>">
+					<span> 
+					<?php 
+						$title = get_the_title();
+						$words = explode(" ", $title, 2);
+						$acronym = "";
 
-								?>
-							</span>
-							
-  							<?php the_post_thumbnail(false, array('class'=>'img-responsive responsive--full')); ?>  
-						</div>
-				<h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-				<div class="content-pessoa">
-					<p><?php echo _get_excerpt(20); ?></p>  
-					<div class="more-link-container">
-						<a href="<?php the_permalink(); ?>">Leia Mais</a>
-					</div>
+						foreach ($words as $w) {
+							$acronym .= $w[0];
+						}
+
+						echo $acronym;
+
+						?>
+				</span>
+				<?php the_post_thumbnail(false, array('class'=>'img-responsive responsive--full')); ?>
+				</a>
+			</div>
+			<h3 class="person-title">
+				<a href="<?php the_permalink(); ?>">
+					<?php the_title(); ?>
+				</a>
+			</h3>
+			<div class="content-pessoa">
+				<p>
+					<?php echo _get_excerpt(20); ?>
+				</p>
+				<div class="more-link-container">
+					<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> Leia Mais</a>
 				</div>
-				 
+			</div>
 		</div>
-			 <?php
-		    	endforeach;
-		    	endif;
-				wp_reset_postdata();
-?>
-		<!-- <div class="link"><a class="leia-mais" href="<?php echo the_title(); ?>">VER TODOS</a></div> -->
-        </div>
-        <!-- .entry-content -->
+		<?php
+			endif;
+			endforeach;
+			endif;
+			wp_reset_postdata();
+		?>
+	</div>
+	<!-- .entry-content -->

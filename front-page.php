@@ -18,7 +18,7 @@ get_header(); ?>
 	<main id="main" role="main">
 
 		<?php
-
+		// pega todas as páginas de acordo com a ordem do menu
 		$args = array(
 			'sort_order' => 'asc',
 			'sort_column' => 'menu_order',
@@ -33,28 +33,26 @@ get_header(); ?>
 		?>
 			
 		<div id="<?php echo $page->post_name; ?>">
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<section id="post-<?php echo $page->ID; ?>" <?php post_class(); ?>>
 
-				<!-- Layout padrão da página -->
+				<!-- Layout padrão de página -->
 				<div class="entry-header <?php echo $page->post_name; ?>">
-					<h2 class="entry-title">
+					<h1 class="entry-title">
 						<a href="<?php echo get_page_link( $page->ID ); ?>"><?php echo $page->post_title; ?></a>
-					</h2>
+					</h1>
 					<?php echo $content; ?>
 				</div>
 				<!-- .entry-header -->
 
-				<!-- Template para mostrar o tipo associado -->
-				<div class="entry-content">
+				<!-- Template para novidades, pessoas e projetos -->
+				 <div class="entry-content"> 
 					<?php get_template_part( 'inicio', $page->post_name ); ?>	
-				</div>
-				<!-- .entry-content -->
-			</article>
-			<!-- #post-## -->
+				 </div> 
+				 <!-- .entry-content -->
+			</section>
 		</div>
 		<?php
-		}
-
+		} // fim do foreach
 		?>
 	</main><!-- .site-main -->
 </div><!-- .content-area -->

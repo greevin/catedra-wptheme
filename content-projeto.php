@@ -19,15 +19,16 @@
 		$equipes = get_post_meta( $post->ID, '_equipes', true );
 		$situacao = get_post_meta( $post->ID, '_situacao_input', true );
 		$noticias = get_post_meta( $post->ID, '_checked_posts', true );
+
+		$project_info = ! empty( $agencia_financiadora) || ! empty( $periodo_inicio) || ! empty( $periodo_fim) || ! empty( $coordenadores) || ! empty( $equipes) || ! empty( $situacao) || ! empty( $noticias);
 ?>
 
 	<div class="entry-content">
 		<div class="post-content fix-safari" style="height: 100%;margin-bottom: 0px;">
 			<div class="thumbnail" style="height: 100%;">
 				<div class="sideText">
-					<?php the_title( sprintf('<h1 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
-					<p style="text-align: center;"><?php the_author (); ?> | <?php comments_number( '0 comentários', '1 comentário', '% comentários' ); ?> | <?php echo get_the_date('j M Y'); ?></p>
-					<?php the_category(); ?>
+					<?php the_title( sprintf('<h1 class="entry-title" style="text-align: center;"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
+					<p style="text-align: center;"><?php echo get_the_date('j M Y'); ?></p>
 					<div style="text-align:center;">
 						<?php twentyfifteen_post_thumbnail(); ?>
 					</div>
@@ -44,8 +45,10 @@
 	?>
 </article><!-- #post-## -->
 
-<footer class="entry-footer">
-		<?php if( ! empty( $agencia_financiadora) ) : echo '<h2>Mais informações</h2><br />' . '<p><b>Agência Financiadora: </b>' . $agencia_financiadora . '</p>'; endif; ?>
+<?php if( $project_info == true ) : ?>
+<section class="entry-section">
+		<h2>Mais informações</h2><br />
+		<?php if( ! empty( $agencia_financiadora) ) : echo '<p><b>Agência Financiadora: </b>' . $agencia_financiadora . '</p>'; endif; ?>
 			<?php if( ! empty( $periodo_inicio || $periodo_fim) ) : echo '<p><b>Período: </b>' . $periodo_inicio . ' - '. $periodo_fim .'</p>'; endif; ?>
 			<?php if( ! empty( $linhas_pesquisa) ) : echo '<p><b>Linha(s) de Pesquisa: </b>' . $linhas_pesquisa . '</p>'; endif; ?>			
 			<?php if( ! empty( $coordenadores) ) : 
@@ -80,5 +83,7 @@
 
 			endif; 
 			
-			?>						
-</footer><!-- .entry-footer -->
+	?>	
+					
+</section>
+<?php endif; ?>

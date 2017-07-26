@@ -47,9 +47,7 @@ function add_projects_info_meta_box_callback($post) {
 	$periodo_inicio = isset( $value['_periodo_inicio_input'] ) ? esc_attr( $value['_periodo_inicio_input'][0] ) : '';
 	$periodo_fim = isset( $value['_periodo_fim_input'] ) ? esc_attr( $value['_periodo_fim_input'][0] ) : '';
     $situacao = isset( $value['_situacao_input'] ) ? esc_attr( $value['_situacao_input'][0] ) : '';
-    $noticias = isset( $value['_checked_posts'] ) ? get_post_meta( $post->ID, '_checked_posts', true ) : array();
-
-	
+    $noticias = isset( $value['_checked_posts'] ) ? get_post_meta( $post->ID, '_checked_posts', true ) : array();	
  ?>
 	 <table class="form-table">
     <tr>

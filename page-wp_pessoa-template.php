@@ -6,74 +6,71 @@
 
 get_header(); ?>
 
-<div id="primary" class="content-area">
+	<div id="primary" class="content-area">
 		<?php 
-			$args = array('post_type' => 'wp_pessoa', 'showposts' => -1 );
-			$loop = new WP_Query( $args );
-		?>
+		$args = array('post_type' => 'wp_pessoa', 'showposts' => -1 );
+		$loop = new WP_Query( $args );
+	?>
 		<?php
 		// Start the loop.
 		while ( have_posts() ) : the_post();
+	?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'panel-title-container'); ?> style="height: 300px;">
+				<?php
+			twentyfifteen_post_thumbnail();
 		?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="
-        padding-top: 5rem;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-	background: #294F6D;
-	color:white;
-	margin-left: 3px;
-">
+
+				<header class="entry-header">
+					<?php the_title( '<h1 class="entry-title" style="font-size: 4rem;margin-bottom: 20px;">', '</h1>' ); ?>
+				</header>
+				<!-- .entry-header -->
+
+				<div class="entry-content people-content">
+					<?php the_content(); ?>
+				</div>
+				<!-- .entry-content -->
+
+			</article>
+			<!-- #post-## -->
 			<?php
-				// Post thumbnail.
-				twentyfifteen_post_thumbnail();
-			?>
+	// End the loop.
+	endwhile;
+	?>
 
-			<header class="entry-header">
-				<?php the_title( '<h1 class="entry-title" style="font-size: 5rem;">', '</h1>' ); ?>
-			</header><!-- .entry-header -->
-
-			<div class="entry-content" style="text-align: center;">
-				<?php the_content(); ?>
-			</div><!-- .entry-content -->
-
-		</article><!-- #post-## -->
-		<?php
-		// End the loop.
-		endwhile;
-		?>
-
-	<div class="entry-content row-equal">
-		<?php
+				<div class="entry-content row-equal" style="margin-top: -120px;">
+					<?php
 		
 		if( $loop->have_posts() ):
 			
 		while( $loop->have_posts() ): $loop->the_post(); ?>
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 post-content fix-safari" style="height: 100%;margin-bottom: 20px;">
-				<div style="background: #123652;">
+				<div class="fundo-gradiente">
 					<?php $urlImg = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ); ?>
 					<div class="blog-element" style="background-image: url(<?php echo $urlImg; ?>);"></div>
 				</div>
 
-				<div class="thumbnail" style="height: 100%;">
-					<p class="circle-date"><?php echo get_the_date('j M Y'); ?></p>
-					<div class="sideText">
+				<div class="thumbnail">
+					<div class="novidades-content">
+						<p>
+							<?php echo get_the_date('j M Y'); ?>
+						</p>
 						<?php the_title( sprintf('<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h2>' ); ?>
-						<p style="text-align: center;"><?php the_author (); ?> | <?php comments_number( '0 comentários', '1 comentário', '% comentários' ); ?></p>
-						<?php the_category(); ?>
-						<p><?php echo _get_excerpt(40); ?></p>
+						<p>
+							<?php echo _get_excerpt(35); ?>
+						</p>
+						<div class="more-link-container">
+							<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> Leia Mais</a>
+						</div>
 					</div>
 				</div>
 			</div>
-			
-		<?php endwhile;
-			
-		endif;
 
-		wp_reset_postdata();
-				
-		?>
+			<?php endwhile;
+			endif;
+			wp_reset_postdata();
+			?>
+		</div>
 	</div>
+	<!-- .content-area -->
 
-</div><!-- .content-area -->
-
-<?php get_footer(); ?>
+	<?php get_footer(); ?>

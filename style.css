@@ -1,9 +1,9 @@
 /*
- Theme Name:   Twenty Fifteen Child
- Theme URI:    http://example.com/twenty-fifteen-child/
- Description:  Twenty Fifteen Child Theme
- Author:       John Doe
- Author URI:   http://example.com
+ Theme Name:   Cátedra 2017
+ Theme URI:    educacaoaberta.org
+ Description:  Uma modificação do tema Twenty Fifteen para o site educacaoaberta.org
+ Author:       Cícero Alexandrino
+ Author URI:   educacaoaberta.org
  Template:     twentyfifteen
  Version:      1.0.0
  License:      GNU General Public License v2 or later
@@ -14,17 +14,16 @@
 
 h1,
 h2,
-h2 a,
+h3,
 span {
-    /* font-family: 'Playfair Display', serif; */
-    /* font-family: 'Fjalla One', sans-serif; */
-    font-family: "Noto Serif", serif;
+    font-family: 'Roboto Slab', serif;
+    /* font-size: 3.797rem; */
 }
 
 p {
-    /* font-family: 'Open Sans', sans-serif; */
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.65rem;
+    font-family: 'Muli', sans-serif;
+    font-size: 1.5rem;
+    color: #7b7b7b;
 }
 
 h2 {
@@ -42,12 +41,10 @@ h2 {
     overflow: hidden;
     border-radius: 100%;
     margin: 0 auto;
-    background: #123652;
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
     font-size: 50px;
-    border: 1px solid;
 }
 
 .sobre p {
@@ -77,19 +74,16 @@ h2 {
     left: 50%;
     top: 50%;
     height: 100%;
+    max-width: inherit;
     width: auto;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 
-.circle-img>img {
-    max-width: inherit;
-}
-
-.post-title {
-    margin-top: 20px !important;
-    font-size: 22px !important;
+.person-title {
+    margin-top: 1em !important;
+    font-size: 2.25rem !important;
 }
 
 .content p {
@@ -113,11 +107,15 @@ h2 {
 }
 
 .entry-content {
-    padding: 0 3% 3%;
+    padding: 0 2% 3%;
 }
 
 .entry-header a {
     color: black;
+}
+
+article .sobre {
+    /* height: 100vh; */
 }
 
 .entry-header p {
@@ -126,36 +124,49 @@ h2 {
 }
 
 .entry-header {
-    padding: 0 3%;
+    padding: 0 5%;
 }
 
-.entry-projects {
-    padding: 0 2% 2%;
+.entry-header h1 {
+    padding: 0;
+}
+
+.entry-projects,
+.entry-people,
+.entry-news {
+    padding-bottom: 3%;
 }
 
 .more-link-container {
-    padding: 0px 0 20px 0;
+    padding: 0 3% 3%;
 }
 
 .more-link-container a {
-    border: 2px solid !important;
     color: inherit;
     box-shadow: none;
     font-weight: bold;
-    padding: 6px 12px;
     display: inline-block;
     text-decoration: none !important;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     text-transform: uppercase;
     transition: all 0.5s ease 0s;
     cursor: pointer;
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Muli", sans-serif;
 }
 
 .more-link-container a:hover {
-    background: #496D89;
-    color: white !important;
-    border: 2px solid #496D89;
+    margin-left: 20px;
+    color: black !important;
+}
+
+a {
+    color: #474747;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: #687987 !important;
 }
 
 .blog-element {
@@ -167,21 +178,6 @@ h2 {
     height: 250px;
     overflow: hidden;
 }
-
-.blog-element a:hover {
-    /* background-color: #8283a7;  */
-}
-
-
-/* .blog-element>h2,
-small {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    line-height: 1.6;
-} */
 
 .project-title {
     position: absolute;
@@ -198,7 +194,7 @@ small {
 
 .project-title:hover {
     background: #8da4b6;
-    color: white;
+    color: white !important;
 }
 
 .project-title h2:hover {
@@ -219,16 +215,6 @@ small {
 }
 
 .blog-element>h2 {
-    /* position: absolute;
-    width: 100%;
-    padding: 15px;
-    right: 35px;
-    left: 35px;
-    line-height: 1.5;
-    bottom: 10px;
-    width: auto;
-    background: black;
-    font-size: 1em; */
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -239,10 +225,27 @@ small {
     font-size: 1em;
 }
 
+.fundo-gradiente {
+    /* fallback for old browsers */
+    background: #718EA4;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #718EA4, #123652);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #718EA4, #123652);
+}
 
-/* .blog-element>h2 {
-    font-size: 2.5rem;
-} */
+.panel-title-container {
+    padding-top: 5rem !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 20px !important;
+    background: #294F6D;
+    color: white;
+}
+
+.site-title {
+    font-family: 'Roboto Slab', serif;
+    font-size: 3.5rem;
+}
 
 .nav-menu {
     line-height: 1.2rem;
@@ -252,7 +255,7 @@ small {
 .main-navigation li {
     border-top: 0;
     border-bottom: 0;
-    font-family: "Noto Sans", sans-serif;
+    font-family: 'Muli', sans-serif;
 }
 
 .dropdown-toggle {
@@ -271,7 +274,7 @@ small {
 .hentry,
 .page-header,
 .page-content {
-    margin: 0 2%;
+    margin: 0;
 }
 
 .sub-menu a {
@@ -335,25 +338,45 @@ ol {
     border-bottom: 0;
 }
 
+.novidades-content h2 {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 2.25rem;
+    padding: 0;
+}
+
+.novidades-content p {
+    margin-bottom: 0.5rem;
+}
+
+.novidades-content .more-link-container {
+    padding: 3% 0;
+}
+
+.projects-content p,
+.news-content p,
+.people-content p {
+    padding: 0 3%;
+    color: white;
+    font-size: 1.75rem;
+}
+
 .sideText .entry-title {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    text-align: center;
-}
-
-.entry-header {
-    text-align: center;
-}
-
-.sideText .more-link-container {
-    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .sideText p {
-    margin-bottom: 10px;
-    color: #7b7b7b;
+    /* margin-bottom: 10px; */
+    /* color: #7b7b7b; */
     line-height: 1.62em;
-    font-size: 1.65rem;
+    /* font-size: 1.5rem; */
+    /* padding: 0 2%; */
+}
+
+.sideText p:first-child {
+    font-size: .75em;
+    font-weight: 700;
 }
 
 .sideText h2 {
@@ -366,6 +389,26 @@ ol {
     text-transform: uppercase;
     letter-spacing: 1px;
     list-style-type: none;
+}
+
+.go-top {
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 12px;
+    padding: 1em;
+    border-radius: 100%;
+    display: none;
+    z-index: 999999;
+}
+
+.go-top:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white !important;
+    transition: all 0.5s ease 0s;
 }
 
 .post-categories {
@@ -399,10 +442,15 @@ ol {
 }
 
 .content-pessoa p {
-    font-size: 1.5rem;
-    color: #7b7b7b;
     line-height: 1.5;
+    padding: 0 3%;
+    margin-bottom: 5%;
 }
+
+
+/* .entry-content p {
+    padding: 0 3%;
+} */
 
 #pessoas article,
 #sobre article,
@@ -410,14 +458,52 @@ ol {
 #novidades article {
     margin-left: 0px;
     margin-right: 0px;
-    padding-top: 8%;
+    padding-top: 7%;
 }
+
+.secondary {
+    margin: 2%;
+}
+
+.entry-title {
+    padding: 0 3%;
+}
+
+.entry-section {
+    padding: 4% 5%;
+    background: #294F6D;
+    color: white;
+}
+
+.entry-section p {
+    margin-bottom: 10px;
+    color: white;
+}
+
+.entry-section a {
+    color: white;
+    border-bottom: 1px solid;
+}
+
+.entry-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 0px;
+}
+
+.comments-area,
+    .post-navigation {
+        background-color: transparent;
+        box-shadow: 0 0 0;
+    }
 
 @media screen and (min-width: 38.75em) {
     .hentry,
     .page-header,
     .page-content {
         box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    .site-footer {
+        margin: 0;
     }
 }
 
@@ -440,11 +526,6 @@ ol {
         background: white;
         margin-left: 10px;
     }
-    .comments-area,
-    .post-navigation {
-        background-color: transparent;
-        box-shadow: 0 0 0;
-    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -458,15 +539,24 @@ ol {
         height: 100%;
         width: 100%;
     }
-    .sideText .more-link-container {
-        text-align: center;
-    }
     .sideText {
         padding: 0;
     }
     .post-content {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .hentry,
+    .page-header,
+    .page-content {
+        margin: 0;
+    }
+    article .sobre {
+        height: 100%;
+    }
+
+    .comment-area {
+        background-color: transparent;
     }
 }
 
@@ -485,338 +575,12 @@ ol {
 }
 
 
-/**
- * Owl Carousel v2.2.1
- * Copyright 2013-2017 David Deutsch
- * Licensed under  ()
- */
-
-
-/*
- *  Owl Carousel - Core
- */
-
-.owl-carousel {
-    display: none;
-    width: 100%;
-    -webkit-tap-highlight-color: transparent;
-    /* position relative and z-index fix webkit rendering fonts issue */
-    position: relative;
-    z-index: 1;
-}
-
-.owl-carousel .owl-stage {
-    position: relative;
-    -ms-touch-action: pan-Y;
-    -moz-backface-visibility: hidden;
-    /* fix firefox animation glitch */
-}
-
-.owl-carousel .owl-stage:after {
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
-}
-
-.owl-carousel .owl-stage-outer {
-    position: relative;
-    overflow: hidden;
-    /* fix for flashing background */
-    -webkit-transform: translate3d(0px, 0px, 0px);
-}
-
-.owl-carousel .owl-wrapper,
-.owl-carousel .owl-item {
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-}
-
-.owl-carousel .owl-item {
-    position: relative;
-    min-height: 1px;
-    float: left;
-    -webkit-backface-visibility: hidden;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-}
-
-.owl-carousel .owl-nav.disabled,
-.owl-carousel .owl-dots.disabled {
-    display: none;
-}
-
-.owl-carousel .owl-nav .owl-prev,
-.owl-carousel .owl-nav .owl-next,
-.owl-carousel .owl-dot {
-    cursor: pointer;
-    cursor: hand;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.owl-carousel.owl-loaded {
-    display: block;
-}
-
-.owl-carousel.owl-loading {
-    opacity: 0;
-    display: block;
-}
-
-.owl-carousel.owl-hidden {
-    opacity: 0;
-}
-
-.owl-carousel.owl-refresh .owl-item {
-    visibility: hidden;
-}
-
-.owl-carousel.owl-drag .owl-item {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.owl-carousel.owl-grab {
-    cursor: move;
-    cursor: grab;
-}
-
-.owl-carousel.owl-rtl {
-    direction: rtl;
-}
-
-.owl-carousel.owl-rtl .owl-item {
-    float: right;
-}
-
-
-/* No Js */
-
-.no-js .owl-carousel {
-    display: block;
-}
-
-
-/*
- *  Owl Carousel - Animate Plugin
- */
-
-.owl-carousel .animated {
-    animation-duration: 1000ms;
-    animation-fill-mode: both;
-}
-
-.owl-carousel .owl-animated-in {
-    z-index: 0;
-}
-
-.owl-carousel .owl-animated-out {
-    z-index: 1;
-}
-
-.owl-carousel .fadeOut {
-    animation-name: fadeOut;
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-
-/*
- * 	Owl Carousel - Auto Height Plugin
- */
-
-.owl-height {
-    transition: height 500ms ease-in-out;
-}
-
-
-/*
- * 	Owl Carousel - Lazy Load Plugin
- */
-
-.owl-carousel .owl-item .owl-lazy {
-    opacity: 0;
-    transition: opacity 400ms ease;
-}
-
-.owl-carousel .owl-item img.owl-lazy {
-    transform-style: preserve-3d;
-}
-
-
-/*
- * 	Owl Carousel - Video Plugin
- */
-
-.owl-carousel .owl-video-wrapper {
-    position: relative;
-    height: 100%;
-    background: #000;
-}
-
-.owl-carousel .owl-video-play-icon {
-    position: absolute;
-    height: 80px;
-    width: 80px;
-    left: 50%;
-    top: 50%;
-    margin-left: -40px;
-    margin-top: -40px;
-    background: url("owl.video.play.png") no-repeat;
-    cursor: pointer;
-    z-index: 1;
-    -webkit-backface-visibility: hidden;
-    transition: transform 100ms ease;
-}
-
-.owl-carousel .owl-video-play-icon:hover {
-    -ms-transform: scale(1.3, 1.3);
-    transform: scale(1.3, 1.3);
-}
-
-.owl-carousel .owl-video-playing .owl-video-tn,
-.owl-carousel .owl-video-playing .owl-video-play-icon {
-    display: none;
-}
-
-.owl-carousel .owl-video-tn {
-    opacity: 0;
-    height: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    transition: opacity 400ms ease;
-}
-
-.owl-carousel .owl-video-frame {
-    position: relative;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-}
-
-
-/**
- * Owl Carousel v2.2.1
- * Copyright 2013-2017 David Deutsch
- * Licensed under  ()
- */
-
-
-/*
- * 	Default theme - Owl Carousel CSS File
- */
-
-.owl-theme .owl-nav {
-    margin-top: 10px;
-    text-align: center;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.owl-theme .owl-nav [class*='owl-'] {
-    color: #FFF;
-    font-size: 14px;
-    margin: 5px;
-    padding: 4px 7px;
-    background: #D6D6D6;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.owl-theme .owl-nav [class*='owl-']:hover {
-    background: #869791;
-    color: #FFF;
-    text-decoration: none;
-}
-
-.owl-theme .owl-nav .disabled {
-    opacity: 0.5;
-    cursor: default;
-}
-
-.owl-theme .owl-nav.disabled+.owl-dots {
-    margin-top: 10px;
-}
-
-.owl-theme .owl-dots {
-    text-align: center;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.owl-theme .owl-dots .owl-dot {
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-}
-
-.owl-theme .owl-dots .owl-dot span {
-    width: 10px;
-    height: 10px;
-    margin: 5px 7px;
-    background: #D6D6D6;
-    display: block;
-    -webkit-backface-visibility: visible;
-    transition: opacity 200ms ease;
-    border-radius: 30px;
-}
-
-.owl-theme .owl-dots .owl-dot.active span,
-.owl-theme .owl-dots .owl-dot:hover span {
-    background: #869791;
-}
-
-.owl-nav {
-    position: absolute;
-    top: 31%;
-    width: 97%;
-}
-
-.owl-prev {
-    float: left;
-    margin-left: -5px !important;
-}
-
-.owl-next {
-    float: right;
-    margin-right: 15px !important;
-}
-
-.owl-prev,
-.owl-next {
-    background: rgba(0, 0, 0, 0.6) !important;
-    border-radius: 50% !important;
-    width: 35px;
-    height: 35px;
-    font-size: 18px !important;
-}
-
-
 /* Reduzir o tamanho da sidebar: 
 http://blog.abhishekpriyam.com/code-snippet/change-sidebar-width-in-twentyfifteen-wordpress/
 */
 
 body:before {
-    max-width: 285px;
+    max-width: 300px;
 }
 
 #sidebar {
@@ -829,34 +593,44 @@ body:before {
 
 @media screen and (min-width: 77.5em) {
     .site-content {
-        margin-left: 22%;
-        width: 78%;
+        margin-left: 21%;
+        width: 79%;
     }
 }
 
 @media screen and (min-width: 59.6875em) {
+    body:before {
+        max-width: 24%;
+    }
     .sidebar {
-        max-width: 313px;
+        max-width: 350px;
     }
     .site-footer {
         /* Not pixel perfect */
-        margin: 0 0 0 25.8%;
-        width: 71.5%;
+        width: 76%;
+        margin: 0px 0 0 24%;
     }
-    .entry-footer {
+    .entry-section {
         padding: 4% 5%;
         background: #294F6D;
         color: white;
     }
-    .entry-footer p {
+    .entry-section p {
         margin-bottom: 10px;
     }
-    .entry-footer a {
+    .entry-section a {
         color: white;
     }
-    .entry-footer h2 {
+    .entry-section h2 {
         font-size: 1.5em;
         margin-bottom: 0px;
+    }
+    .site-info {
+        padding: 0 5% 10%;
+    }
+    .site-info a {
+        border-bottom: 1px solid transparent;
+        color: black;
     }
     .hentry,
     .page-header,
@@ -869,10 +643,7 @@ body:before {
     }
     .entry-content,
     .entry-summary {
-        padding: 0 2% 2%;
-    }
-    .entry-header {
-        padding: 0 3%;
+        padding: 0 2%;
     }
     .comments-area,
     .post-navigation {
@@ -880,5 +651,16 @@ body:before {
     }
     .comments-area {
         padding: 2%;
+    }
+    .site-content {
+        margin-left: 24%;
+        width: 76%;
+    }
+    .main-navigation {
+        margin: 0px 25% 15%;
+        margin-left: 15%;
+    }
+    .site-header {
+        padding: 0 15%;
     }
 }

@@ -9,7 +9,8 @@ function theme_enqueue_styles() {
         array( $parent_style ),
         wp_get_theme()->get('Version')
     );
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Fjalla+One|Nunito:400,400i,700,700i', false );
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Muli:400,700,700i', false );
+    
 	wp_enqueue_style( 'dashicons' );
 
 	// wp_enqueue_style( 'owl-carousel-css', get_stylesheet_directory_uri() . '/owlcarousel/assets/owl-carousel.css' );
@@ -81,26 +82,6 @@ add_action('pre_get_posts', 'custom_post_author_archive');
 add_action('wp_footer', 'add_back_to_top');
     function add_back_to_top(){
         ?>
-        <style type="text/css"> 
-        .go-top {
-                position: fixed;
-                bottom: 3em;
-                right: 3em;
-                text-decoration: none;
-                color: white;
-                background-color: rgba(0, 0, 0, 0.3);
-                font-size: 12px;
-				padding: 1em;
-				border-radius: 100%;
-                display: none;
-                z-index: 999999;
-			}
-			
-            .go-top:hover {
-				background-color: rgba(0, 0, 0, 0.6);
-				color: white;
-            }
-        </style>
         <script type="text/javascript">
                     jQuery(document).ready(function() {
                         jQuery('body').append('<a href="#" class="go-top"><span class="dashicons dashicons-arrow-up-alt2"></span></a>')
@@ -123,5 +104,27 @@ add_action('wp_footer', 'add_back_to_top');
         </script>
         <?php
     }
+
+/**************************************
+ * Registro de sidebar
+ **************************************/
+if ( function_exists('register_sidebar'))
+    register_sidebar(array(
+    'name' => 'Footer',
+    'id' => 'sidebar-footer',
+    'before_widget' => '<div class="col-md-12 col-lg-12">',
+    'after_widget' => '</div>',
+    'before_title' => '<h2>',
+    'after_title' => '</h2>',
+));
+
+// Customizar tamanho da caixa de comentário
+// https://wpsites.net/web-design/customize-comment-field-text-area-label/
+function wpsites_modify_comment_form_text_area($arg) {
+    $arg['comment_field'] = '<p class="comment-form-comment"><label for="comment">' . 'Comentário' . '</label><textarea id="comment" name="comment" cols="45" rows="5" aria-required="true"></textarea></p>';
+    return $arg;
+}
+
+add_filter('comment_form_defaults', 'wpsites_modify_comment_form_text_area');
 
 ?>
