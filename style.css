@@ -281,16 +281,6 @@ a:focus {
     line-height: 2rem;
 }
 
-.main-navigation .current-menu-item>a,
-.main-navigation .current-menu-ancestor>a {
-    border-bottom: .125rem solid #496D89;
-}
-
-.menu-item a:hover,
-.menu-item a:focus {
-    color: #496D89;
-}
-
 .thumbnail {
     /* margin: -5em 10px 0 10px; */
     background: #fff;
