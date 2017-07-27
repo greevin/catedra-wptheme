@@ -32,11 +32,11 @@ get_header(); ?>
 			$content = apply_filters( 'the_content', $content );
 		?>
 			
-		<div id="<?php echo $page->post_name; ?>">
+		<div id="<?php echo $page->post_name; ?>" class="page-<?php echo $page->post_name; ?>">
 			<section id="post-<?php echo $page->ID; ?>" <?php post_class(); ?>>
 
 				<!-- Layout padrão de página -->
-				<div class="entry-header <?php echo $page->post_name; ?>">
+				<div class="entry-header">
 					<h1 class="entry-title">
 						<a href="<?php echo get_page_link( $page->ID ); ?>"><?php echo $page->post_title; ?></a>
 					</h1>

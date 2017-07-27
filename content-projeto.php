@@ -28,11 +28,14 @@
 			<div class="thumbnail" style="height: 100%;">
 				<div class="sideText">
 					<?php the_title( sprintf('<h1 class="entry-title" style="text-align: center;"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
-					<p style="text-align: center;"><?php echo get_the_date('j M Y'); ?></p>
-					<div style="text-align:center;">
-						<?php twentyfifteen_post_thumbnail(); ?>
+					<?php if (get_the_post_thumbnail() != '') : ?>
+					<div class="align-image">
+						<?php the_post_thumbnail( 'medium' ); ?>
 					</div>
 				<p><?php the_content( ); ?></p>
+				<?php else : ?>
+					 <p><?php the_content( ); ?></p>
+					 <?php endif; ?>
 			</div>
 		<div>
 	</div><!-- .entry-content -->
@@ -55,7 +58,8 @@
 
 			echo '<p><b>Coordenador(es): </b>';
 				foreach ( $coordenadores as $person ) {
-					echo '<br />' . $person;
+					$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
+					echo '<br /><a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span>' . $person;
 				}
 			echo '</p>';
 
@@ -65,7 +69,8 @@
 
 			echo '<p><b>Equipe: </b>';
 				foreach ( $equipes as $equipe ) {
-					echo '<br />' . $equipe;
+					$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$equipe' AND post_status = 'publish' ");
+					echo '<br /><a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span>' . $equipe;
 				}
 			echo '</p>';
 
@@ -77,12 +82,12 @@
 
 			echo '<p><b>Notícias: </b>';
 				foreach ( $noticias as $noticia ) {
-					echo '<br />' . $noticia;
+					$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$noticia' AND post_status = 'publish' ");
+					echo '<br /><a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span>' . $noticia;
 				}
-			echo '</p>';
+			echo '</a></p>';
 
-			endif; 
-			
+			endif; 	
 	?>	
 					
 </section>

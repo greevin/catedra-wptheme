@@ -238,7 +238,7 @@ a:focus {
     padding-top: 5rem !important;
     padding-bottom: 20px !important;
     margin-bottom: 20px !important;
-    background: #294F6D;
+    background: #123652;
     color: white;
 }
 
@@ -481,10 +481,10 @@ ol {
 }
 
 .comments-area,
-    .post-navigation {
-        background-color: transparent;
-        box-shadow: 0 0 0;
-    }
+.post-navigation {
+    background-color: transparent;
+    box-shadow: 0 0 0;
+}
 
 @media screen and (min-width: 38.75em) {
     .hentry,
@@ -544,7 +544,6 @@ ol {
     article .sobre {
         height: 100%;
     }
-
     .comment-area {
         background-color: transparent;
     }
@@ -569,9 +568,9 @@ ol {
 http://blog.abhishekpriyam.com/code-snippet/change-sidebar-width-in-twentyfifteen-wordpress/
 */
 
-body:before {
-    max-width: 300px;
-}
+ body:before {
+    max-width: 25%;
+} 
 
 #sidebar {
     left: 0;
@@ -581,6 +580,8 @@ body:before {
     margin-left: 0;
 }
 
+
+
 @media screen and (min-width: 77.5em) {
     .site-content {
         margin-left: 21%;
@@ -589,12 +590,15 @@ body:before {
 }
 
 @media screen and (min-width: 59.6875em) {
-    body:before {
-        max-width: 24%;
+     body:before {
+        max-width: 25%;
+    } 
+
+    .site-content {
+        margin-left: 25%;
+        width: 75%;
     }
-    .sidebar {
-        max-width: 350px;
-    }
+    
     .site-footer {
         /* Not pixel perfect */
         width: 76%;
@@ -641,10 +645,6 @@ body:before {
     }
     .comments-area {
         padding: 2%;
-    }
-    .site-content {
-        margin-left: 24%;
-        width: 76%;
     }
     .main-navigation {
         margin: 0px 25% 15%;

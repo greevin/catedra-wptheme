@@ -63,10 +63,12 @@ function adicionar_pessoa_info_meta_box_callback($post) {
         <td colspan="4">
             <?php
                 foreach ( $projects_array as $project ) {
+                    $project_guid = get_the_guid( $project->ID );
                     $project = get_the_title( $project->ID );
+                    
             ?>
             <label> 
-                <input type="checkbox" name="projetos[]" value="<?php echo $project; ?>" <?php checked( ( in_array( $project, $projetos ) ) ? $project : '', $project ); ?> /><?php echo $project; ?> <br />
+                <input type="checkbox" name="projetos[]" value="<?php echo $project; ?>" <?php checked( ( in_array( $project, $projetos, $project_guid ) ) ? $project : '', $project ); ?> /><a href="<?php echo $project_guid;?>"><?php echo $project; ?></a> <br />
             </label>
             <?php    
                 }

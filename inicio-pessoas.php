@@ -41,7 +41,7 @@
 					<?php the_title(); ?>
 				</a>
 			</h3>
-			<div class="content-pessoa">
+			<div class="person-content">
 				<p>
 					<?php echo _get_excerpt(20); ?>
 				</p>

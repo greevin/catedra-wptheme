@@ -25,7 +25,7 @@ get_header(); ?>
 				</header>
 				<!-- .entry-header -->
 
-				<div class="entry-content projects-content">
+				<div class="entry-content entry-projects-content">
 					<?php the_content(); ?>
 				</div>
 				<!-- .entry-content -->
@@ -37,7 +37,7 @@ get_header(); ?>
 	endwhile;
 	?>
 
-	<div class="entry-content row-equal" style="margin-top: -120px;">
+	<div class="entry-content row-equal page-projetos" style="margin-top: -120px;">
 		<?php
 		
 		if( $loop->have_posts() ):
@@ -52,7 +52,7 @@ get_header(); ?>
 				</div>
 
 				<div class="thumbnail">
-					<div class="novidades-content">
+					<div class="projects-content">
 						<p>
 							<?php echo get_the_date('j M Y'); ?>
 						</p>
