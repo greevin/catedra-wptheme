@@ -12,16 +12,16 @@
 
 	</div><!-- .site-content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Sidebar footer')): ?>
-			<?php endif; ?>
-		</div><!-- .site-info -->
-	</footer><!-- .site-footer -->
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<!-- <div class="site-info"> -->
+				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Sidebar footer')): ?>
+				<?php endif; ?>
+			<!-- </div> .site-info  -->
+		</footer><!-- .site-footer -->
 
-</div><!-- .site -->
+	</div><!-- .site -->
 
-<?php wp_footer(); ?>
+	<?php wp_footer(); ?>
 
-</body>
+	</body>
 </html>
