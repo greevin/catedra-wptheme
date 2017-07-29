@@ -1,5 +1,9 @@
 <?php
 
+require 'vendor/autoload.php';
+
+use Carbon\Carbon;
+
 function theme_enqueue_styles() {
     $parent_style = 'parent-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
 
@@ -112,7 +116,7 @@ if ( function_exists('register_sidebar'))
     register_sidebar(array(
     'name' => 'Footer',
     'id' => 'sidebar-footer',
-    'before_widget' => '<div class="col-md-12 col-lg-12">',
+    'before_widget' => '<div class="col-md-12 col-lg-12 site-info">',
     'after_widget' => '</div>',
     'before_title' => '<h2>',
     'after_title' => '</h2>',
@@ -126,5 +130,21 @@ function wpsites_modify_comment_form_text_area($arg) {
 }
 
 add_filter('comment_form_defaults', 'wpsites_modify_comment_form_text_area');
+
+function alter_comment_form_fields($fields){
+    $fields['url'] = '';  //removes website field
+    return $fields;
+}
+
+add_filter('comment_form_default_fields','alter_comment_form_fields');
+  
+// Unset URL from comment form
+function move_comment_form_below( $fields ) { 
+    $comment_field = $fields['comment']; 
+    unset( $fields['comment'] ); 
+    $fields['comment'] = $comment_field; 
+    return $fields; 
+} 
+add_filter( 'comment_form_fields', 'move_comment_form_below' ); 
 
 ?>
