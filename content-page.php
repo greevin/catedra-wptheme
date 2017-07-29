@@ -9,14 +9,14 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="padding-top: 0px;">
+	<header class="entry-header panel-title-container">
+		<?php the_title( '<h1 class="entry-title" style="font-size: 4rem;margin-bottom: 20px;">', '</h1>' ); ?>
+	</header><!-- .entry-header -->
+
 	<?php
 		// Post thumbnail.
 		twentyfifteen_post_thumbnail();
 	?>
-
-	<header class="entry-header panel-title-container">
-		<?php the_title( '<h1 class="entry-title" style="font-size: 4rem;margin-bottom: 20px;">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php the_content(); ?>
