@@ -3,6 +3,7 @@
  * Template usado para mostrar os projetos na página inicial (front-page.php)
  *
  */
+ use Carbon\Carbon;
 ?>
 	<!-- Mostra todos os projetos -->
 	<div class="entry-projects row-equal">
@@ -12,11 +13,10 @@
 
 			if($all_projects) : foreach($all_projects as $post) : setup_postdata( $post );
 
-			$periodo_fim = get_post_meta( $post->ID, '_periodo_fim_input', true );
-			$today =  date(get_option( 'date_format' ));
+			$periodo_fim = get_post_meta( $post->ID, '_periodo_fim_projeto_input', true );
 			$situacao = get_post_meta( $post->ID, '_situacao_input', true );
 
-			if( $periodo_fim >= $today) :
+			if( $periodo_fim >= Carbon::now()->timestamp ) :
 		?>
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 fix-safari-3" style="padding:5px;">
 			<div class="fundo-gradiente">

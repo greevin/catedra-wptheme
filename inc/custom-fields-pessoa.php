@@ -1,5 +1,8 @@
 <?php
-// Criando um meta box do pessoa
+
+use Carbon\Carbon;
+
+// Criando um meta box de pessoa
 function adicionar_pessoa_info_meta_box() {
 
     add_meta_box(
@@ -32,9 +35,13 @@ function adicionar_pessoa_info_meta_box_callback($post) {
     $projetos = isset( $value['_projetos_input'] ) ? get_post_meta( $post->ID, '_projetos_input', true ) : array();
 	$links_contato = isset( $value['links_contato_input'] ) ? esc_attr( $value['links_contato_input'][0] ) : '';
 	$linhas_pesquisa = isset( $value['_linhas_pesquisa_input'] ) ? esc_attr( $value['_linhas_pesquisa_input'][0] ) : '';
-	$periodo_inicio = isset( $value['_periodo_inicio_input'] ) ? esc_attr( $value['_periodo_inicio_input'][0] ) : '';
-	$periodo_fim = isset( $value['_periodo_fim_input'] ) ? esc_attr( $value['_periodo_fim_input'][0] ) : '';
+	$periodo_inicio_pessoa = isset( $value['_periodo_inicio_pessoa_input'] ) ? esc_attr( $value['_periodo_inicio_pessoa_input'][0] ) : '';
+	$periodo_fim_pessoa = isset( $value['_periodo_fim_pessoa_input'] ) ? esc_attr( $value['_periodo_fim_pessoa_input'][0] ) : '';
     $situacao = isset( $value['_situacao_input'] ) ? esc_attr( $value['_situacao_input'][0] ) : '';
+    
+    $periodo_inicio_pessoa = $periodo_inicio_pessoa ? Carbon::createFromTimeStamp($periodo_inicio_pessoa)->format(get_option( 'date_format' )) : '';
+    $periodo_fim_pessoa = $periodo_fim_pessoa ? Carbon::createFromTimeStamp($periodo_fim_pessoa)->format(get_option( 'date_format' )) : '';
+    
 ?>
 
 <table class="form-table">
@@ -91,9 +98,9 @@ function adicionar_pessoa_info_meta_box_callback($post) {
         </td>
         <td colspan="4">
             <span> de </span>
-            <input type="text" class="datepicker" name="periodo_inicio_input" value="<?php echo $periodo_inicio; ?>" placeholder="Data de Inicio"/>
+            <input type="text" class="datepicker" name="periodo_inicio_pessoa_input" value="<?php echo $periodo_inicio_pessoa; ?>" placeholder="Data de Inicio"/>
             <span> até </span>
-            <input type="text" class="datepicker" name="periodo_fim_input" value="<?php echo $periodo_fim; ?>" placeholder="Data de Fim"/>
+            <input type="text" class="datepicker" name="periodo_fim_pessoa_input" value="<?php echo $periodo_fim_pessoa; ?>" placeholder="Data de Fim"/>
         </td>
     </tr>
 
@@ -134,12 +141,15 @@ function salvar_pessoa_info_meta_box_data( $post_id ) {
 
 	$instituicao_input = sanitize_text_field( $_POST['instituicao_input'] );
     $email_contato_input = sanitize_text_field( $_POST['email_contato_input'] );
-    $periodo_inicio_input = sanitize_text_field( $_POST['periodo_inicio_input'] );
-    $periodo_fim_input = sanitize_text_field( $_POST['periodo_fim_input'] );
+    $periodo_inicio_pessoa_input = sanitize_text_field( $_POST['periodo_inicio_pessoa_input'] );
+    $periodo_fim_pessoa_input = sanitize_text_field( $_POST['periodo_fim_pessoa_input'] );
 	$situacao_input = sanitize_text_field( $_POST['situacao_input'] );
     $linhas_pesquisa_input = sanitize_text_field( $_POST['linhas_pesquisa_input'] );
     $projetos = (array) $_POST['projetos'];
     $projetos = array_map( 'sanitize_text_field', $projetos);
+
+    $periodo_data_inicio = $periodo_inicio_pessoa_input ? Carbon::createFromFormat(get_option( 'date_format' ), $periodo_inicio_pessoa_input, get_option('timezone_string'))->timestamp : '';
+    $periodo_data_fim = $periodo_fim_pessoa_input ? Carbon::createFromFormat(get_option( 'date_format' ), $periodo_fim_pessoa_input, get_option('timezone_string'))->timestamp : '';
 
 	// cria o meta_key no banco
 	if ( isset( $_POST['instituicao_input'] ) ) {
@@ -150,12 +160,15 @@ function salvar_pessoa_info_meta_box_data( $post_id ) {
         update_post_meta( $post_id, '_email_contato_input', $email_contato_input);
     }
 
-    if ( isset( $_POST['periodo_inicio_input'] ) ) {
-        update_post_meta( $post_id, '_periodo_inicio_input', $periodo_inicio_input);
+    if ( isset( $periodo_data_inicio ) ) {
+        // var_dump($periodo_data_inicio->timestamp);
+        // die();
+        update_post_meta( $post_id, '_periodo_inicio_pessoa_input', $periodo_data_inicio);
+        // update_post_meta( $post_id, '_periodo_inicio_input', $periodo_data_inicio->timestamp);
     }
 
-    if ( isset( $_POST['periodo_fim_input'] ) ) {
-        update_post_meta( $post_id, '_periodo_fim_input', $periodo_fim_input);
+    if ( isset( $_POST['periodo_fim_pessoa_input'] ) ) {
+        update_post_meta( $post_id, '_periodo_fim_pessoa_input', $periodo_data_fim);
     }
 
     if ( isset( $_POST['linhas_pesquisa_input'] ) ) {
@@ -173,4 +186,3 @@ function salvar_pessoa_info_meta_box_data( $post_id ) {
 }
 
 add_action( 'save_post', 'salvar_pessoa_info_meta_box_data' );
-
