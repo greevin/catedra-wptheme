@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Template Name: Template Projeto
+ * Template Name: Template Pessoa
  */
 
 get_header(); ?>
