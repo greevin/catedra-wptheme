@@ -15,8 +15,8 @@
 
 		$instituicao = get_post_meta( $post->ID, '_instituicao_input', true );
 		$email_contato = get_post_meta( $post->ID, '_email_contato_input', true );
-		$periodo_inicio = get_post_meta( $post->ID, '_periodo_inicio_input', true );
-		$periodo_fim = get_post_meta( $post->ID, '_periodo_fim_input', true );
+		$periodo_inicio = get_post_meta( $post->ID, '_periodo_inicio_pessoa_input', true );
+		$periodo_fim = get_post_meta( $post->ID, '_periodo_fim_pessoa_input', true );
 		$linhas_pesquisa = get_post_meta( $post->ID, '_linhas_pesquisa_input', true );
 		$projetos = get_post_meta( $post->ID, '_projetos_input', true );
 		$situacao = get_post_meta( $post->ID, '_situacao_input', true );
@@ -52,21 +52,50 @@
 
 <?php if( $people_info == true ) : ?>
 	<section class="entry-section">
-		<?php if( ! empty( $instituicao) ) : echo '<p><b>Instituição: </b>' . $instituicao . '</p>'; endif; ?>
-		<?php if( ! empty( $email_contato) ) : echo '<p><b>E-mail de Contato: </b><a href="mailto:' . $email_contato . '">'. $email_contato .'</a></p>'; endif; ?>
-		<?php if( ! empty( $periodo_inicio || $periodo_fim) ) : echo '<p><b>Período: </b>' . $periodo_inicio . ' - '. $periodo_fim .'</p>'; endif; ?>
-		<?php if( ! empty( $linhas_pesquisa) ) : echo '<p><b>Linha(s) de Pesquisa: </b>' . $linhas_pesquisa . '</p>'; endif; ?>			
-		<?php if( ! empty( $projetos) ) : 
-
-		echo '<p><b>Projetos: </b>';
-			foreach ( $projetos as $person ) {
-				$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
-				echo '<br /><a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span>' . $person;
-			}
-		echo '</a></p>';
-
-		endif; 
-		?>
-		<?php if( ! empty( $situacao) ) : echo '<p><b>Situação: </b>' . $situacao . '</p>'; endif; ?>			
+		<table>
+			<tbody>
+				<?php if( ! empty( $instituicao) ) : ?>
+				<tr>
+					<td><b>Instituição: </b></td>
+					<td><?php echo $instituicao; ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if( ! empty( $email_contato) ) : ?>
+				<tr>
+					<td><b>E-mail de Contato: </b></td>
+					<td><a href="mailto:<?php echo $email_contato; ?>"><?php echo $email_contato; ?></a></p></td>
+				</tr>
+				<?php endif; ?>
+				<?php if( ! empty( $periodo_inicio || $periodo_fim) ) : ?>
+				<tr>
+					<td><b>Período: </b></td>
+					<td><?php echo date_i18n( get_option( 'date_format' ), $periodo_inicio ) ?> - <?php echo date_i18n( get_option( 'date_format' ), $periodo_fim ); ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if( ! empty( $linhas_pesquisa) ) : ?>
+				<tr>
+					<td><b>Linha(s) de Pesquisa: </b></td>
+					<td><?php echo $linhas_pesquisa; ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if( ! empty( $projetos) ) : ?>
+				<tr>
+					<td><b>Projetos: </b></td>
+					<td class="projects-link"><?php 
+						foreach ( $projetos as $person ) {
+							$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
+							echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt" style="margin-top: 3px;"></span>' . $person . '</a></br>';
+						}
+					 ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if( ! empty( $situacao) ) : ?>
+				<tr>
+					<td><b>Situação: </b></td>
+					<td><?php echo $situacao; ?></td>
+				</tr>
+				<?php endif; ?>
+			</tbody>
+		</table>			
 	</section><!-- .entry-footer -->
 <?php endif; ?>

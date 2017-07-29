@@ -13,8 +13,8 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="padding-top: 5%;">
 	<?php
 		$agencia_financiadora = get_post_meta( $post->ID, '_agencia_financiadora_input', true );
-		$periodo_inicio = get_post_meta( $post->ID, '_periodo_inicio_input', true );
-		$periodo_fim = get_post_meta( $post->ID, '_periodo_fim_input', true );
+		$periodo_inicio = get_post_meta( $post->ID, '_periodo_inicio_projeto_input', true );
+		$periodo_fim = get_post_meta( $post->ID, '_periodo_fim_projeto_input', true );
 		$coordenadores = get_post_meta( $post->ID, '_people', true );
 		$equipes = get_post_meta( $post->ID, '_equipes', true );
 		$situacao = get_post_meta( $post->ID, '_situacao_input', true );
@@ -50,45 +50,60 @@
 
 <?php if( $project_info == true ) : ?>
 <section class="entry-section">
-		<h2>Mais informações</h2><br />
-		<?php if( ! empty( $agencia_financiadora) ) : echo '<p><b>Agência Financiadora: </b>' . $agencia_financiadora . '</p>'; endif; ?>
-			<?php if( ! empty( $periodo_inicio || $periodo_fim) ) : echo '<p><b>Período: </b>' . $periodo_inicio . ' - '. $periodo_fim .'</p>'; endif; ?>
-			<?php if( ! empty( $linhas_pesquisa) ) : echo '<p><b>Linha(s) de Pesquisa: </b>' . $linhas_pesquisa . '</p>'; endif; ?>			
-			<?php if( ! empty( $coordenadores) ) : 
-
-			echo '<p><b>Coordenador(es): </b>';
-				foreach ( $coordenadores as $person ) {
-					$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
-					echo '<br /><a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span>' . $person;
-				}
-			echo '</p>';
-
-			endif; 
-			?>
-			<?php if( ! empty( $coordenadores) ) : 
-
-			echo '<p><b>Equipe: </b>';
-				foreach ( $equipes as $equipe ) {
+	<table>
+			<tbody>
+				<?php if( ! empty( $agencia_financiadora) ) : ?>
+				<tr>
+					<td><b>Agência Financiadora: </b></td>
+					<td><?php echo $agencia_financiadora; ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if( ! empty( $periodo_inicio || $periodo_fim) ) : ?>
+				<tr>
+					<td><b>Período: </b></td>
+					<td><?php echo date_i18n( get_option( 'date_format' ), $periodo_inicio ) ?> - <?php echo date_i18n( get_option( 'date_format' ), $periodo_fim ); ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if( ! empty( $coordenadores) ) : ?>
+				<tr>
+					<td><b>Coordenador(es): </b></td>
+					<td class="projects-link"><?php 
+						foreach ( $coordenadores as $person ) {
+							$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
+							echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $person . '<br />';
+						}
+					 ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if( ! empty( $equipes) ) : ?>
+				<tr>
+					<td><b>Equipes: </b></td>
+					<td class="projects-link"><?php 
+						foreach ( $equipes as $equipe ) {
 					$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$equipe' AND post_status = 'publish' ");
-					echo '<br /><a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span>' . $equipe;
+					echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $equipe . '<br />';
 				}
-			echo '</p>';
-
-			endif; 
-			?>
-			<?php if( ! empty( $situacao) ) : echo '<p><b>Situação: </b>' . $situacao . '</p>'; endif; 
-
-			if( ! empty( $noticias) ) : 
-
-			echo '<p><b>Notícias: </b>';
-				foreach ( $noticias as $noticia ) {
-					$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$noticia' AND post_status = 'publish' ");
-					echo '<br /><a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span>' . $noticia;
-				}
-			echo '</a></p>';
-
-			endif; 	
-	?>	
-					
+					 ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if( ! empty( $noticias) ) : ?>
+				<tr>
+					<td><b>Notícias: </b></td>
+					<td class="projects-link"><?php 
+						foreach ( $noticias as $noticia ) {
+							$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$noticia' AND post_status = 'publish' ");
+							echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $noticia . '<br />';
+						}
+					 ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if( ! empty( $situacao) ) : ?>
+				<tr>
+					<td><b>Situação: </b></td>
+					<td><?php echo $situacao; ?></td>
+				</tr>
+				<?php endif; ?>
+			</tbody>
+		</table>				
 </section>
 <?php endif; ?>
