@@ -30,16 +30,21 @@ get_header(); ?>
 		foreach ( $pages as $page ) {
 			$content = $page->post_content;
 			$content = apply_filters( 'the_content', $content );
+
+			$image_url = wp_get_attachment_url( get_post_thumbnail_id($page) );
 		?>
 			
 		<div id="<?php echo $page->post_name; ?>" class="page-<?php echo $page->post_name; ?>">
 			<section id="post-<?php echo $page->ID; ?>" <?php post_class(); ?>>
-
+				
 				<!-- Layout padrão de página -->
 				<div class="entry-header">
 					<h1 class="entry-title">
 						<a href="<?php echo get_page_link( $page->ID ); ?>"><?php echo $page->post_title; ?></a>
 					</h1>
+					<?php if (! empty($image_url )) : ?>
+					<img src="<?php echo $image_url; ?>">
+					<?php endif; ?>
 					<?php echo $content; ?>
 				</div>
 				<!-- .entry-header -->
