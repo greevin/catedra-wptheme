@@ -100,6 +100,7 @@ function add_projects_info_meta_box_callback($post) {
         </td>
         <td colspan="4">
             <?php
+                if(! empty($people)) :
                 foreach ( $people as $person ) {
                     $person = get_the_title( $person->ID );
             ?>
@@ -108,6 +109,11 @@ function add_projects_info_meta_box_callback($post) {
             </label>
             <?php    
                 }
+                else :
+            ?>
+            <span>Nenhuma pessoa criada no menu 'Pessoas'</span>
+            <?php   
+                endif;
             ?>
         </td>
     </tr>
@@ -118,6 +124,7 @@ function add_projects_info_meta_box_callback($post) {
         </td>
         <td colspan="4">
             <?php
+                if(! empty($equipes)) :
                 foreach ( $equipes as $equipe ) {
                     $equipe = get_the_title( $equipe->ID );
             ?>
@@ -126,6 +133,11 @@ function add_projects_info_meta_box_callback($post) {
             </label>
             <?php    
                 }
+                else :
+            ?>
+            <span>Nenhuma pessoa criada no menu 'Pessoas'</span>
+            <?php   
+                endif;
             ?>
         </td>
     </tr>
@@ -136,6 +148,7 @@ function add_projects_info_meta_box_callback($post) {
         </td>
         <td colspan="4">
             <?php
+                if(! empty($posts)) :
                 foreach ( $posts as $post ) {
                     $post = get_the_title( $post->ID );
             ?>
@@ -144,6 +157,11 @@ function add_projects_info_meta_box_callback($post) {
             </label>
             <?php    
                 }
+                else :
+            ?>
+            <span>Nenhuma notícia criada no menu 'Posts'</span>
+            <?php   
+                endif;
             ?>
         </td>
     </tr>
@@ -168,46 +186,49 @@ function save_project_info_meta_box_data( $post_id ) {
         return;
     }
 
-    $agencia_financiadora_input = sanitize_text_field( $_POST['agencia_financiadora_input'] );
-    $periodo_inicio_projeto_input = sanitize_text_field( $_POST['periodo_inicio_input'] );
-    $periodo_fim_projeto_input = sanitize_text_field( $_POST['periodo_fim_input'] );
-    $situacao_input = sanitize_text_field( $_POST['situacao_input'] );
-    $people = (array) ($_POST['people']);
-    $people = array_map( 'sanitize_text_field', $people);
-    $equipes = (array) ($_POST['equipe']);
-    $equipes = array_map( 'sanitize_text_field', $equipes);
-    $posts_news = (array) ($_POST['post_news']);
-    $posts_news = array_map( 'sanitize_text_field', $posts_news);
-
-    $periodo_data_inicio_projeto = $periodo_inicio_projeto_input ? Carbon::createFromFormat(get_option( 'date_format' ), $periodo_inicio_projeto_input, get_option('timezone_string'))->timestamp : '';
-    $periodo_data_fim_projeto = $periodo_fim_projeto_input ? Carbon::createFromFormat(get_option( 'date_format' ), $periodo_fim_projeto_input, get_option('timezone_string'))->timestamp : '';
-
     // cria o meta_key no banco
-	if ( isset( $_POST['agencia_financiadora_input'] ) ) {
+	if ( isset( $_POST['agencia_financiadora_input'] ) && $_POST['agencia_financiadora_input'] != '') {
+        $agencia_financiadora_input = sanitize_text_field( $_POST['agencia_financiadora_input'] );
         update_post_meta( $post_id, '_agencia_financiadora_input', $agencia_financiadora_input);
     }
 
-    if ( isset( $periodo_data_inicio_projeto ) ) {
+    if ( isset( $_POST['periodo_inicio_input'] ) && $_POST['periodo_inicio_input'] != '') {
+        $periodo_inicio_projeto_input = sanitize_text_field( $_POST['periodo_inicio_input'] );
+        $periodo_data_inicio_projeto = $periodo_inicio_projeto_input ? Carbon::createFromFormat(get_option( 'date_format' ), $periodo_inicio_projeto_input, get_option('timezone_string'))->timestamp : '';
+    
         update_post_meta( $post_id, '_periodo_inicio_projeto_input', $periodo_data_inicio_projeto);
     }
 
-    if ( isset( $_POST['periodo_fim_input'] ) ) {
+    if ( isset( $_POST['periodo_fim_input'] ) && $_POST['periodo_fim_input'] != '') {
+        $periodo_fim_projeto_input = sanitize_text_field( $_POST['periodo_fim_input'] );
+        $periodo_data_fim_projeto = $periodo_fim_projeto_input ? Carbon::createFromFormat(get_option( 'date_format' ), $periodo_fim_projeto_input, get_option('timezone_string'))->timestamp : '';
+                
         update_post_meta( $post_id, '_periodo_fim_projeto_input', $periodo_data_fim_projeto);
     }
 
-    if ( isset( $_POST['situacao_input'] ) ) {
+    if ( isset( $_POST['situacao_input'] ) && $_POST['situacao_input'] != '') {
+        $situacao_input = sanitize_text_field( $_POST['situacao_input'] );
         update_post_meta( $post_id, '_situacao_input', $situacao_input);
     }
 
     if ( isset( $_POST['people'] ) ) {
+        $people = (array) ($_POST['people']);
+        $people = array_map( 'sanitize_text_field', $people);
+
         update_post_meta( $post_id, '_people', $people);
     }
 
     if ( isset( $_POST['equipe'] ) ) {
+        $equipes = (array) ($_POST['equipe']);
+        $equipes = array_map( 'sanitize_text_field', $equipes);
+
         update_post_meta( $post_id, '_equipes', $equipes);
     }
 
     if ( isset( $_POST['post_news'] ) ) {
+        $posts_news = (array) ($_POST['post_news']);
+        $posts_news = array_map( 'sanitize_text_field', $posts_news);
+
         update_post_meta( $post_id, '_checked_posts', $posts_news);
     }
 

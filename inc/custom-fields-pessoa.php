@@ -139,47 +139,43 @@ function salvar_pessoa_info_meta_box_data( $post_id ) {
         return;
     }
 
-	$instituicao_input = sanitize_text_field( $_POST['instituicao_input'] );
-    $email_contato_input = sanitize_text_field( $_POST['email_contato_input'] );
-    $periodo_inicio_pessoa_input = sanitize_text_field( $_POST['periodo_inicio_pessoa_input'] );
-    $periodo_fim_pessoa_input = sanitize_text_field( $_POST['periodo_fim_pessoa_input'] );
-	$situacao_input = sanitize_text_field( $_POST['situacao_input'] );
-    $linhas_pesquisa_input = sanitize_text_field( $_POST['linhas_pesquisa_input'] );
-    $projetos = (array) $_POST['projetos'];
-    $projetos = array_map( 'sanitize_text_field', $projetos);
-
-    $periodo_data_inicio = $periodo_inicio_pessoa_input ? Carbon::createFromFormat(get_option( 'date_format' ), $periodo_inicio_pessoa_input, get_option('timezone_string'))->timestamp : '';
-    $periodo_data_fim = $periodo_fim_pessoa_input ? Carbon::createFromFormat(get_option( 'date_format' ), $periodo_fim_pessoa_input, get_option('timezone_string'))->timestamp : '';
-
 	// cria o meta_key no banco
-	if ( isset( $_POST['instituicao_input'] ) ) {
+	if ( isset( $_POST['instituicao_input'] ) && $_POST['instituicao_input'] != '') {
+	    $instituicao_input = sanitize_text_field( $_POST['instituicao_input'] );
         update_post_meta( $post_id, '_instituicao_input', $instituicao_input);
     }
 
-    if ( isset( $_POST['email_contato_input'] ) ) {
+    if ( isset( $_POST['email_contato_input'] ) && $_POST['email_contato_input'] != '') {
+        $email_contato_input = sanitize_text_field( $_POST['email_contato_input'] );
         update_post_meta( $post_id, '_email_contato_input', $email_contato_input);
     }
 
-    if ( isset( $periodo_data_inicio ) ) {
-        // var_dump($periodo_data_inicio->timestamp);
-        // die();
+    if ( isset( $_POST['periodo_inicio_pessoa_input'] ) && $_POST['periodo_inicio_pessoa_input'] != '') {
+        $periodo_inicio_pessoa_input = sanitize_text_field( $_POST['periodo_inicio_pessoa_input'] );
+        $periodo_data_inicio = $periodo_inicio_pessoa_input ? Carbon::createFromFormat(get_option( 'date_format' ), $periodo_inicio_pessoa_input, get_option('timezone_string'))->timestamp : '';
+        
         update_post_meta( $post_id, '_periodo_inicio_pessoa_input', $periodo_data_inicio);
-        // update_post_meta( $post_id, '_periodo_inicio_input', $periodo_data_inicio->timestamp);
     }
 
-    if ( isset( $_POST['periodo_fim_pessoa_input'] ) ) {
+    if ( isset( $_POST['periodo_fim_pessoa_input'] ) && $_POST['periodo_fim_pessoa_input'] != '') {
+        $periodo_fim_pessoa_input = sanitize_text_field( $_POST['periodo_fim_pessoa_input'] );
+        $periodo_data_fim = $periodo_fim_pessoa_input ? Carbon::createFromFormat(get_option( 'date_format' ), $periodo_fim_pessoa_input, get_option('timezone_string'))->timestamp : '';
+        
         update_post_meta( $post_id, '_periodo_fim_pessoa_input', $periodo_data_fim);
     }
 
-    if ( isset( $_POST['linhas_pesquisa_input'] ) ) {
+    if ( isset( $_POST['linhas_pesquisa_input'] ) && $_POST['linhas_pesquisa_input'] != '') {
+        $linhas_pesquisa_input = sanitize_text_field( $_POST['linhas_pesquisa_input'] );
         update_post_meta( $post_id, '_linhas_pesquisa_input', $linhas_pesquisa_input);
     }
 
     if ( isset( $_POST['projetos'] ) ) {
+        $projetos = array_map( 'sanitize_text_field', (array) $_POST['projetos']);
         update_post_meta( $post_id, '_projetos_input', $projetos);
     }
 
     if ( isset( $_POST['situacao_input'] ) ) {
+	    $situacao_input = sanitize_text_field( $_POST['situacao_input'] );
         update_post_meta( $post_id, '_situacao_input', $situacao_input);
     }
 
