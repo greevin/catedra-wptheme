@@ -15,14 +15,14 @@ get_header(); ?>
 		// Start the loop.
 		while ( have_posts() ) : the_post();
 		?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class( 'panel-title-container'); ?> style="height: 300px;">
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'panel-title-container'); ?>>
 				<?php
 				// Post thumbnail.
 				twentyfifteen_post_thumbnail();
 			?>
 
 					<header class="entry-header">
-						<?php the_title( '<h1 class="entry-title" style="font-size: 4rem;margin-bottom: 20px;">', '</h1>' ); ?>
+						<?php the_title( '<h1 class="entry-title" style="font-size: 4rem;">', '</h1>' ); ?>
 					</header>
 					<!-- .entry-header -->
 
@@ -38,8 +38,9 @@ get_header(); ?>
 		endwhile;
 		?>
 
-		<div class="entry-content row-equal" style="margin-top: -120px;">
-		<?php
+		<div class="entry-content row-equal">
+			<div class="row-equal">
+				<?php
 		
 		if( $loop->have_posts() ):
 			
@@ -51,16 +52,16 @@ get_header(); ?>
 				</div>
 
 				<div class="thumbnail">
-					<div class="novidades-content">
+					<div class="page-novidades-content">
 						<p>
-							<?php echo get_the_date('j M Y'); ?>
+							<?php echo get_the_date(); ?>
 						</p>
 						<?php the_title( sprintf('<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h2>' ); ?>
 						<p>
 							<?php echo _get_excerpt(35); ?>
 						</p>
 						<div class="more-link-container">
-							<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> Leia Mais</a>
+							<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span><?php _e( 'Leia Mais', 'twentyfifteen-child' ) ?></a>
 						</div>
 					</div>
 				</div>
@@ -70,6 +71,7 @@ get_header(); ?>
 		endif;
 		wp_reset_postdata();	
 		?>
+			</div>
 		</div>
 
 	</div>

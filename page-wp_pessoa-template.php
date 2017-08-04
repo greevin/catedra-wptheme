@@ -12,12 +12,12 @@ get_header(); ?>
 		$loop = new WP_Query( $args );
 		while ( have_posts() ) : the_post();
 	?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class( 'panel-title-container'); ?> style="height: 300px;">
+		<article id="post-<?php the_ID(); ?>" <?php post_class( 'panel-title-container'); ?>>
 		<?php
 			twentyfifteen_post_thumbnail();
 		?>
 			<header class="entry-header">
-				<?php the_title( '<h1 class="entry-title" style="font-size: 4rem;margin-bottom: 20px;">', '</h1>' ); ?>
+				<?php the_title( '<h1 class="entry-title" style="font-size: 4rem;">', '</h1>' ); ?>
 			</header>
 			<!-- .entry-header -->
 
@@ -29,12 +29,13 @@ get_header(); ?>
 			<!-- #post-## -->
 	<?php endwhile; ?>
 
-		<div class="entry-content row-equal page-pessoas" style="margin-top: -120px;">
-		<?php
+		<div class="entry-content">
+			<div class="row-equal page-pessoas">
+				<?php
 			if( $loop->have_posts() ):
 			
 			while( $loop->have_posts() ): $loop->the_post(); ?>
-				<div class="col-sm-4 col-md-4 col-lg-4 fix-safari-3 fix-safari" style="height: 100%;margin-bottom: 20px;">
+				<div class="col-sm-12 col-md-6 col-lg-6 fix-safari">
 					<div class="thumbnail" style="text-align: center;">
 						<div class="circle-img fundo-gradiente">
 							<a href="<?php the_permalink(); ?>">
@@ -59,11 +60,11 @@ get_header(); ?>
 							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 						</h3>
 						<div class="content-pessoa">
-							<p>
+							<p style="margin-bottom: 5px;">
 								<?php echo _get_excerpt(20); ?>
 							</p>
 							<div class="more-link-container">
-								<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> Leia Mais</a>
+								<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span><?php _e( 'Leia Mais', 'twentyfifteen-child' ) ?></a>
 							</div>
 						</div>
 					</div>
@@ -73,6 +74,7 @@ get_header(); ?>
 			endif;
 			wp_reset_postdata();
 			?>
+			</div>
 		</div>
 	</div>
 	<!-- .content-area -->

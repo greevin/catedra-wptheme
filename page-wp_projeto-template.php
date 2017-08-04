@@ -15,13 +15,13 @@ get_header(); ?>
 		// Start the loop.
 		while ( have_posts() ) : the_post();
 	?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class( 'panel-title-container'); ?> style="height: 300px;">
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'panel-title-container'); ?>>
 				<?php
 			twentyfifteen_post_thumbnail();
 		?>
 
 				<header class="entry-header">
-					<?php the_title( '<h1 class="entry-title" style="font-size: 4rem;margin-bottom: 20px;">', '</h1>' ); ?>
+					<?php the_title( '<h1 class="entry-title" style="font-size: 4rem;">', '</h1>' ); ?>
 				</header>
 				<!-- .entry-header -->
 
@@ -37,13 +37,14 @@ get_header(); ?>
 	endwhile;
 	?>
 
-	<div class="entry-content row-equal page-projetos" style="margin-top: -120px;">
-		<?php
+	<div class="entry-content">
+		<div class="row-equal page-projetos">
+			<?php
 		
 		if( $loop->have_posts() ):
 			
 		while( $loop->have_posts() ): $loop->the_post(); ?>
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 post-content fix-safari" style="height: 100%;margin-bottom: 20px;">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 fix-safari">
 				<div class="fundo-gradiente">
 					<a href="<?php the_permalink(); ?>">
 						<?php $urlImg = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ); ?>
@@ -54,14 +55,14 @@ get_header(); ?>
 				<div class="thumbnail">
 					<div class="projects-content">
 						<p>
-							<?php echo get_the_date('j M Y'); ?>
+							<?php echo get_the_date(); ?>
 						</p>
 						<?php the_title( sprintf('<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h2>' ); ?>
 						<p>
 							<?php echo _get_excerpt(35); ?>
 						</p>
 						<div class="more-link-container">
-							<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> Leia Mais</a>
+							<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span><?php _e( 'Leia Mais', 'twentyfifteen-child' ) ?></a>
 						</div>
 					</div>
 				</div>
@@ -72,6 +73,7 @@ get_header(); ?>
 		wp_reset_postdata();
 			
 		?>
+		</div>
 		</div>
 	</div>
 	<!-- .content-area -->
