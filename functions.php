@@ -4,6 +4,8 @@ require 'vendor/autoload.php';
 
 use Carbon\Carbon;
 
+load_theme_textdomain( 'twentyfifteen-child', get_stylesheet_directory() . '/languages' );
+
 function theme_enqueue_styles() {
     $parent_style = 'parent-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
 
@@ -13,16 +15,13 @@ function theme_enqueue_styles() {
         array( $parent_style ),
         wp_get_theme()->get('Version')
     );
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Muli:400,700,700i', false );
+    wp_enqueue_style( 'twentyfifteen-child-fonts', twentyfifteen_child_fonts_url() );
     
 	wp_enqueue_style( 'dashicons' );
-
-	// wp_enqueue_style( 'owl-carousel-css', get_stylesheet_directory_uri() . '/owlcarousel/assets/owl-carousel.css' );
-	// wp_enqueue_style( 'owl-carousel-theme-css', get_template_directory_uri() . '/css/owl.theme.default.css' );
+    wp_add_inline_style( $parent_style, twentyfifteen_child_customizer_css() );
 
 	wp_enqueue_script( 'jquery');
     wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery'), false, true);
-	wp_enqueue_script( 'owl-carousel-js', get_stylesheet_directory_uri() . '/js/owl.carousel.min.js', array('jquery'), false, true);
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
@@ -50,14 +49,14 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 // Menu para o front-page
 register_nav_menus( array(
-		'primary_custom' => __( 'Menu Inicial', 'twentyfifteen' ),
+		'primary_custom' => __( 'Páginas internas', 'twentyfifteen-child' ),
 	) );
 
 function twentyfifteen_excerpt_more( $more ) {
 	$link = sprintf( '<div class="more-link-container"><a href="%1$s">%2$s</a></div>',
 		esc_url( get_permalink( get_the_ID() ) ),
 		/* translators: %s: Name of current post */
-		sprintf( __( 'Leia Mais', 'twentyfifteen' ), '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span>' )
+		sprintf( __( 'Leia Mais', 'twentyfifteen-child' ), '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span>' )
 		);
 	return ' &hellip; ' . $link;
 }
@@ -125,7 +124,7 @@ if ( function_exists('register_sidebar'))
 // Customizar tamanho da caixa de comentário
 // https://wpsites.net/web-design/customize-comment-field-text-area-label/
 function wpsites_modify_comment_form_text_area($arg) {
-    $arg['comment_field'] = '<p class="comment-form-comment"><label for="comment">' . 'Comentário' . '</label><textarea id="comment" name="comment" cols="45" rows="5" aria-required="true"></textarea></p>';
+    $arg['comment_field'] = '<p class="comment-form-comment"><label for="comment">' . __( 'Comentário', 'twentyfifteen-child' ) . '</label><textarea id="comment" name="comment" cols="45" rows="5" aria-required="true"></textarea></p>';
     return $arg;
 }
 
@@ -146,5 +145,50 @@ function move_comment_form_below( $fields ) {
     return $fields; 
 } 
 add_filter( 'comment_form_fields', 'move_comment_form_below' ); 
+
+/**
+ * Include our Customizer settings.
+ */
+require get_stylesheet_directory() . '/inc/twentyfifteen-child-customizer.php';
+new Twenty_Fifteen_Child_Customizer();
+
+function twentyfifteen_child_customizer_css() {
+
+	$css = '';
+
+	$footer_background = get_theme_mod( 'footer-background', '#123652' );
+	$css .= '.site-footer { background-color: ' . $footer_background . '; }';
+
+    $footer_text_color = get_theme_mod( 'footer-text-color', '#d8d8d8' );
+	$css .= '.site-info p { color: ' . $footer_text_color . '; }';
+
+    $post_background_color = get_theme_mod( 'post-background-color', '#ffffff' );
+	$css .= '.page-background { background-color: ' . $post_background_color . ' !important; }';
+
+    $post_text_color = get_theme_mod( 'post-text-color', '#ffffff' );
+	$css .= '.sideText p { color: ' . $post_text_color . '; }';
+
+    $more_info_background_color = get_theme_mod( 'more-info-background-color', '#123652' );
+	$css .= '.entry-section { background-color: ' . $more_info_background_color . '; }';
+
+    $more_info_text_color = get_theme_mod( 'more-info-text-color', '#ffffff' );
+	$css .= '.entry-section { color: ' . $more_info_text_color . '; }';
+
+    $inside_page_color = get_theme_mod( 'inside-page-color', '#123652' );
+	$css .= '.panel-title-container { background-color: ' . $inside_page_color . ' !important; }';
+
+    $inside_page_text_color = get_theme_mod( 'inside-page-text-color', '#ffffff' );
+	$css .= '.panel-title-container, .entry-projects-content p, .people-content p, .news-content p { color: ' . $inside_page_text_color . '; }';
+
+	return $css;
+}
+
+function twentyfifteen_child_fonts_url() {
+	$fonts_url = '';
+	$fonts     = array();
+	$subsets   = 'latin,latin-ext';
+
+	return get_stylesheet_directory_uri() . '/fonts/stylesheet.css';
+}
 
 ?>
