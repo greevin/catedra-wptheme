@@ -8,17 +8,16 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="padding-top: 0px;">
-	<header class="entry-header panel-title-container">
-		<?php the_title( '<h1 class="entry-title" style="font-size: 4rem;margin-bottom: 20px;">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+<article id="post-<?php the_ID(); ?>" <?php post_class('panel-title-container'); ?>>
+    <header class="entry-header panel-title-container">
+        <?php the_title( '<h1 class="entry-title" style="font-size: 4rem;">', '</h1>' ); ?>
+    </header><!-- .entry-header -->
 
-	<?php
-		// Post thumbnail.
-		twentyfifteen_post_thumbnail();
-	?>
-
-	<div class="entry-content">
-		<?php the_content(); ?>
-	</div><!-- .entry-content -->
+    <?php
+        // Post thumbnail.
+        twentyfifteen_post_thumbnail();
+    ?>
 </article><!-- #post-## -->
+<div class="entry-content">
+    <?php the_content(); ?>
+</div><!-- .entry-content -->

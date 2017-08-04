@@ -10,7 +10,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="padding-top: 3.5%;">
+<article id="post-<?php the_ID(); ?>" <?php post_class('page-background'); ?> style="padding-top:0;padding-bottom:0;">
 	<?php
 
 		$instituicao = get_post_meta( $post->ID, '_instituicao_input', true );
@@ -25,7 +25,6 @@
 	?>
 
 	<div class="entry-content">
-		<div class="thumbnail" style="height: 100%;">
 				<div class="sideText">
 					<?php the_title( sprintf('<h1 class="entry-title" style="text-align: center;"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
 					<?php if (get_the_post_thumbnail() != '') : ?>
@@ -37,9 +36,7 @@
 					 <p><?php the_content( ); ?></p>
 					 <?php endif; ?>  
 				</div>
-				<div>
-		<div>
-			
+				<div>			
 		</div>
 	</div><!-- .entry-content -->
 	<?php
@@ -56,31 +53,31 @@
 			<tbody>
 				<?php if( ! empty( $instituicao) ) : ?>
 				<tr>
-					<td><b>Instituição: </b></td>
+					<td><b><?php _e( 'Instituição', 'twentyfifteen-child' )?></b></td>
 					<td><?php echo $instituicao; ?></td>
 				</tr>
 				<?php endif; ?>
 				<?php if( ! empty( $email_contato) ) : ?>
 				<tr>
-					<td><b>E-mail de Contato: </b></td>
-					<td><a href="mailto:<?php echo $email_contato; ?>"><?php echo $email_contato; ?></a></p></td>
+					<td><b><?php _e( 'E-mail de Contato', 'twentyfifteen-child' )?></b></td>
+					<td><a href="mailto:<?php echo $email_contato; ?>"><?php echo $email_contato; ?></a></td>
 				</tr>
 				<?php endif; ?>
 				<?php if( ! empty( $periodo_inicio || $periodo_fim) ) : ?>
 				<tr>
-					<td><b>Período: </b></td>
+					<td><b><?php _e( 'Período', 'twentyfifteen-child' )?></b></td>
 					<td><?php echo date_i18n( get_option( 'date_format' ), $periodo_inicio ) ?> - <?php echo date_i18n( get_option( 'date_format' ), $periodo_fim ); ?></td>
 				</tr>
 				<?php endif; ?>
 				<?php if( ! empty( $linhas_pesquisa) ) : ?>
 				<tr>
-					<td><b>Linha(s) de Pesquisa: </b></td>
+					<td><b><?php _e( 'Linhas de pesquisa', 'twentyfifteen-child' )?></b></td>
 					<td><?php echo $linhas_pesquisa; ?></td>
 				</tr>
 				<?php endif; ?>
 				<?php if( ! empty( $projetos) ) : ?>
 				<tr>
-					<td><b>Projetos: </b></td>
+					<td><b><?php _e( 'Projetos', 'twentyfifteen-child' )?></b></td>
 					<td class="projects-link"><?php 
 						foreach ( $projetos as $person ) {
 							$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
@@ -91,7 +88,7 @@
 				<?php endif; ?>
 				<?php if( ! empty( $situacao) ) : ?>
 				<tr>
-					<td><b>Situação: </b></td>
+					<td><b><?php _e( 'Situação', 'twentyfifteen-child' )?></b></td>
 					<td><?php echo $situacao; ?></td>
 				</tr>
 				<?php endif; ?>

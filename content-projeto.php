@@ -10,7 +10,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="padding-top: 5%;">
+<article id="post-<?php the_ID(); ?>" <?php post_class('page-background'); ?> style="padding-top:0;padding-bottom:0;">
 	<?php
 		$agencia_financiadora = get_post_meta( $post->ID, '_agencia_financiadora_input', true );
 		$periodo_inicio = get_post_meta( $post->ID, '_periodo_inicio_projeto_input', true );
@@ -25,18 +25,18 @@
 
 	<div class="entry-content">
 		<div class="post-content fix-safari" style="height: 100%;margin-bottom: 0px;">
-			<div class="thumbnail" style="height: 100%;">
 				<div class="sideText">
 					<?php the_title( sprintf('<h1 class="entry-title" style="text-align: center;"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
 					<?php if (get_the_post_thumbnail() != '') : ?>
 					<div class="align-image">
 						<?php the_post_thumbnail( 'medium' ); ?>
 					</div>
-				<p><?php the_content( ); ?></p>
+				<div>
+					<?php the_content( ); ?>
+				</div>
 				<?php else : ?>
 					 <p><?php the_content( ); ?></p>
 					 <?php endif; ?>
-			</div>
 		<div>
 	</div><!-- .entry-content -->
 
@@ -54,19 +54,19 @@
 			<tbody>
 				<?php if( ! empty( $agencia_financiadora) ) : ?>
 				<tr>
-					<td><b>Agência Financiadora: </b></td>
+					<td><b><?php _e( 'Agência(s) financiadora(s)', 'twentyfifteen-child' )?></b></td>
 					<td><?php echo $agencia_financiadora; ?></td>
 				</tr>
 				<?php endif; ?>
 				<?php if( ! empty( $periodo_inicio || $periodo_fim) ) : ?>
 				<tr>
-					<td><b>Período: </b></td>
-					<td><?php echo date_i18n( get_option( 'date_format' ), $periodo_inicio ) ?> - <?php echo date_i18n( get_option( 'date_format' ), $periodo_fim ); ?></td>
+					<td><b><?php _e( 'Período', 'twentyfifteen-child' )?></b></td>
+					<td><?php echo date( get_option( 'date_format' ), $periodo_inicio ) ?> - <?php echo date( get_option( 'date_format' ), $periodo_fim ); ?></td>
 				</tr>
 				<?php endif; ?>
 				<?php if( ! empty( $coordenadores) ) : ?>
 				<tr>
-					<td><b>Coordenador(es): </b></td>
+					<td><b><?php _e( 'Coodernador(es)', 'twentyfifteen-child' )?></b></td>
 					<td class="projects-link"><?php 
 						foreach ( $coordenadores as $person ) {
 							$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
@@ -77,7 +77,7 @@
 				<?php endif; ?>
 				<?php if( ! empty( $equipes) ) : ?>
 				<tr>
-					<td><b>Equipes: </b></td>
+					<td><b><?php _e( 'Equipe', 'twentyfifteen-child' )?></b></td>
 					<td class="projects-link"><?php 
 						foreach ( $equipes as $equipe ) {
 					$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$equipe' AND post_status = 'publish' ");
@@ -88,7 +88,7 @@
 				<?php endif; ?>
 				<?php if( ! empty( $noticias) ) : ?>
 				<tr>
-					<td><b>Notícias: </b></td>
+					<td><b><?php _e( 'Notícias', 'twentyfifteen-child' )?></b></td>
 					<td class="projects-link"><?php 
 						foreach ( $noticias as $noticia ) {
 							$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$noticia' AND post_status = 'publish' ");
@@ -99,7 +99,7 @@
 				<?php endif; ?>
 				<?php if( ! empty( $situacao) ) : ?>
 				<tr>
-					<td><b>Situação: </b></td>
+					<td><b><?php _e( 'Situação', 'twentyfifteen-child' )?></b></td>
 					<td><?php echo $situacao; ?></td>
 				</tr>
 				<?php endif; ?>
