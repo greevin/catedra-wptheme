@@ -12,7 +12,7 @@
 		if($all_posts) : foreach($all_posts as $post) : setup_postdata( $post );
 	?>
 
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 post-content fix-safari" style="margin-bottom: 20px;">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 post-content fix-safari">
 
 			<div class="fundo-gradiente">
 				<?php $urlImg = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ); ?>
@@ -22,7 +22,7 @@
 			<div class="thumbnail">
 				<div class="novidades-content">
 					<p>
-						<?php echo get_the_date('j M Y'); ?>
+						<?php echo get_the_date(); ?>
 					</p>
 					<?php the_title( sprintf('<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h2>' ); ?>
 					<p>

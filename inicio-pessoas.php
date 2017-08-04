@@ -17,7 +17,7 @@ use Carbon\Carbon;
 
 			if( $periodo_fim >= Carbon::now()->timestamp ) :
 		?>
-		<div class="col-sm-4 col-md-4 col-lg-4 fix-safari-3" style="padding-bottom: 15px;">
+		<div class="col-sm-4 col-md-4 col-lg-4 fix-safari" style="padding-bottom: 15px;">
 			<div class="circle-img fundo-gradiente">
 				<a href="<?php the_permalink(); ?>">
 					<span> 
@@ -42,7 +42,7 @@ use Carbon\Carbon;
 					<?php the_title(); ?>
 				</a>
 			</h3>
-			<div class="person-content">
+			<div class="person-content" style="padding: 0 10%;">
 				<p>
 					<?php echo _get_excerpt(20); ?>
 				</p>
