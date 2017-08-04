@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-02 19:20+0000\n"
+"POT-Creation-Date: 2017-08-03 12:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,6 +13,62 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
+
+#: content-pessoa.php:56 inc/custom-fields-pessoa.php:50
+msgid "Instituição"
+msgstr ""
+
+#: content-pessoa.php:62 inc/custom-fields-pessoa.php:59
+msgid "E-mail de Contato"
+msgstr ""
+
+#: content-pessoa.php:68 content-projeto.php:61 inc/custom-fields-pessoa.php:97
+#: inc/custom-fields-project.php:71
+msgid "Período"
+msgstr ""
+
+#: content-pessoa.php:74 inc/custom-fields-pessoa.php:88
+msgid "Linhas de pesquisa"
+msgstr ""
+
+#: content-pessoa.php:80 inc/custom-fields-pessoa.php:68
+#: inc/wp-projeto-custom-post-type.php:6
+msgid "Projetos"
+msgstr ""
+
+#: content-pessoa.php:91 content-projeto.php:100
+#: inc/custom-fields-pessoa.php:109 inc/custom-fields-project.php:83
+msgid "Situação"
+msgstr ""
+
+#: content-projeto.php:55 inc/custom-fields-project.php:62
+msgid "Agência(s) financiadora(s)"
+msgstr ""
+
+#: content-projeto.php:67 inc/custom-fields-project.php:99
+msgid "Coodernador(es)"
+msgstr ""
+
+#: content-projeto.php:78 inc/custom-fields-project.php:123
+msgid "Equipe"
+msgstr ""
+
+#: content-projeto.php:89 inc/custom-fields-project.php:147
+msgid "Notícias"
+msgstr ""
+
+#: functions.php:56
+msgid "Páginas internas"
+msgstr ""
+
+#. %s: Name of current post
+#: functions.php:63
+msgid "Leia Mais"
+msgstr ""
+
+#: functions.php:131
+msgid "Comentário"
+msgstr ""
 
 #. Name of the template
 msgid "Template Blog"
@@ -30,36 +86,40 @@ msgstr ""
 msgid "Informações da Pessoa"
 msgstr ""
 
-#: inc/custom-fields-pessoa.php:50
-msgid "Instituição"
-msgstr ""
-
-#: inc/custom-fields-pessoa.php:59
-msgid "E-mail de Contato"
-msgstr ""
-
-#: inc/custom-fields-pessoa.php:68 inc/wp-projeto-custom-post-type.php:6
-msgid "Projetos"
-msgstr ""
-
-#: inc/custom-fields-pessoa.php:88
-msgid "Linhas de pesquisa"
-msgstr ""
-
-#: inc/custom-fields-pessoa.php:97
-msgid "Período"
-msgstr ""
-
-#: inc/custom-fields-pessoa.php:100
+#: inc/custom-fields-pessoa.php:100 inc/custom-fields-project.php:74
 msgid "de"
 msgstr ""
 
-#: inc/custom-fields-pessoa.php:102
+#: inc/custom-fields-pessoa.php:101 inc/custom-fields-project.php:75
+msgid "Data de Início"
+msgstr ""
+
+#: inc/custom-fields-pessoa.php:102 inc/custom-fields-project.php:76
 msgid "até"
 msgstr ""
 
-#: inc/custom-fields-pessoa.php:109
-msgid "Situação"
+#: inc/custom-fields-pessoa.php:103 inc/custom-fields-project.php:77
+msgid "Data de Término"
+msgstr ""
+
+#: inc/custom-fields-pessoa.php:114 inc/custom-fields-project.php:88
+msgid "Ativo"
+msgstr ""
+
+#: inc/custom-fields-pessoa.php:118 inc/custom-fields-project.php:92
+msgid "Inativo"
+msgstr ""
+
+#: inc/custom-fields-project.php:10
+msgid "Informações do Projeto"
+msgstr ""
+
+#: inc/custom-fields-project.php:114 inc/custom-fields-project.php:138
+msgid "Nenhuma pessoa criada no menu \"Pessoas\""
+msgstr ""
+
+#: inc/custom-fields-project.php:162
+msgid "Nenhuma notícia criada no menu \"Posts\""
 msgstr ""
 
 #: inc/twentyfifteen-child-customizer.php:25

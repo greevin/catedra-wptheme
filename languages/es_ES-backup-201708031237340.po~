@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cátedra 2017\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-02 20:45+0000\n"
-"PO-Revision-Date: 2017-08-02 20:50+0000\n"
+"POT-Creation-Date: 2017-08-03 12:30+0000\n"
+"PO-Revision-Date: 2017-08-03 12:31+0000\n"
 "Last-Translator: wp_catedra <cicero.alex@gmail.com>\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es-ES\n"
@@ -13,37 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: inc/twentyfifteen-child-customizer.php:25
-msgid "Cor do rodapé"
-msgstr ""
-
-#: inc/twentyfifteen-child-customizer.php:37
-msgid "Cor do texto do rodapé"
-msgstr ""
-
-#: inc/twentyfifteen-child-customizer.php:50
-msgid "Cor de fundo do post"
-msgstr ""
-
-#: inc/twentyfifteen-child-customizer.php:62
-msgid "Cor do texto do post"
-msgstr ""
-
-#: inc/twentyfifteen-child-customizer.php:74
-msgid "Cor de fundo do Mais Informações"
-msgstr ""
-
-#: inc/twentyfifteen-child-customizer.php:86
-msgid "Cor do texto do Mais Informações"
-msgstr ""
-
-#: inc/twentyfifteen-child-customizer.php:98
-msgid "Cor do fundo do cabeçalho das páginas internas"
-msgstr ""
-
-#: inc/twentyfifteen-child-customizer.php:110
-msgid "Cor do texto do cabeçalho das páginas internas"
-msgstr ""
+#: functions.php:131
+msgid "Comentário"
+msgstr "Comentario"
 
 #. Name of the theme
 msgid "Cátedra 2017"
@@ -62,13 +34,57 @@ msgstr ""
 msgid "Cícero Alexandrino"
 msgstr ""
 
-#: inc/wp-pessoa-custom-post-type.php:15 inc/wp-projeto-custom-post-type.php:15
-msgid "Nenhum item encontrado"
-msgstr "No se encontraron entradas"
+#: content-pessoa.php:56 inc/custom-fields-pessoa.php:50
+msgid "Instituição"
+msgstr "Institución"
 
-#: inc/wp-pessoa-custom-post-type.php:16 inc/wp-projeto-custom-post-type.php:16
-msgid "Nenhum item encontrado no Lixo"
-msgstr "Ningún item encontrado en la papelera"
+#: content-pessoa.php:62 inc/custom-fields-pessoa.php:59
+msgid "E-mail de Contato"
+msgstr "E-mail"
+
+#: content-pessoa.php:68 content-projeto.php:61 inc/custom-fields-pessoa.php:97
+#: inc/custom-fields-project.php:71
+msgid "Período"
+msgstr "Período"
+
+#: content-pessoa.php:74 inc/custom-fields-pessoa.php:88
+msgid "Linhas de pesquisa"
+msgstr "Líneas de Búsqueda"
+
+#: content-pessoa.php:80 inc/custom-fields-pessoa.php:68
+#: inc/wp-projeto-custom-post-type.php:6
+msgid "Projetos"
+msgstr "Proyectos"
+
+#: content-pessoa.php:91 content-projeto.php:100
+#: inc/custom-fields-pessoa.php:109 inc/custom-fields-project.php:83
+msgid "Situação"
+msgstr "Situación"
+
+#: content-projeto.php:55 inc/custom-fields-project.php:62
+msgid "Agência(s) financiadora(s)"
+msgstr "Agencia Financiadora"
+
+#: content-projeto.php:67 inc/custom-fields-project.php:99
+msgid "Coodernador(es)"
+msgstr "Coordinador(es)"
+
+#: content-projeto.php:78 inc/custom-fields-project.php:123
+msgid "Equipe"
+msgstr "Equipo"
+
+#: content-projeto.php:89 inc/custom-fields-project.php:147
+msgid "Notícias"
+msgstr "Noticias"
+
+#: functions.php:56
+msgid "Páginas internas"
+msgstr "Páginas internas"
+
+#. %s: Name of current post
+#: functions.php:63
+msgid "Leia Mais"
+msgstr "Lea Más"
 
 #. Name of the template
 msgid "Template Blog"
@@ -86,26 +102,6 @@ msgstr "Template Proyecto"
 msgid "Informações da Pessoa"
 msgstr "Información de la Persona"
 
-#: inc/custom-fields-pessoa.php:50
-msgid "Instituição"
-msgstr "Institución"
-
-#: inc/custom-fields-pessoa.php:59
-msgid "E-mail de Contato"
-msgstr "E-mail"
-
-#: inc/custom-fields-pessoa.php:68 inc/wp-projeto-custom-post-type.php:6
-msgid "Projetos"
-msgstr "Proyectos"
-
-#: inc/custom-fields-pessoa.php:88
-msgid "Linhas de pesquisa"
-msgstr "Líneas de Búsqueda"
-
-#: inc/custom-fields-pessoa.php:97 inc/custom-fields-project.php:71
-msgid "Período"
-msgstr "Período"
-
 #: inc/custom-fields-pessoa.php:100 inc/custom-fields-project.php:74
 msgid "de"
 msgstr "de"
@@ -122,10 +118,6 @@ msgstr "hasta"
 msgid "Data de Término"
 msgstr "Fecha de Finalización"
 
-#: inc/custom-fields-pessoa.php:109 inc/custom-fields-project.php:83
-msgid "Situação"
-msgstr "Situación"
-
 #: inc/custom-fields-pessoa.php:114 inc/custom-fields-project.php:88
 msgid "Ativo"
 msgstr "Activo"
@@ -138,29 +130,45 @@ msgstr "Inactivo"
 msgid "Informações do Projeto"
 msgstr "Información del Proyecto"
 
-#: inc/custom-fields-project.php:62
-msgid "Agência(s) financiadora(s)"
-msgstr "Agencia Financiadora"
-
-#: inc/custom-fields-project.php:99
-msgid "Coodernador(es)"
-msgstr "Coordinador(es)"
-
 #: inc/custom-fields-project.php:114 inc/custom-fields-project.php:138
 msgid "Nenhuma pessoa criada no menu \"Pessoas\""
 msgstr "Ninguna persona creada en el menú \"Personas\""
 
-#: inc/custom-fields-project.php:123
-msgid "Equipe"
-msgstr "Equipo"
-
-#: inc/custom-fields-project.php:147
-msgid "Notícias"
-msgstr "Noticias"
-
 #: inc/custom-fields-project.php:162
 msgid "Nenhuma notícia criada no menu \"Posts\""
 msgstr "No hay noticias creadas en el menú \"Entradas\""
+
+#: inc/twentyfifteen-child-customizer.php:25
+msgid "Cor do rodapé"
+msgstr "Color del pie de página"
+
+#: inc/twentyfifteen-child-customizer.php:37
+msgid "Cor do texto do rodapé"
+msgstr "Color del texto del pie de página"
+
+#: inc/twentyfifteen-child-customizer.php:50
+msgid "Cor de fundo do post"
+msgstr "Color de fondo del post"
+
+#: inc/twentyfifteen-child-customizer.php:62
+msgid "Cor do texto do post"
+msgstr "Color del texto del post"
+
+#: inc/twentyfifteen-child-customizer.php:74
+msgid "Cor de fundo do Mais Informações"
+msgstr "Color de fondo de 'Más información'"
+
+#: inc/twentyfifteen-child-customizer.php:86
+msgid "Cor do texto do Mais Informações"
+msgstr "Color de texto de 'Más información'"
+
+#: inc/twentyfifteen-child-customizer.php:98
+msgid "Cor do fundo do cabeçalho das páginas internas"
+msgstr "Color del fondo del encabezado de las páginas internas"
+
+#: inc/twentyfifteen-child-customizer.php:110
+msgid "Cor do texto do cabeçalho das páginas internas"
+msgstr "Color del texto del encabezado de las páginas internas"
 
 #: inc/wp-pessoa-custom-post-type.php:6
 msgid "Pessoas"
@@ -190,6 +198,14 @@ msgstr "Ver Persona"
 #: inc/wp-pessoa-custom-post-type.php:14
 msgid "Pesquisar Pessoa"
 msgstr "Buscar Persona"
+
+#: inc/wp-pessoa-custom-post-type.php:15 inc/wp-projeto-custom-post-type.php:15
+msgid "Nenhum item encontrado"
+msgstr "No se encontraron entradas"
+
+#: inc/wp-pessoa-custom-post-type.php:16 inc/wp-projeto-custom-post-type.php:16
+msgid "Nenhum item encontrado no Lixo"
+msgstr "Ningún item encontrado en la papelera"
 
 #: inc/wp-projeto-custom-post-type.php:7
 msgid "Projeto"

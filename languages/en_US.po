@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cátedra 2017\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-02 20:23+0000\n"
-"PO-Revision-Date: 2017-08-02 20:49+0000\n"
+"POT-Creation-Date: 2017-08-03 12:32+0000\n"
+"PO-Revision-Date: 2017-08-03 12:32+0000\n"
 "Last-Translator: wp_catedra <cicero.alex@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en-US\n"
@@ -12,6 +12,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
+
+#: comments.php:59
+#, php-format
+msgid "Comentando como <a href=\"%1$s\">%2$s</a>."
+msgstr "Comment as <a href=\"%1$s\">%2$s</a>."
 
 #. Name of the theme
 msgid "Cátedra 2017"
@@ -30,25 +35,61 @@ msgstr ""
 msgid "Cícero Alexandrino"
 msgstr ""
 
-#: inc/custom-fields-pessoa.php:50
+#: content-pessoa.php:56 inc/custom-fields-pessoa.php:50
 msgid "Instituição"
 msgstr "Institution"
 
-#: inc/custom-fields-project.php:62
+#: content-pessoa.php:62 inc/custom-fields-pessoa.php:59
+msgid "E-mail de Contato"
+msgstr "E-mail"
+
+#: content-pessoa.php:68 content-projeto.php:61 inc/custom-fields-pessoa.php:97
+#: inc/custom-fields-project.php:71
+msgid "Período"
+msgstr "Date"
+
+#: content-pessoa.php:74 inc/custom-fields-pessoa.php:88
+msgid "Linhas de pesquisa"
+msgstr "Research Topics"
+
+#: content-pessoa.php:80 inc/custom-fields-pessoa.php:68
+#: inc/wp-projeto-custom-post-type.php:6
+msgid "Projetos"
+msgstr "Projects"
+
+#: content-pessoa.php:91 content-projeto.php:100
+#: inc/custom-fields-pessoa.php:109 inc/custom-fields-project.php:83
+msgid "Situação"
+msgstr "Situation"
+
+#: content-projeto.php:55 inc/custom-fields-project.php:62
 msgid "Agência(s) financiadora(s)"
 msgstr "Funding Agency"
 
-#: inc/custom-fields-project.php:99
+#: content-projeto.php:67 inc/custom-fields-project.php:99
 msgid "Coodernador(es)"
 msgstr "Coordinator"
 
-#: inc/twentyfifteen-child-customizer.php:98
-msgid "Cor do fundo do cabeçalho das páginas internas"
-msgstr "Internal Pages' Header Background Color"
+#: content-projeto.php:78 inc/custom-fields-project.php:123
+msgid "Equipe"
+msgstr "Team"
 
-#: inc/twentyfifteen-child-customizer.php:110
-msgid "Cor do texto do cabeçalho das páginas internas"
-msgstr "Internal Pages' Header Text Color"
+#: content-projeto.php:89 inc/custom-fields-project.php:147
+msgid "Notícias"
+msgstr "News"
+
+#: functions.php:56
+msgid "Páginas internas"
+msgstr "Internal Pages"
+
+#. %s: Name of current post
+#: functions.php:63
+msgid "Leia Mais"
+msgstr "Read More"
+
+#: functions.php:131
+msgid "Comentário"
+msgstr "Comment"
 
 #. Name of the template
 msgid "Template Blog"
@@ -66,22 +107,6 @@ msgstr "Project Template"
 msgid "Informações da Pessoa"
 msgstr "Person Informations"
 
-#: inc/custom-fields-pessoa.php:59
-msgid "E-mail de Contato"
-msgstr "E-mail"
-
-#: inc/custom-fields-pessoa.php:68 inc/wp-projeto-custom-post-type.php:6
-msgid "Projetos"
-msgstr "Projects"
-
-#: inc/custom-fields-pessoa.php:88
-msgid "Linhas de pesquisa"
-msgstr "Research Topics"
-
-#: inc/custom-fields-pessoa.php:97 inc/custom-fields-project.php:71
-msgid "Período"
-msgstr "Date"
-
 #: inc/custom-fields-pessoa.php:100 inc/custom-fields-project.php:74
 msgid "de"
 msgstr "from"
@@ -98,10 +123,6 @@ msgstr "to"
 msgid "Data de Término"
 msgstr "Finish Date"
 
-#: inc/custom-fields-pessoa.php:109 inc/custom-fields-project.php:83
-msgid "Situação"
-msgstr "Situation"
-
 #: inc/custom-fields-pessoa.php:114 inc/custom-fields-project.php:88
 msgid "Ativo"
 msgstr "Active"
@@ -117,14 +138,6 @@ msgstr "Project Informations"
 #: inc/custom-fields-project.php:114 inc/custom-fields-project.php:138
 msgid "Nenhuma pessoa criada no menu \"Pessoas\""
 msgstr "No person created in the \"People\" menu"
-
-#: inc/custom-fields-project.php:123
-msgid "Equipe"
-msgstr "Team"
-
-#: inc/custom-fields-project.php:147
-msgid "Notícias"
-msgstr "News"
 
 #: inc/custom-fields-project.php:162
 msgid "Nenhuma notícia criada no menu \"Posts\""
@@ -153,6 +166,14 @@ msgstr "'More Information' Background Color"
 #: inc/twentyfifteen-child-customizer.php:86
 msgid "Cor do texto do Mais Informações"
 msgstr "'More Information' Text Color"
+
+#: inc/twentyfifteen-child-customizer.php:98
+msgid "Cor do fundo do cabeçalho das páginas internas"
+msgstr "Internal Pages' Header Background Color"
+
+#: inc/twentyfifteen-child-customizer.php:110
+msgid "Cor do texto do cabeçalho das páginas internas"
+msgstr "Internal Pages' Header Text Color"
 
 #: inc/wp-pessoa-custom-post-type.php:6
 msgid "Pessoas"
