@@ -7,7 +7,7 @@ function add_projects_info_meta_box() {
 
     add_meta_box(
         'project-info', 
-		'Informações do Projeto',
+		__('Informações do Projeto', 'twentyfifteen-child' ),
         'add_projects_info_meta_box_callback',
         'wp_projeto',
 		'normal',
@@ -59,7 +59,7 @@ function add_projects_info_meta_box_callback($post) {
 	 <table class="form-table">
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="agencia_financiadora_input"><b>Agência(s) financiadora(s)</b></label>
+            <label for="agencia_financiadora_input"><b><?php _e( 'Agência(s) financiadora(s)', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
             <input type="text" name="agencia_financiadora_input" class="regular-text" value="<?php echo $agencia_financiadora; ?>">
@@ -68,35 +68,35 @@ function add_projects_info_meta_box_callback($post) {
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="periodo_checkbox"><b>Período</b></label>
+            <label for="periodo_checkbox"><b><?php _e( 'Período', 'twentyfifteen-child' )?></b></label>
         </td>
-        <td colspan="4">
-            <span> de </span>
-            <input type="text" class="datepicker" name="periodo_inicio_input" value="<?php echo $periodo_inicio_projeto; ?>" placeholder="Data de Inicio"/>
-            <span> até </span>
-            <input type="text" class="datepicker" name="periodo_fim_input" value="<?php echo $periodo_fim_projeto; ?>" placeholder="Data de Fim"/>
+       <td colspan="4">
+            <span> <?php _e( 'de', 'twentyfifteen-child' )?> </span>
+            <input type="text" class="datepicker" name="periodo_inicio_input" value="<?php echo $periodo_inicio_projeto; ?>" placeholder="<?php _e( 'Data de Início', 'twentyfifteen-child' )?>"/>
+            <span> <?php _e( 'até', 'twentyfifteen-child' )?> </span>
+            <input type="text" class="datepicker" name="periodo_fim_input" value="<?php echo $periodo_fim_projeto; ?>" placeholder="<?php _e( 'Data de Término', 'twentyfifteen-child' )?>"/>
         </td>
     </tr>
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="situacao_input"><b>Situação</b></label>
+            <label for="situacao_input"><b><?php _e( 'Situação', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
             <label for="ativo">
-                <input type="radio" name="situacao_input" id="ativo" value="Ativo" <?php checked( $situacao, 'Ativo' ); ?>>
-                Ativo
+                <input type="radio" name="situacao_input" id="ativo" value="1" <?php checked( $situacao, 1 ); ?>>
+                <?php _e( 'Ativo', 'twentyfifteen-child' )?>
             </label>
             <label for="inativo">
-                <input type="radio" name="situacao_input" id="inativo" value="Inativo" <?php checked( $situacao, 'Inativo' ); ?>>
-                Inativo
+                <input type="radio" name="situacao_input" id="inativo" value="0" <?php checked( $situacao, 0 ); ?>>
+                <?php _e( 'Inativo', 'twentyfifteen-child' )?>
             </label>
         </td>
     </tr>
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="people[]"><b>Coodernador(es)</b></label>
+            <label for="people[]"><b><?php _e( 'Coodernador(es)', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
             <?php
@@ -111,7 +111,7 @@ function add_projects_info_meta_box_callback($post) {
                 }
                 else :
             ?>
-            <span>Nenhuma pessoa criada no menu 'Pessoas'</span>
+            <span><?php _e( 'Nenhuma pessoa criada no menu "Pessoas"', 'twentyfifteen-child' )?></span>
             <?php   
                 endif;
             ?>
@@ -120,7 +120,7 @@ function add_projects_info_meta_box_callback($post) {
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="equipe[]"><b>Equipe</b></label>
+            <label for="equipe[]"><b><?php _e( 'Equipe', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
             <?php
@@ -135,7 +135,7 @@ function add_projects_info_meta_box_callback($post) {
                 }
                 else :
             ?>
-            <span>Nenhuma pessoa criada no menu 'Pessoas'</span>
+            <span><?php _e( 'Nenhuma pessoa criada no menu "Pessoas"', 'twentyfifteen-child' )?></span>
             <?php   
                 endif;
             ?>
@@ -144,7 +144,7 @@ function add_projects_info_meta_box_callback($post) {
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="post_news[]"><b>Notícias</b></label>
+            <label for="post_news[]"><b><?php _e( 'Notícias', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
             <?php
@@ -159,7 +159,7 @@ function add_projects_info_meta_box_callback($post) {
                 }
                 else :
             ?>
-            <span>Nenhuma notícia criada no menu 'Posts'</span>
+            <span><?php _e( 'Nenhuma notícia criada no menu "Posts"', 'twentyfifteen-child' )?></span>
             <?php   
                 endif;
             ?>

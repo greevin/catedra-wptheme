@@ -7,7 +7,7 @@ function adicionar_pessoa_info_meta_box() {
 
     add_meta_box(
         'project-info', 
-		'Informações da Pessoa',
+		__( 'Informações da Pessoa', 'twentyfifteen-child'),
         'adicionar_pessoa_info_meta_box_callback',
         'wp_pessoa',
 		'normal',
@@ -47,7 +47,7 @@ function adicionar_pessoa_info_meta_box_callback($post) {
 <table class="form-table">
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="instituicao_input"><b>Instituição</b></label>
+            <label for="instituicao_input"><b><?php _e( 'Instituição', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
             <input type="text" name="instituicao_input" class="regular-text" value="<?php echo $instituicao; ?>">
@@ -56,7 +56,7 @@ function adicionar_pessoa_info_meta_box_callback($post) {
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="email_contato_input"><b>E-mail de Contato</b></label>
+            <label for="email_contato_input"><b><?php _e( 'E-mail de Contato', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
             <input type="text" name="email_contato_input" class="regular-text" value="<?php echo $email_contato; ?>">
@@ -65,7 +65,7 @@ function adicionar_pessoa_info_meta_box_callback($post) {
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="projetos[]"><b>Projetos</b></label>
+            <label for="projetos[]"><b><?php _e( 'Projetos', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
             <?php
@@ -85,7 +85,7 @@ function adicionar_pessoa_info_meta_box_callback($post) {
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="linhas_pesquisa_input"><b>Linhas de Pesquisa</b></label>
+            <label for="linhas_pesquisa_input"><b><?php _e( 'Linhas de pesquisa', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
             <input type="text" name="linhas_pesquisa_input" class="regular-text" value="<?php echo $linhas_pesquisa; ?>">
@@ -94,28 +94,28 @@ function adicionar_pessoa_info_meta_box_callback($post) {
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="periodo_checkbox"><b>Período</b></label>
+            <label for="periodo_checkbox"><b><?php _e( 'Período', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
-            <span> de </span>
-            <input type="text" class="datepicker" name="periodo_inicio_pessoa_input" value="<?php echo $periodo_inicio_pessoa; ?>" placeholder="Data de Inicio"/>
-            <span> até </span>
-            <input type="text" class="datepicker" name="periodo_fim_pessoa_input" value="<?php echo $periodo_fim_pessoa; ?>" placeholder="Data de Fim"/>
+            <span> <?php _e( 'de', 'twentyfifteen-child' )?> </span>
+            <input type="text" class="datepicker" name="periodo_inicio_pessoa_input" value="<?php echo $periodo_inicio_pessoa; ?>" placeholder="<?php _e( 'Data de Início', 'twentyfifteen-child' )?>"/>
+            <span> <?php _e( 'até', 'twentyfifteen-child' )?> </span>
+            <input type="text" class="datepicker" name="periodo_fim_pessoa_input" value="<?php echo $periodo_fim_pessoa; ?>" placeholder="<?php _e( 'Data de Término', 'twentyfifteen-child' )?>"/>
         </td>
     </tr>
 
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="situacao_input"><b>Situação</b></label>
+            <label for="situacao_input"><b><?php _e( 'Situação', 'twentyfifteen-child' )?></b></label>
         </td>
         <td colspan="4">
             <label for="ativo">
-                <input type="radio" name="situacao_input" id="ativo" value="Ativo" <?php checked( $situacao, 'Ativo' ); ?>>
-                Ativo
+                <input type="radio" name="situacao_input" id="ativo" value="1" <?php checked( $situacao, 1 ); ?>>
+                <?php _e( 'Ativo', 'twentyfifteen-child' )?>
             </label>
             <label for="inativo">
-                <input type="radio" name="situacao_input" id="inativo" value="Inativo" <?php checked( $situacao, 'Inativo' ); ?>>
-                Inativo
+                <input type="radio" name="situacao_input" id="inativo" value="0" <?php checked( $situacao, 0 ); ?>>
+                <?php _e( 'Inativo', 'twentyfifteen-child' )?>
             </label>
         </td>
     </tr>

@@ -3,17 +3,17 @@
 function wp_projeto_custom_post_type (){
 	
 	$labels = array(
-		'name' => 'Projetos',
-		'singular_name' => 'Projeto',
-		'add_new' => 'Adicionar Projeto',
-		'all_items' => 'Todos os Projetos',
-		'add_new_item' => 'Adicionar Projeto',
-		'edit_item' => 'Editar Projeto',
-		'new_item' => 'Novo Projeto',
-		'view_item' => 'Visualizar Projeto',
-		'search_item' => 'Pesquisar Projetos',
-		'not_found' => 'Nenhum item encontrado',
-		'not_found_in_trash' => 'Nenhum item encontrado no Lixo',
+		'name' => __( 'Projetos', 'twentyfifteen-child'),
+		'singular_name' => __('Projeto', 'twentyfifteen-child'),
+		'add_new' => __( 'Adicionar Projeto', 'twentyfifteen-child'),
+		'all_items' => __('Todos os Projetos', 'twentyfifteen-child'),
+		'add_new_item' => __( 'Adicionar Projeto', 'twentyfifteen-child'),
+		'edit_item' => __( 'Editar Projeto', 'twentyfifteen-child'),
+		'new_item' => __( 'Novo Projeto', 'twentyfifteen-child'),
+		'view_item' => __( 'Visualizar Projeto', 'twentyfifteen-child'),
+		'search_item' => __( 'Pesquisar Projetos', 'twentyfifteen-child'),
+		'not_found' => __( 'Nenhum item encontrado', 'twentyfifteen-child'),
+		'not_found_in_trash' => __( 'Nenhum item encontrado no Lixo', 'twentyfifteen-child'),
 		'parent_item_colon' => 'Parent Item'
 	);
 	$args = array(

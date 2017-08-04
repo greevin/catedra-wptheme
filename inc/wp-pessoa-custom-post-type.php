@@ -3,23 +3,22 @@
 function pessoas_custom_post_type (){
 	
 	$labels = array(
-		'name' => 'Pessoas',
-		'singular_name' => 'Pessoa',
-		'add_new' => 'Adicionar Pessoa',
-		'all_items' => 'Todas as Pessoas',
-		'add_new_item' => 'Adicionar Pessoa',
-		'edit_item' => 'Editar Pessoa',
-		'new_item' => 'Adicionar Pessoa',
-		'view_item' => 'Visualizar Pessoa',
-		'search_item' => 'Pesquisar Pessoa',
-		'not_found' => 'Nenhum item encontrado',
-		'not_found_in_trash' => 'Nenhum item encontrado no Lixo',
+		'name' => __( 'Pessoas', 'twentyfifteen-child' ),
+		'singular_name' => __( 'Pessoa', 'twentyfifteen-child' ),
+		'add_new' => __( 'Adicionar Pessoa', 'twentyfifteen-child' ),
+		'all_items' => __( 'Todas as Pessoas', 'twentyfifteen-child' ),
+		'add_new_item' => __( 'Adicionar Pessoa', 'twentyfifteen-child' ),
+		'edit_item' => __( 'Editar Pessoa', 'twentyfifteen-child' ),
+		'new_item' => __( 'Adicionar Pessoa', 'twentyfifteen-child' ),
+		'view_item' => __( 'Visualizar Pessoa', 'twentyfifteen-child' ),
+		'search_item' => __( 'Pesquisar Pessoa', 'twentyfifteen-child' ),
+		'not_found' => __ ( 'Nenhum item encontrado', 'twentyfifteen-child' ),
+		'not_found_in_trash' => __( 'Nenhum item encontrado no Lixo', 'twentyfifteen-child' ),
 		'parent_item_colon' => 'Parent Item'
 	);
 	$args = array(
 		'labels' => $labels,
 		'public' => true,
-		// 'has_archive' => true,
 		'publicly_queryable' => true,
         'menu_icon' => 'dashicons-id-alt',
 		'query_var' => true,
