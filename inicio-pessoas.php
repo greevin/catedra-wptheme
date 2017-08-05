@@ -47,7 +47,7 @@ use Carbon\Carbon;
 					<?php echo _get_excerpt(20); ?>
 				</p>
 				<div class="more-link-container">
-					<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> Leia Mais</a>
+					<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e( 'Leia Mais', 'twentyfifteen-child' ) ?></a>
 				</div>
 			</div>
 		</div>
