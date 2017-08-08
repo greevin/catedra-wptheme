@@ -44,8 +44,8 @@ $border-radius: 100%;
 }
 
 @mixin font-smoothing() {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    // -webkit-font-smoothing: antialiased;
+    // -moz-osx-font-smoothing: grayscale;
     font-weight: normal;
     font-style: normal;
 }
@@ -138,22 +138,20 @@ video {
     margin-bottom: .5em;
 }
 
+address, pre, hr, ul, ol, dl, dd, table {
+    font-size: 1.5rem;
+    margin: 0 5%;
+}
+
 
 /**
  * Custom Styles
  */
 
-// .fundo-gradiente {
-//     background: #FFFFFF;  /* fallback for old browsers */
-// background: -webkit-linear-gradient(to right, #f2f2f2, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
-// background: linear-gradient(to right, #f2f2f2, #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-// }
-
 .fundo-gradiente {
     background: #525252;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, $blue-dark, $blue-light);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, $blue-dark, $blue-light); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, $blue-dark, $blue-light);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, $blue-dark, $blue-light); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
@@ -214,7 +212,7 @@ background: linear-gradient(to right, $blue-dark, $blue-light); /* W3C, IE 10+/ 
         transition: all 0.5s ease 0s;
         cursor: pointer;
         font-family: $font-text;
-        -webkit-font-smoothing: antialiased;
+        // -webkit-font-smoothing: antialiased;
     }
     & a:hover {
         margin-left: 20px;
@@ -275,8 +273,8 @@ background: linear-gradient(to right, $blue-dark, $blue-light); /* W3C, IE 10+/ 
 
 // Menu
 .main-navigation {
-    font-size: 13.5px;
-    font-size: 1.35rem;
+    font-size: 15px;
+    font-size: 1.5rem;
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -286,7 +284,7 @@ background: linear-gradient(to right, $blue-dark, $blue-light); /* W3C, IE 10+/ 
     border-top: 0;
     border-bottom: 0;
     font-family: $font-text;
-    -webkit-font-smoothing: antialiased;
+    // -webkit-font-smoothing: antialiased;
 }
 
 .nav-menu {
@@ -338,7 +336,7 @@ section .entry-title {
 .entry-header {
     padding: 0 5%;
     & p {
-        font-size: 1.75rem;
+        font-size: 1.65rem;
         margin-top: 3%;
         margin-bottom: 3%;
     }
@@ -424,6 +422,9 @@ section .entry-title {
 .entry-section {
     font-size: 1.5rem;
     padding: 3%;
+    & table {
+        margin: 0;
+    }
     & table tr td {
         word-wrap: break-word;
         vertical-align: middle;

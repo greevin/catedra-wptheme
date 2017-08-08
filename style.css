@@ -23,8 +23,6 @@ textarea,
 table,
 p {
   font-family: "genlight", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
   font-style: normal;
 }
@@ -37,8 +35,6 @@ h5,
 h6,
 span {
   font-family: "archivo_narrowbold", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
   font-style: normal;
 }
@@ -79,6 +75,11 @@ iframe,
 object,
 video {
   margin-bottom: .5em;
+}
+
+address, pre, hr, ul, ol, dl, dd, table {
+  font-size: 1.5rem;
+  margin: 0 5%;
 }
 
 /**
@@ -161,7 +162,6 @@ video {
   transition: all 0.5s ease 0s;
   cursor: pointer;
   font-family: "genlight", sans-serif;
-  -webkit-font-smoothing: antialiased;
 }
 .more-link-container a:hover {
   margin-left: 20px;
@@ -208,24 +208,20 @@ video {
  */
 .site-title {
   font-family: "archivo_narrowbold", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
   font-style: normal;
 }
 
 .site-description {
   font-family: "archivo_narrowbold", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
   font-style: normal;
   display: block;
 }
 
 .main-navigation {
-  font-size: 13.5px;
-  font-size: 1.35rem;
+  font-size: 15px;
+  font-size: 1.5rem;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -235,7 +231,6 @@ video {
   border-top: 0;
   border-bottom: 0;
   font-family: "genlight", sans-serif;
-  -webkit-font-smoothing: antialiased;
 }
 
 .nav-menu {
@@ -286,7 +281,7 @@ section .entry-title {
   padding: 0 5%;
 }
 .entry-header p {
-  font-size: 1.75rem;
+  font-size: 1.65rem;
   margin-top: 3%;
   margin-bottom: 3%;
 }
@@ -360,6 +355,9 @@ section .entry-title {
 .entry-section {
   font-size: 1.5rem;
   padding: 3%;
+}
+.entry-section table {
+  margin: 0;
 }
 .entry-section table tr td {
   word-wrap: break-word;
