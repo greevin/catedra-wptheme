@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cátedra 2017\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 12:32+0000\n"
-"PO-Revision-Date: 2017-08-03 12:32+0000\n"
+"POT-Creation-Date: 2017-08-08 18:49+0000\n"
+"PO-Revision-Date: 2017-08-08 18:49+0000\n"
 "Last-Translator: wp_catedra <cicero.alex@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en-US\n"
@@ -13,10 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: comments.php:59
-#, php-format
-msgid "Comentando como <a href=\"%1$s\">%2$s</a>."
-msgstr "Comment as <a href=\"%1$s\">%2$s</a>."
+#: content-pessoa.php:70
+msgid "atual"
+msgstr "present"
 
 #. Name of the theme
 msgid "Cátedra 2017"
@@ -35,6 +34,11 @@ msgstr ""
 msgid "Cícero Alexandrino"
 msgstr ""
 
+#: comments.php:59
+#, php-format
+msgid "Comentando como <a href=\"%1$s\">%2$s</a>."
+msgstr "Comment as <a href=\"%1$s\">%2$s</a>."
+
 #: content-pessoa.php:56 inc/custom-fields-pessoa.php:50
 msgid "Instituição"
 msgstr "Institution"
@@ -43,51 +47,63 @@ msgstr "Institution"
 msgid "E-mail de Contato"
 msgstr "E-mail"
 
-#: content-pessoa.php:68 content-projeto.php:61 inc/custom-fields-pessoa.php:97
+#: content-pessoa.php:68 content-projeto.php:63 inc/custom-fields-pessoa.php:97
 #: inc/custom-fields-project.php:71
 msgid "Período"
 msgstr "Date"
 
-#: content-pessoa.php:74 inc/custom-fields-pessoa.php:88
+#: content-pessoa.php:76 inc/custom-fields-pessoa.php:88
 msgid "Linhas de pesquisa"
 msgstr "Research Topics"
 
-#: content-pessoa.php:80 inc/custom-fields-pessoa.php:68
+#: content-pessoa.php:82 inc/custom-fields-pessoa.php:68
 #: inc/wp-projeto-custom-post-type.php:6
 msgid "Projetos"
 msgstr "Projects"
 
-#: content-pessoa.php:91 content-projeto.php:100
+#: content-pessoa.php:93 content-projeto.php:102
 #: inc/custom-fields-pessoa.php:109 inc/custom-fields-project.php:83
 msgid "Situação"
 msgstr "Situation"
 
-#: content-projeto.php:55 inc/custom-fields-project.php:62
+#: content-pessoa.php:95 inc/custom-fields-pessoa.php:114
+#: inc/custom-fields-project.php:88
+msgid "Ativo"
+msgstr "Active"
+
+#: content-pessoa.php:95 inc/custom-fields-pessoa.php:118
+#: inc/custom-fields-project.php:92
+msgid "Inativo"
+msgstr "Inactive"
+
+#: content-projeto.php:57 inc/custom-fields-project.php:62
 msgid "Agência(s) financiadora(s)"
 msgstr "Funding Agency"
 
-#: content-projeto.php:67 inc/custom-fields-project.php:99
+#: content-projeto.php:69 inc/custom-fields-project.php:99
 msgid "Coodernador(es)"
 msgstr "Coordinator"
 
-#: content-projeto.php:78 inc/custom-fields-project.php:123
+#: content-projeto.php:80 inc/custom-fields-project.php:123
 msgid "Equipe"
 msgstr "Team"
 
-#: content-projeto.php:89 inc/custom-fields-project.php:147
+#: content-projeto.php:91 inc/custom-fields-project.php:147
 msgid "Notícias"
 msgstr "News"
 
-#: functions.php:56
+#: functions.php:52
 msgid "Páginas internas"
 msgstr "Internal Pages"
 
 #. %s: Name of current post
-#: functions.php:63
+#: functions.php:59 inicio-novidades.php:32 inicio-pessoas.php:50
+#: inicio-projetos.php:31 page-blog-template.php:64
+#: page-wp_pessoa-template.php:67 page-wp_projeto-template.php:65
 msgid "Leia Mais"
 msgstr "Read More"
 
-#: functions.php:131
+#: functions.php:127
 msgid "Comentário"
 msgstr "Comment"
 
@@ -122,14 +138,6 @@ msgstr "to"
 #: inc/custom-fields-pessoa.php:103 inc/custom-fields-project.php:77
 msgid "Data de Término"
 msgstr "Finish Date"
-
-#: inc/custom-fields-pessoa.php:114 inc/custom-fields-project.php:88
-msgid "Ativo"
-msgstr "Active"
-
-#: inc/custom-fields-pessoa.php:118 inc/custom-fields-project.php:92
-msgid "Inativo"
-msgstr "Inactive"
 
 #: inc/custom-fields-project.php:10
 msgid "Informações do Projeto"

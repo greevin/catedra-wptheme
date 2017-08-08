@@ -15,7 +15,7 @@ use Carbon\Carbon;
 			$periodo_fim = get_post_meta( $post->ID, '_periodo_fim_pessoa_input', true );
 			$situacao = get_post_meta( $post->ID, '_situacao_input', true );
 
-			if( $periodo_fim >= Carbon::now()->timestamp ) :
+			if( $periodo_fim >= Carbon::now()->timestamp || $situacao == 1 ) :
 		?>
 		<div class="col-sm-4 col-md-4 col-lg-4 fix-safari" style="padding-bottom: 15px;">
 			<div class="circle-img fundo-gradiente">

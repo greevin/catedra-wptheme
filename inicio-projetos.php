@@ -16,7 +16,7 @@
 			$periodo_fim = get_post_meta( $post->ID, '_periodo_fim_projeto_input', true );
 			$situacao = get_post_meta( $post->ID, '_situacao_input', true );
 
-			if( $periodo_fim >= Carbon::now()->timestamp ) :
+			if( $periodo_fim >= Carbon::now()->timestamp || $situacao == 1 ) :
 		?>
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 fix-safari" style="padding:5px;">
 			<div class="fundo-gradiente">
