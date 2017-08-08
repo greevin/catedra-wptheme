@@ -7,7 +7,7 @@
 
 	<div class="entry-news row-equal">
 	<?php 
-		$args = array( 'post_type'=> array('post', 'wp_pessoa', 'wp_projeto'), 'showposts'=>-1);
+		$args = array( 'post_type'=> 'post', 'showposts'=>-1);
 		$all_posts = get_posts( $args );
 		if($all_posts) : foreach($all_posts as $post) : setup_postdata( $post );
 	?>

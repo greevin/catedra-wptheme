@@ -8,7 +8,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<?php 
-			$args = array('post_type' => array('post', 'wp_pessoa', 'wp_projeto'), 'showposts' => -1 );
+			$args = array('post_type' => 'post', 'showposts' => -1 );
 			$loop = new WP_Query( $args );
 		?>
 		<?php
