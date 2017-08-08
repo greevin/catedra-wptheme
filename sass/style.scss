@@ -143,13 +143,22 @@ video {
  * Custom Styles
  */
 
+// .fundo-gradiente {
+//     background: #FFFFFF;  /* fallback for old browsers */
+// background: -webkit-linear-gradient(to right, #f2f2f2, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
+// background: linear-gradient(to right, #f2f2f2, #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+// }
+
 .fundo-gradiente {
-    /* fallback for old browsers */
-    background: $blue-lightest;
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, $blue-lightest, $blue-darkest);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, $blue-lightest, $blue-darkest);
+    background: #525252;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, $blue-dark, $blue-light);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, $blue-dark, $blue-light); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.fundo-branco {
+    background: $white;
 }
 
 .go-top {
