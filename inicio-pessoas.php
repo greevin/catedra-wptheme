@@ -17,7 +17,7 @@ use Carbon\Carbon;
 
 			if( $periodo_fim >= Carbon::now()->timestamp || $situacao == 1 ) :
 		?>
-		<div class="col-sm-4 col-md-4 col-lg-4 fix-safari" style="padding-bottom: 15px;">
+		<div class="col-sm-4 col-md-4 col-lg-4 fix-safari" style="padding-bottom: 15px;width: 100%;">
 			<div class="circle-img fundo-gradiente">
 				<a href="<?php the_permalink(); ?>">
 					<span> 
@@ -47,7 +47,7 @@ use Carbon\Carbon;
 						} ?>
 				</a>
 			</h3>
-			<div class="person-content" style="padding: 0 10%;">
+			<div class="person-content">
 				<p>
 					 <?php echo wp_trim_words( get_the_content(), 30, '...' ); ?> 
 				</p>

@@ -357,7 +357,7 @@ table {
     background-color: transparent;
     box-shadow: 0 0 0;
     margin: 0;
-    padding: 7.6923%;
+    padding: 1%;
 }
 
 .page-pagina-inicial {
@@ -382,7 +382,7 @@ article .entry-content {
 }
 
 section .entry-title {
-    margin-bottom: 3%;
+    margin: 5% 0;
 }
 
 .entry-header {
@@ -392,6 +392,10 @@ section .entry-title {
         margin-top: 3%;
         margin-bottom: 3%;
     }
+}
+
+.person-content {
+    padding: 0;
 }
 
 .person-content,
@@ -745,6 +749,9 @@ input[type="submit"]:focus {
 
 @media screen and (min-width: 59.6875em) {
     @include reduce-sidebar-size();
+    .person-content {
+        padding: 0 10%;
+    }
     .hentry {
         padding: 5% 0;
     } // Language Selector
@@ -816,6 +823,9 @@ input[type="submit"]:focus {
  */
 
 @media screen and (min-width: 77.5em) {
+    .person-content {
+        padding: 0 10% !important;
+    }
     .site-title {
         font-size: 3rem;
         font-size: 30px;

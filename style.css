@@ -301,7 +301,7 @@ table {
   background-color: transparent;
   box-shadow: 0 0 0;
   margin: 0;
-  padding: 7.6923%;
+  padding: 1%;
 }
 
 .page-pagina-inicial {
@@ -326,7 +326,7 @@ article .entry-content {
 }
 
 section .entry-title {
-  margin-bottom: 3%;
+  margin: 5% 0;
 }
 
 .entry-header {
@@ -336,6 +336,10 @@ section .entry-title {
   font-size: 1.65rem;
   margin-top: 3%;
   margin-bottom: 3%;
+}
+
+.person-content {
+  padding: 0;
 }
 
 .person-content p,
@@ -694,6 +698,10 @@ input[type="submit"]:focus {
     width: 25%;
   }
 
+  .person-content {
+    padding: 0 10%;
+  }
+
   .hentry {
     padding: 5% 0;
   }
@@ -776,6 +784,10 @@ input[type="submit"]:focus {
  * Desktop Large 1240px
  */
 @media screen and (min-width: 77.5em) {
+  .person-content {
+    padding: 0 10% !important;
+  }
+
   .site-title {
     font-size: 3rem;
     font-size: 30px;
