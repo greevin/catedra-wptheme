@@ -77,9 +77,61 @@ video {
   margin-bottom: .5em;
 }
 
-address, pre, hr, ul, ol, dl, dd, table {
+address,
+pre,
+hr,
+ul,
+ol,
+dl,
+dd,
+table {
   font-size: 1.5rem;
   margin: 0 5%;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  font-family: "genlight", sans-serif;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-family: "genlight", sans-serif;
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-family: "genlight", sans-serif;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-family: "genlight", sans-serif;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font-family: "genlight", sans-serif;
+}
+
+.pagination .prev,
+.pagination .next {
+  background-color: transparent;
+  color: black;
+}
+
+.pagination .next:hover,
+.pagination .next:focus {
+  background-color: transparent;
+  margin-right: -10px;
+}
+
+.pagination .prev:hover,
+.pagination .prev:focus {
+  background-color: transparent;
+  margin-left: -10px;
 }
 
 /**
@@ -643,6 +695,12 @@ input[type="submit"]:focus {
     padding-right: 10%;
   }
 
+  .widget_search {
+    position: absolute;
+    top: 87vh;
+    width: 100%;
+  }
+
   .site-header {
     border-bottom: 0;
     padding: 20% 10% 0;
@@ -686,6 +744,11 @@ input[type="submit"]:focus {
 
   .dropdown-toggle {
     top: -1px;
+  }
+
+  .pagination {
+    margin: 0 35% 8.333%;
+    box-shadow: 0 0 0;
   }
 }
 /**

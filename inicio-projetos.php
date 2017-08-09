@@ -24,7 +24,7 @@
 				<div class="project-element" style="background-image: url(<?php echo $urlImg; ?>);"></div>
 			</div>
 
-			<div class="">
+			<div>
 				<div class="project-content">
 					<?php the_title( sprintf('<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h2>' ); ?>
 					<div class="more-link-container">
@@ -32,19 +32,6 @@
 					</div>
 				</div>
 			</div>
-
-
-			<!-- <div class="fundo-gradiente">
-				<?php $urlImg = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ); ?>
-				<div class="project-element blog-element" style="background-image: url(<?php echo $urlImg; ?>);">
-					<div class="project-date">
-
-					</div>
-					<div>
-						<?php the_title( sprintf('<h2 class="entry-title" style="margin-top: 0px;margin-bottom: 0px;"><a class="project-title" href="%s">', esc_url( get_permalink() ) ),'</a></h2>' ); ?>
-					</div>
-				</div>
-			</div> -->
 		</div>
 		<?php
 			endif;

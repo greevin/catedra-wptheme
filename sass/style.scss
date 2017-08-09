@@ -138,9 +138,61 @@ video {
     margin-bottom: .5em;
 }
 
-address, pre, hr, ul, ol, dl, dd, table {
+address,
+pre,
+hr,
+ul,
+ol,
+dl,
+dd,
+table {
     font-size: 1.5rem;
     margin: 0 5%;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    font-family: $font-text;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    font-family: $font-text;
+    opacity: 1;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    font-family: $font-text;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-family: $font-text;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    font-family: $font-text;
+}
+
+.pagination .prev,
+.pagination .next {
+    background-color: transparent;
+    color: black;
+}
+
+.pagination .next:hover,
+.pagination .next:focus {
+    background-color: transparent;
+    margin-right: -10px;
+}
+
+.pagination .prev:hover,
+.pagination .prev:focus {
+    background-color: transparent;
+    margin-left: -10px;
 }
 
 
@@ -149,10 +201,12 @@ address, pre, hr, ul, ol, dl, dd, table {
  */
 
 .fundo-gradiente {
-    background: #525252;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, $blue-dark, $blue-light);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, $blue-dark, $blue-light); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #525252;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, $blue-dark, $blue-light);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, $blue-dark, $blue-light);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .fundo-branco {
@@ -211,8 +265,7 @@ address, pre, hr, ul, ol, dl, dd, table {
         text-transform: uppercase;
         transition: all 0.5s ease 0s;
         cursor: pointer;
-        font-family: $font-text;
-        // -webkit-font-smoothing: antialiased;
+        font-family: $font-text; // -webkit-font-smoothing: antialiased;
     }
     & a:hover {
         margin-left: 20px;
@@ -283,8 +336,7 @@ address, pre, hr, ul, ol, dl, dd, table {
 .main-navigation li {
     border-top: 0;
     border-bottom: 0;
-    font-family: $font-text;
-    // -webkit-font-smoothing: antialiased;
+    font-family: $font-text; // -webkit-font-smoothing: antialiased;
 }
 
 .nav-menu {
@@ -693,6 +745,11 @@ input[type="submit"]:focus {
             padding-right: 10%;
         }
     }
+    .widget_search {
+        position: absolute;
+        top: 87vh;
+        width: 100%;
+    }
     .site-header {
         border-bottom: 0;
         padding: 20% 10% 0;
@@ -710,7 +767,7 @@ input[type="submit"]:focus {
         flex-wrap: wrap;
         height: 100%;
         & div {
-           padding-left: 0; 
+            padding-left: 0;
         }
     }
     @include fix-safari();
@@ -727,6 +784,10 @@ input[type="submit"]:focus {
     }
     .dropdown-toggle {
         top: -1px;
+    }
+    .pagination {
+        margin: 0 35% 8.333%;
+        box-shadow: 0 0 0;
     }
 }
 
@@ -745,7 +806,7 @@ input[type="submit"]:focus {
         flex-wrap: wrap;
         height: 100%;
         & div {
-           padding-left: 0; 
+            padding-left: 0;
         }
     }
     .site-footer {
