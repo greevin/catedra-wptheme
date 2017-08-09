@@ -27,6 +27,11 @@
 		<div class="post-content fix-safari" style="height: 100%;margin-bottom: 0px;">
 				<div class="sideText">
 					<?php the_title( sprintf('<h1 class="entry-title" style="text-align: center;"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
+					<?php if ( ! has_excerpt() ) {
+      						echo '';
+						} else { 
+							the_excerpt();
+						} ?>
 					<?php if (get_the_post_thumbnail() != '') : ?>
 					<div class="align-image">
 						<?php the_post_thumbnail( 'medium' ); ?>

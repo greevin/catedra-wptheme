@@ -40,11 +40,12 @@ use Carbon\Carbon;
 			<h3 class="person-title">
 				<a href="<?php the_permalink(); ?>">
 					<?php the_title(); ?>
+					<?php the_excerpt(); ?>
 				</a>
 			</h3>
 			<div class="person-content" style="padding: 0 10%;">
 				<p>
-					<?php echo _get_excerpt(20); ?>
+					 <?php echo wp_trim_words( get_the_content(), 30, '...' ); ?> 
 				</p>
 				<div class="more-link-container">
 					<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e( 'Leia Mais', 'twentyfifteen-child' ) ?></a>

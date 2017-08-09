@@ -26,6 +26,7 @@ function pessoas_custom_post_type (){
 		'hierarchical' => false,
 		'supports' => array(
 			'title',
+			'excerpt',
 			'editor',
 			'thumbnail',
 			'revisions',

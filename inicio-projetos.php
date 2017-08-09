@@ -27,6 +27,11 @@
 			<div>
 				<div class="project-content">
 					<?php the_title( sprintf('<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h2>' ); ?>
+					<?php if ( ! has_excerpt() ) {
+      						echo '';
+						} else { 
+							the_excerpt();
+						} ?>
 					<div class="more-link-container">
 						<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e( 'Leia Mais', 'twentyfifteen-child' ) ?></a>
 					</div>
