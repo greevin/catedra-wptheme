@@ -5,15 +5,15 @@
  */
 ?>
 	<div class="entry-news row-equal">
-	<?php 
-		$args = array( 'post_type'=> 'post', 'showposts' => get_option('posts_per_page') );
-		$all_posts = get_posts( $args );
-		if($all_posts) : foreach($all_posts as $post) : setup_postdata( $post );
+	<?php
+        $args = array( 'post_type'=> 'post', 'showposts' => get_option('posts_per_page') );
+        $all_posts = get_posts($args);
+        if ($all_posts) : foreach ($all_posts as $post) : setup_postdata($post);
 ?>
 
 
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 post-content fix-safari">
-			<?php $urlImg = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ); ?>
+			<?php $urlImg = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())); ?>
 			<div class="<?php echo $urlImg == false ? 'fundo-gradiente' : 'fundo-branco'; ?>">
 				<div class="blog-element" style="background-image: url(<?php echo $urlImg; ?>);"></div>
 			</div>
@@ -23,22 +23,20 @@
 					<p>
 						<?php echo get_the_date(); ?>
 					</p>
-					<?php the_title( sprintf('<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h2>' ); ?>
+					<?php the_title(sprintf('<h2 class="entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h2>'); ?>
 					<p>
 						<?php echo _get_excerpt(35); ?>
 					</p>
 					<div class="more-link-container">
-						<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e( 'Leia Mais', 'twentyfifteen-child' ) ?></a>
+						<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e('Leia Mais', 'twentyfifteen-child') ?></a>
 					</div>
 				</div>
 			</div>
 		</div>
 
 	<?php
-		endforeach;
-		endif;
-		wp_reset_postdata();
+        endforeach;
+        endif;
+        wp_reset_postdata();
 ?>
 	</div>
-
-	

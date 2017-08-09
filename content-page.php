@@ -10,7 +10,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('panel-title-container'); ?>>
     <header class="entry-header panel-title-container">
-        <?php the_title( '<h1 class="entry-title" style="font-size: 4rem;">', '</h1>' ); ?>
+        <?php the_title('<h1 class="entry-title" style="font-size: 4rem;">', '</h1>'); ?>
     </header><!-- .entry-header -->
 
     <?php

@@ -14,7 +14,7 @@
 
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<!-- <div class="site-info"> -->
-				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Sidebar footer')): ?>
+				<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('Sidebar footer')): ?>
 				<?php endif; ?>
 			<!-- </div> .site-info  -->
 		</footer><!-- .site-footer -->

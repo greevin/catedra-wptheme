@@ -18,34 +18,33 @@ get_header(); ?>
 	<main id="main" role="main">
 
 		<?php
-		// pega todas as páginas de acordo com a ordem do menu
-		$args = array(
-			'sort_order' => 'asc',
-			'sort_column' => 'menu_order',
-			'post_type' => 'page',
-			'post_status' => 'publish'
-		); 
-		$pages = get_pages($args);
+        // pega todas as páginas de acordo com a ordem do menu
+        $args = array(
+            'sort_order' => 'asc',
+            'sort_column' => 'menu_order',
+            'post_type' => 'page',
+            'post_status' => 'publish'
+        );
+        $pages = get_pages($args);
 
-		foreach ( $pages as $page ) {
-			$content = $page->post_content;
-			$content = apply_filters( 'the_content', $content );
+        foreach ($pages as $page) {
+            $content = $page->post_content;
+            $content = apply_filters('the_content', $content);
 
-			$image_url = wp_get_attachment_url( get_post_thumbnail_id($page) );
-		?>
-			
+            $image_url = wp_get_attachment_url(get_post_thumbnail_id($page)); ?>
+
 		<div id="<?php echo $page->post_name; ?>" class="page-<?php echo $page->post_name; ?>">
 			<section id="post-<?php echo $page->ID; ?>" <?php post_class(); ?>>
-				
+
 				<!-- Layout padrão de página -->
 				<div class="entry-header">
 					<h1 class="entry-title" style="display: flex;align-items: center;">
-						<a href="<?php echo get_page_link( $page->ID ); ?>"><?php echo $page->post_title; ?></a>
+						<a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title; ?></a>
 						<?php if ($page->post_name == 'novidades') : ?>
-						<a href="<?php echo get_page_link( $page->ID ); ?>" class="leia-mais-<?php echo $page->post_name; ?>"><span class="dashicons dashicons-arrow-right-alt"></span><?php _e('Ler todas', 'twentyfifteen-child') ?></a>
+						<a href="<?php echo get_page_link($page->ID); ?>" class="leia-mais-<?php echo $page->post_name; ?>"><span class="dashicons dashicons-arrow-right-alt"></span><?php _e('Ler todas', 'twentyfifteen-child') ?></a>
 						<?php endif; ?>
 					</h1>
-					<?php if (! empty($image_url )) : ?>
+					<?php if (! empty($image_url)) : ?>
 					<img src="<?php echo $image_url; ?>">
 					<?php endif; ?>
 					<?php echo $content; ?>
@@ -53,15 +52,15 @@ get_header(); ?>
 				<!-- .entry-header -->
 
 				<!-- Template para novidades, pessoas e projetos -->
-				 <div class="entry-content"> 
-					<?php get_template_part( 'inicio', $page->post_name ); ?>	
-				 </div> 
+				 <div class="entry-content">
+					<?php get_template_part('inicio', $page->post_name); ?>
+				 </div>
 				 <!-- .entry-content -->
 			</section>
 		</div>
 		<?php
-		} // fim do foreach
-		?>
+        } // fim do foreach
+        ?>
 	</main><!-- .site-main -->
 </div><!-- .content-area -->
 

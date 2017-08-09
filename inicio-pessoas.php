@@ -40,7 +40,11 @@ use Carbon\Carbon;
 			<h3 class="person-title">
 				<a href="<?php the_permalink(); ?>">
 					<?php the_title(); ?>
-					<?php the_excerpt(); ?>
+					<?php if ( ! has_excerpt() ) {
+      						echo '';
+						} else { 
+							the_excerpt();
+						} ?>
 				</a>
 			</h3>
 			<div class="person-content" style="padding: 0 10%;">

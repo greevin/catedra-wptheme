@@ -12,103 +12,103 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('page-background'); ?> style="padding-top:0;padding-bottom:0;">
 	<?php
-		$agencia_financiadora = get_post_meta( $post->ID, '_agencia_financiadora_input', true );
-		$periodo_inicio = get_post_meta( $post->ID, '_periodo_inicio_projeto_input', true );
-		$periodo_fim = get_post_meta( $post->ID, '_periodo_fim_projeto_input', true );
-		$coordenadores = get_post_meta( $post->ID, '_people', true );
-		$equipes = get_post_meta( $post->ID, '_equipes', true );
-		$situacao = get_post_meta( $post->ID, '_situacao_input', true );
-		$noticias = get_post_meta( $post->ID, '_checked_posts', true );
+        $agencia_financiadora = get_post_meta($post->ID, '_agencia_financiadora_input', true);
+        $periodo_inicio = get_post_meta($post->ID, '_periodo_inicio_projeto_input', true);
+        $periodo_fim = get_post_meta($post->ID, '_periodo_fim_projeto_input', true);
+        $coordenadores = get_post_meta($post->ID, '_people', true);
+        $equipes = get_post_meta($post->ID, '_equipes', true);
+        $situacao = get_post_meta($post->ID, '_situacao_input', true);
+        $noticias = get_post_meta($post->ID, '_checked_posts', true);
 
-		$project_info = ! empty( $agencia_financiadora) || ! empty( $periodo_inicio) || ! empty( $periodo_fim) || ! empty( $coordenadores) || ! empty( $equipes) || ! empty( $situacao) || ! empty( $noticias);
+        $project_info = ! empty($agencia_financiadora) || ! empty($periodo_inicio) || ! empty($periodo_fim) || ! empty($coordenadores) || ! empty($equipes) || ! empty($situacao) || ! empty($noticias);
 ?>
 
 	<div class="entry-content">
 		<div class="post-content fix-safari" style="height: 100%;margin-bottom: 0px;">
 				<div class="sideText">
-					<?php the_title( sprintf('<h1 class="entry-title" style="text-align: center;"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
-					<?php if ( ! has_excerpt() ) {
-      						echo '';
-						} else { 
-							the_excerpt();
-						} ?>
+					<?php the_title(sprintf('<h1 class="entry-title" style="text-align: center;"><a href="%s">', esc_url(get_permalink())), '</a></h1>'); ?>
+					<?php if (! has_excerpt()) {
+    echo '';
+} else {
+    the_excerpt();
+} ?>
 					<?php if (get_the_post_thumbnail() != '') : ?>
 					<div class="align-image">
-						<?php the_post_thumbnail( 'medium' ); ?>
+						<?php the_post_thumbnail('medium'); ?>
 					</div>
 				<div>
-					<?php the_content( ); ?>
+					<?php the_content(); ?>
 				</div>
 				<?php else : ?>
-					 <p><?php the_content( ); ?></p>
+					 <p><?php the_content(); ?></p>
 					 <?php endif; ?>
 		<div>
 	</div><!-- .entry-content -->
 
 	<?php
-		// Author bio.
-		if ( is_single() && get_the_author_meta( 'description' ) ) :
-			get_template_part( 'author-bio' );
-		endif;
-	?>
+        // Author bio.
+        if (is_single() && get_the_author_meta('description')) :
+            get_template_part('author-bio');
+        endif;
+    ?>
 </article><!-- #post-## -->
 
-<?php if( $project_info == true ) : ?>
+<?php if ($project_info == true) : ?>
 <section class="entry-section">
 	<table>
 			<tbody>
-				<?php if( ! empty( $agencia_financiadora) ) : ?>
+				<?php if (! empty($agencia_financiadora)) : ?>
 				<tr>
-					<td><b><?php _e( 'Agência(s) financiadora(s)', 'twentyfifteen-child' )?></b></td>
+					<td><b><?php _e('Agência(s) financiadora(s)', 'twentyfifteen-child')?></b></td>
 					<td><?php echo $agencia_financiadora; ?></td>
 				</tr>
 				<?php endif; ?>
-				<?php if( ! empty( $periodo_inicio || $periodo_fim) ) : ?>
+				<?php if (! empty($periodo_inicio || $periodo_fim)) : ?>
 				<tr>
-					<td><b><?php _e( 'Período', 'twentyfifteen-child' )?></b></td>
-					<td><?php echo date( get_option( 'date_format' ), $periodo_inicio ) ?> - <?php echo date( get_option( 'date_format' ), $periodo_fim ); ?></td>
+					<td><b><?php _e('Período', 'twentyfifteen-child')?></b></td>
+					<td><?php echo date(get_option('date_format'), $periodo_inicio) ?> - <?php echo date(get_option('date_format'), $periodo_fim); ?></td>
 				</tr>
 				<?php endif; ?>
-				<?php if( ! empty( $coordenadores) ) : ?>
+				<?php if (! empty($coordenadores)) : ?>
 				<tr>
-					<td><b><?php _e( 'Coodernador(es)', 'twentyfifteen-child' )?></b></td>
-					<td class="projects-link"><?php 
-						foreach ( $coordenadores as $person ) {
-							$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
-							echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $person . '<br />';
-						}
-					 ?></td>
+					<td><b><?php _e('Coodernador(es)', 'twentyfifteen-child')?></b></td>
+					<td class="projects-link"><?php
+                        foreach ($coordenadores as $person) {
+                            $post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
+                            echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $person . '<br />';
+                        }
+                     ?></td>
 				</tr>
 				<?php endif; ?>
-				<?php if( ! empty( $equipes) ) : ?>
+				<?php if (! empty($equipes)) : ?>
 				<tr>
-					<td><b><?php _e( 'Equipe', 'twentyfifteen-child' )?></b></td>
-					<td class="projects-link"><?php 
-						foreach ( $equipes as $equipe ) {
-					$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$equipe' AND post_status = 'publish' ");
-					echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $equipe . '<br />';
-				}
-					 ?></td>
+					<td><b><?php _e('Equipe', 'twentyfifteen-child')?></b></td>
+					<td class="projects-link"><?php
+                        foreach ($equipes as $equipe) {
+                            $post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$equipe' AND post_status = 'publish' ");
+                            echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $equipe . '<br />';
+                        }
+                     ?></td>
 				</tr>
 				<?php endif; ?>
-				<?php if( ! empty( $noticias) ) : ?>
+				<?php if (! empty($noticias)) : ?>
 				<tr>
-					<td><b><?php _e( 'Notícias', 'twentyfifteen-child' )?></b></td>
-					<td class="projects-link"><?php 
-						foreach ( $noticias as $noticia ) {
-							$post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$noticia' AND post_status = 'publish' ");
-							echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $noticia . '<br />';
-						}
-					 ?></td>
+					<td><b><?php _e('Notícias', 'twentyfifteen-child')?></b></td>
+					<td class="projects-link"><?php
+                        foreach ($noticias as $noticia) {
+                            $post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$noticia' AND post_status = 'publish' ");
+                            echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $noticia . '<br />';
+                        }
+                     ?></td>
 				</tr>
 				<?php endif; ?>
-				<?php if( ! empty( $situacao) ) : ?>
+				<?php if (! empty($situacao)) : ?>
 				<tr>
-					<td><b><?php _e( 'Situação', 'twentyfifteen-child' )?></b></td>
+					<td><b><?php _e('Situação', 'twentyfifteen-child')?></b></td>
 					<td><?php echo $situacao; ?></td>
 				</tr>
 				<?php endif; ?>
 			</tbody>
-		</table>				
+		</table>
 </section>
 <?php endif; ?>
