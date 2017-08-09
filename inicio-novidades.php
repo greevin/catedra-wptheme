@@ -4,13 +4,13 @@
  *
  */
 ?>
-
 	<div class="entry-news row-equal">
 	<?php 
-		$args = array( 'post_type'=> 'post', 'showposts' => -1 );
+		$args = array( 'post_type'=> 'post', 'showposts' => get_option('posts_per_page') );
 		$all_posts = get_posts( $args );
 		if($all_posts) : foreach($all_posts as $post) : setup_postdata( $post );
-	?>
+?>
+
 
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 post-content fix-safari">
 			<?php $urlImg = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ); ?>
@@ -38,5 +38,7 @@
 		endforeach;
 		endif;
 		wp_reset_postdata();
-	?>
+?>
 	</div>
+
+	

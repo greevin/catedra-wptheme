@@ -685,6 +685,11 @@ input[type="submit"]:focus {
     border: 1px solid;
 }
 
+.leia-mais-novidades {
+        font-size: 1.75rem;
+        margin-left: 20px;
+    }
+
 
 /**
  * Media Queries
@@ -720,6 +725,11 @@ input[type="submit"]:focus {
         display: flex;
         flex-wrap: wrap;
         height: 100%;
+    }
+    .leia-mais-novidades {
+        font-size: 1.75rem;
+        margin-top: 5px;
+        margin-left: 20px;
     }
     @include fix-safari();
 }
@@ -786,8 +796,13 @@ input[type="submit"]:focus {
         top: -1px;
     }
     .pagination {
-        margin: 0 35% 8.333%;
+        margin: 0 25% 8.333%;
         box-shadow: 0 0 0;
+    }
+    .leia-mais-novidades {
+        font-size: 1.75rem;
+        margin-top: 5px;
+        margin-left: 20px;
     }
 }
 
