@@ -686,9 +686,13 @@ input[type="submit"]:focus {
 }
 
 .leia-mais-novidades {
-        font-size: 1.75rem;
-        margin-left: 20px;
-    }
+    font-size: 1.75rem;
+    margin-left: 20px;
+}
+
+.menu-item-description {
+    display: none;
+}
 
 
 /**

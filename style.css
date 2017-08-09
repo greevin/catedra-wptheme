@@ -623,6 +623,10 @@ input[type="submit"]:focus {
   margin-left: 20px;
 }
 
+.menu-item-description {
+  display: none;
+}
+
 /**
  * Media Queries
  */
