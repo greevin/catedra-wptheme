@@ -26,12 +26,7 @@
 
 	<div class="entry-content">
 		<div style="text-align: center;">
-						<?php the_title(sprintf('<h1 class="entry-title" style="margin-bottom:0;"><a href="%s">', esc_url(get_permalink())), '</a></h1>'); ?>
-						<?php if (! has_excerpt()) {
-							echo '';
-						} else {
-							the_excerpt();
-						} ?>
+			<?php the_title(sprintf('<h1 class="entry-title" style="margin-bottom:0;"><a href="%s">', esc_url(get_permalink())), '</a></h1>'); ?>
 		</div>
 				<div class="sideText">
 					<?php if (get_the_post_thumbnail() != '') : ?>
