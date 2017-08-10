@@ -68,7 +68,9 @@
 				<?php if (! empty($periodo_inicio || $periodo_fim)) : ?>
 				<tr>
 					<td><b><?php _e('Período', 'twentyfifteen-child')?></b></td>
-					<td><?php echo date(get_option('date_format'), $periodo_inicio) ?> - <?php echo date(get_option('date_format'), $periodo_fim); ?></td>
+					<td><?php echo date(get_option('date_format'), $periodo_inicio) ?>
+					<?php $fim = ! empty($periodo_fim) ? date(get_option('date_format'), $periodo_fim) : __('atual', 'twentyfifteen-child'); ?>
+					<?php echo ' - ' . $fim ?></td>
 				</tr>
 				<?php endif; ?>
 				<?php if (! empty($coordenadores)) : ?>
@@ -107,7 +109,8 @@
 				<?php if (! empty($situacao)) : ?>
 				<tr>
 					<td><b><?php _e('Situação', 'twentyfifteen-child')?></b></td>
-					<td><?php echo $situacao; ?></td>
+					<?php $situacao ? 'Ativo' : 'Inativo'; ?>
+					<td><?php echo $situacao ? __('Ativo', 'twentyfifteen-child') : __('Inativo', 'twentyfifteen-child'); ?></td>
 				</tr>
 				<?php endif; ?>
 			</tbody>
