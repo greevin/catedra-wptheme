@@ -45,7 +45,7 @@ get_header(); ?>
 						<?php endif; ?>
 					</h1>
 					<?php if (! empty($image_url)) : ?>
-					<img src="<?php echo $image_url; ?>">
+						<img src="<?php echo $image_url; ?>">
 					<?php endif; ?>
 					<?php echo $content; ?>
 				</div>
@@ -60,6 +60,7 @@ get_header(); ?>
 		</div>
 		<?php
         } // fim do foreach
+		wp_reset_postdata();
         ?>
 	</main><!-- .site-main -->
 </div><!-- .content-area -->

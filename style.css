@@ -255,6 +255,11 @@ table {
   margin: 5px 0 10px 10px;
 }
 
+.common-title h2, .page-content h2,
+.entry-summary h2, .entry-content h2, .comment-content h2, .page-content h2, .entry-summary h2, .entry-content h2, .comment-content h2 {
+  line-height: 1 !important;
+}
+
 /**
  * Header
  */

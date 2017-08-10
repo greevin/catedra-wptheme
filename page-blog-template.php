@@ -26,10 +26,8 @@ get_header(); ?>
 		</article>
 
 		<?php
-            // $args = array('post_type' => 'post', 'showposts' => get_option('posts_per_page') );
-            // $loop = new WP_Query( $args );
-
-            global $paged;
+            
+        	global $paged;
 
             query_posts(array(
             'post_type' => 'post', // can be custom post type
@@ -56,7 +54,13 @@ get_header(); ?>
 						<p>
 							<?php echo get_the_date(); ?>
 						</p>
-						<?php the_title(sprintf('<h2 class="entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h2>'); ?>
+						<?php 
+							if ( is_sticky() ) {
+								the_title(sprintf('<h2 class="entry-title"><a href="%s"><span class="dashicons dashicons-sticky"></span>', esc_url(get_permalink())), '</a></h2>');
+							} else {
+								the_title(sprintf('<h2 class="entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h2>');
+							}
+						?>
 						<p>
 							<?php echo _get_excerpt(35); ?>
 						</p>
