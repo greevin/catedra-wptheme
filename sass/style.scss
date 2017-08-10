@@ -73,7 +73,6 @@ $border-radius: 100%;
     }
 }
 
-
 /**
  * Typography
  */
@@ -84,6 +83,7 @@ input,
 select,
 textarea,
 table,
+span,
 p {
     font-family: $font-text;
     @include font-smoothing();
@@ -94,8 +94,7 @@ h2,
 h3,
 h4,
 h5,
-h6,
-span {
+h6 {
     font-family: $font-headers;
     @include font-smoothing();
 }
@@ -113,6 +112,14 @@ td {
     outline: 0;
     vertical-align: baseline;
     background: transparent;
+}
+
+blockquote, blockquote p {
+	border-left: 0;
+	font-style: italic;
+	line-height: 1.6667;
+	margin-bottom: 1.6667em;
+	padding-left: 2em;
 }
 
 table td:nth-child(1) {
@@ -308,8 +315,11 @@ table {
     margin: 5px 0 10px 10px;
 }
 
-.common-title h2, .page-content h2, .entry-summary h2, .entry-content h2, .comment-content h2 {
-
+.common-title h2,
+.page-content h2,
+.entry-summary h2,
+.entry-content h2,
+.comment-content h2 {
     line-height: 1 !important;
 }
 
@@ -378,12 +388,15 @@ table {
     padding: 0;
 }
 
-section .entry-content,
 .page-novidades .entry-header,
 .page-pessoas .entry-header,
-.page-projetos .entry-header,
-article .entry-content {
+.page-projetos .entry-header {
     padding: 0 3%;
+}
+
+section .entry-content,
+article .entry-content {
+    padding: 2% 5%;
 }
 
 section .entry-title {
@@ -480,6 +493,12 @@ section .entry-title {
     }
 }
 
+.sideText a, .text-content a  {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .entry-section {
     font-size: 1.5rem;
     padding: 3%;
@@ -488,7 +507,7 @@ section .entry-title {
     }
     & table tr td {
         word-wrap: break-word;
-        vertical-align: middle;
+        vertical-align: top;
     }
     & table tr td span {
         margin-top: 3px;
@@ -863,6 +882,5 @@ input[type="submit"]:focus {
         top: -3px;
     }
 }
-
 
 /* ---------------------------------------------- */

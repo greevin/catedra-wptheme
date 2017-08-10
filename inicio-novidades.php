@@ -11,7 +11,7 @@
         // if ($all_posts) : foreach ($all_posts as $post) : setup_postdata($post);
 		 query_posts(array(
             'post_type' => 'post', // can be custom post type
-            'showposts' => get_option('posts_per_page') - 2,
+            'showposts' => get_option('posts_per_page') / 2,
         ));
 
 		if (have_posts()):

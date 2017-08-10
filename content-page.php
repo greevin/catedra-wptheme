@@ -18,6 +18,6 @@
         twentyfifteen_post_thumbnail();
     ?>
 </article><!-- #post-## -->
-<div class="entry-content">
+<div class="entry-content text-content">
     <?php the_content(); ?>
 </div><!-- .entry-content -->

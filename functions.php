@@ -177,7 +177,7 @@ function twentyfifteen_child_customizer_css()
     $css .= '.page-background { background-color: ' . $post_background_color . ' !important; }';
 
     $post_text_color = get_theme_mod('post-text-color', '#ffffff');
-    $css .= '.sideText p { color: ' . $post_text_color . '; }';
+    $css .= '.sideText p, ol, ul { color: ' . $post_text_color . '; }';
 
     $more_info_background_color = get_theme_mod('more-info-background-color', '#123652');
     $css .= '.entry-section { background-color: ' . $more_info_background_color . '; }';
