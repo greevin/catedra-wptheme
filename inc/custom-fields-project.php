@@ -46,6 +46,7 @@ function add_projects_info_meta_box_callback($post)
 
 
     $agencia_financiadora = isset($value['_agencia_financiadora_input']) ? esc_attr($value['_agencia_financiadora_input'][0]) : '';
+    $parceiros = isset($value['_parceiros_input']) ? esc_attr($value['_parceiros_input'][0]) : '';
     $projetos = isset($value['_people']) ? get_post_meta($post->ID, '_people', true) : array();
     $equipe_array = isset($value['_equipes']) ? get_post_meta($post->ID, '_equipes', true) : array();
     $periodo_inicio_projeto = isset($value['_periodo_inicio_projeto_input']) ? esc_attr($value['_periodo_inicio_projeto_input'][0]) : '';
@@ -62,6 +63,14 @@ function add_projects_info_meta_box_callback($post)
         </td>
         <td colspan="4">
             <input type="text" name="agencia_financiadora_input" class="regular-text" value="<?php echo $agencia_financiadora; ?>">
+        </td>
+    </tr>
+    <tr>
+        <td class="person_meta_box_td" colspan="2">
+            <label for="parceiros_input"><b><?php _e('Parceiros', 'twentyfifteen-child')?></b></label>
+        </td>
+        <td colspan="4">
+            <input type="text" name="parceiros_input" class="regular-text" value="<?php echo $parceiros; ?>">
         </td>
     </tr>
 
@@ -180,6 +189,11 @@ function save_project_info_meta_box_data($post_id)
     if (isset($_POST['agencia_financiadora_input']) && $_POST['agencia_financiadora_input'] != '') {
         $agencia_financiadora_input = sanitize_text_field($_POST['agencia_financiadora_input']);
         update_post_meta($post_id, '_agencia_financiadora_input', $agencia_financiadora_input);
+    }
+
+    if (isset($_POST['parceiros_input']) && $_POST['parceiros_input'] != '') {
+        $parceiros_input = sanitize_text_field($_POST['parceiros_input']);
+        update_post_meta($post_id, '_parceiros_input', $parceiros_input);
     }
 
     if (isset($_POST['periodo_inicio_input']) && $_POST['periodo_inicio_input'] != '') {

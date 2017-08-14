@@ -13,6 +13,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('page-background'); ?> style="padding-top:0;">
 	<?php
         $agencia_financiadora = get_post_meta($post->ID, '_agencia_financiadora_input', true);
+		$parceiros = get_post_meta($post->ID, '_parceiros_input', true);
         $periodo_inicio = get_post_meta($post->ID, '_periodo_inicio_projeto_input', true);
         $periodo_fim = get_post_meta($post->ID, '_periodo_fim_projeto_input', true);
         $coordenadores = get_post_meta($post->ID, '_people', true);
@@ -58,6 +59,12 @@
 				<tr>
 					<td><b><?php _e('Agência(s) financiadora(s)', 'twentyfifteen-child')?></b></td>
 					<td><?php echo $agencia_financiadora; ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if (! empty($parceiros)) : ?>
+				<tr>
+					<td><b><?php _e('Parceiros', 'twentyfifteen-child')?></b></td>
+					<td><?php echo $parceiros; ?></td>
 				</tr>
 				<?php endif; ?>
 				<?php if (! empty($periodo_inicio || $periodo_fim)) : ?>
