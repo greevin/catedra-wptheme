@@ -8,26 +8,26 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<?php
-        $args = array('post_type' => 'wp_projeto', 'showposts' => -1 );
-        $loop = new WP_Query($args);
-    ?>
+			$args = array('post_type' => 'wp_projeto', 'showposts' => -1 );
+			$loop = new WP_Query($args);
+    	?>
 		<?php
         // Start the loop.
         while (have_posts()) : the_post();
-    ?>
+    	?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class('panel-title-container'); ?>>
-				<?php
-            twentyfifteen_post_thumbnail();
-        ?>
+				<?php twentyfifteen_post_thumbnail(); ?>
 
 				<header class="entry-header">
 					<?php the_title('<h1 class="entry-title" style="font-size: 4rem;">', '</h1>'); ?>
 				</header>
 				<!-- .entry-header -->
 
-				<div class="entry-content entry-projects-content">
-					<?php the_content(); ?>
-				</div>
+				<?php if (get_the_content() != '') : ?>
+					<div class="entry-content">
+						<?php the_content(); ?>
+					</div>
+				<?php endif; ?>
 				<!-- .entry-content -->
 
 			</article>
@@ -37,7 +37,7 @@ get_header(); ?>
     endwhile;
     ?>
 
-	<div class="entry-content">
+	<div class="projects-entry-content entry-content">
 		<div class="row-equal page-projetos">
 			<?php
 
@@ -52,20 +52,19 @@ get_header(); ?>
 					</a>
 				</div>
 
-				<div class="thumbnail">
 					<div class="projects-content">
-						<p>
-							<?php echo get_the_date(); ?>
-						</p>
-						<?php the_title(sprintf('<h2 class="entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h2>'); ?>
-						<p>
-							<?php echo _get_excerpt(35); ?>
-						</p>
+						<?php the_title(sprintf('<h4 class="entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h4>'); ?>
+						<?php 
+						if (! has_excerpt()) {
+							echo _get_excerpt(35);
+						} else {
+							the_excerpt();
+						} 
+					?>
 						<div class="more-link-container">
 							<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e('Leia Mais', 'twentyfifteen-child') ?></a>
 						</div>
 					</div>
-				</div>
 			</div>
 
 		<?php endwhile;

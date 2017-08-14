@@ -34,25 +34,25 @@ get_header(); ?>
             $image_url = wp_get_attachment_url(get_post_thumbnail_id($page)); ?>
 
 		<div id="<?php echo $page->post_name; ?>" class="page-<?php echo $page->post_name; ?>">
-			<section id="post-<?php echo $page->ID; ?>" <?php post_class(); ?>>
+			<section id="post-<?php echo $page->ID; ?>" class="hentry">
 
 				<!-- Layout padrão de página -->
 				<div class="entry-header">
-					<h1 class="entry-title" style="display: flex;align-items: center;">
+					<h1 class="entry-title">
 						<a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title; ?></a>
-						<?php if ($page->post_name == 'novidades') : ?>
-						<a href="<?php echo get_page_link($page->ID); ?>" class="leia-mais-<?php echo $page->post_name; ?>"><span class="dashicons dashicons-arrow-right-alt"></span><?php _e('Ler todas', 'twentyfifteen-child') ?></a>
-						<?php endif; ?>
+						<!-- <?php if ($page->post_name == 'novidades') : ?> -->
+						<!-- <a href="<?php echo get_page_link($page->ID); ?>" class="leia-mais-<?php echo $page->post_name; ?>"><span class="dashicons dashicons-arrow-right-alt"></span><?php _e('Ler todas', 'twentyfifteen-child') ?></a> -->
+						<!-- <?php endif; ?> -->
 					</h1>
 					<?php if (! empty($image_url)) : ?>
 						<img src="<?php echo $image_url; ?>">
 					<?php endif; ?>
-					<?php echo $content; ?>
 				</div>
 				<!-- .entry-header -->
 
 				<!-- Template para novidades, pessoas e projetos -->
 				 <div class="entry-content">
+					  <?php echo $content; ?> 
 					<?php get_template_part('inicio', $page->post_name); ?>
 				 </div>
 				 <!-- .entry-content -->

@@ -17,8 +17,9 @@ use Carbon\Carbon;
 
 			if( $periodo_fim >= Carbon::now()->timestamp || $situacao == 1 ) :
 		?>
-		<div class="col-sm-4 col-md-4 col-lg-4 fix-safari" style="padding-bottom: 15px;width: 100%;">
-			<div class="circle-img fundo-gradiente">
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix-safari">
+			<?php $urlImg = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())); ?>
+			<div class="circle-img <?php echo $urlImg == false ? 'fundo-gradiente' : 'fundo-branco'; ?>">
 				<a href="<?php the_permalink(); ?>">
 					<span> 
 					<?php 
@@ -29,21 +30,18 @@ use Carbon\Carbon;
 						foreach ($words as $w) {
 							$acronym .= $w[0];
 						}
-
 						echo $acronym;
-
 						?>
 				</span>
 				<?php the_post_thumbnail(false, array('class'=>'img-responsive responsive--full')); ?>
 				</a>
 			</div>
-			<h3 class="person-title">
-				<a href="<?php the_permalink(); ?>">
-					<?php the_title(); ?>
-					
-				</a>
-			</h3>
 			<div class="person-content">
+				<h4 class="person-title">
+					<a href="<?php the_permalink(); ?>">
+						<?php the_title(); ?>
+					</a>
+				</h4>
 				<p>
 					 <?php if ( ! has_excerpt() ) {
       						echo wp_trim_words( get_the_content(), 30, '...' );

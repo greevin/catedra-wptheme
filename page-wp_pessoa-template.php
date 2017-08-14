@@ -21,23 +21,26 @@ get_header(); ?>
 			</header>
 			<!-- .entry-header -->
 
-			<div class="entry-content people-content">
+			<?php if (get_the_content() != '') : ?>
+			<div class="entry-content">
 				<?php the_content(); ?>
 			</div>
+			<?php endif; ?>
 				<!-- .entry-content -->
 		</article>
 			<!-- #post-## -->
 	<?php endwhile; ?>
 
-		<div class="entry-content">
+		<div class="person-entry-content entry-content">
 			<div class="row-equal page-pessoas">
 				<?php
             if ($loop->have_posts()):
 
             while ($loop->have_posts()): $loop->the_post(); ?>
 				<div class="col-sm-12 col-md-6 col-lg-6 fix-safari">
-					<div class="thumbnail" style="text-align: center;">
-						<div class="circle-img fundo-gradiente">
+					<div style="text-align: center;">
+						<?php $urlImg = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())); ?>
+						<div class="circle-img <?php echo $urlImg == false ? 'fundo-gradiente' : 'fundo-branco'; ?>">
 							<a href="<?php the_permalink(); ?>">
 								<span>
 									<?php
@@ -56,17 +59,15 @@ get_header(); ?>
 								<?php the_post_thumbnail(false, array('class'=>'img-responsive responsive--full')); ?>
 							</a>
 						</div>
-						<h3 class="person-title">
+						<h4 class="person-title">
 							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-						</h3>
+						</h4>
 						<div class="content-pessoa">
-							<p style="margin-bottom: 5px;">
-								<?php if ( ! has_excerpt() ) {
-      						echo wp_trim_words( get_the_content(), 30, '...' );
-						} else { 
-							the_excerpt();
-						} ?>
-							</p>
+							<?php if ( ! has_excerpt() ) {
+      							echo wp_trim_words( get_the_content(), 30, '...' );
+							} else { 
+								the_excerpt();
+							} ?>
 							<div class="more-link-container">
 								<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e('Leia Mais', 'twentyfifteen-child') ?></a>
 							</div>

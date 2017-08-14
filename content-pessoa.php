@@ -25,8 +25,8 @@
     ?>
 
 	<div class="entry-content">
-		<div style="text-align: center;">
-			<?php the_title(sprintf('<h1 class="entry-title" style="margin-bottom:0;"><a href="%s">', esc_url(get_permalink())), '</a></h1>'); ?>
+		<div>
+			<h1><?php the_title( ); ?></h1>
 		</div>
 				<div class="sideText">
 					<?php if (get_the_post_thumbnail() != '') : ?>
@@ -50,7 +50,7 @@
 </article><!-- #post-## -->
 
 <?php if ($people_info == true) : ?>
-	<section class="entry-section">
+	<section class="entry-section person-table">
 		<table>
 			<tbody>
 				<?php if (! empty($instituicao)) : ?>
@@ -62,7 +62,7 @@
 				<?php if (! empty($email_contato)) : ?>
 				<tr>
 					<td><b><?php _e('E-mail de Contato', 'twentyfifteen-child')?></b></td>
-					<td><a href="mailto:<?php echo $email_contato; ?>"><?php echo $email_contato; ?></a></td>
+					<td class="person-email"><a href="mailto:<?php echo $email_contato; ?>"><?php echo $email_contato; ?></a></td>
 				</tr>
 				<?php endif; ?>
 				<?php if (! empty($periodo_inicio || $periodo_fim)) : ?>

@@ -15,7 +15,7 @@ get_header(); ?>
 			</header>
 		</article>
 
-		<div class="entry-content row-equal">
+		<div class="entry-content row-equal search-entry-content">
 			<div class="row-equal">
 				<?php
 

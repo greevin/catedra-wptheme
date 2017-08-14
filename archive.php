@@ -14,7 +14,7 @@ get_header(); ?>
 			</header><!-- .page-header -->
 		</article>
 
-		<div class="entry-content row-equal">
+		<div class="entry-content row-equal archive-entry-content">
 			<div class="row-equal">
 				<?php
 

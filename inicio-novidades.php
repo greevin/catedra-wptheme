@@ -21,20 +21,20 @@
 
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 post-content fix-safari">
 			<?php $urlImg = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())); ?>
+			<a href="<?php the_permalink(); ?>">
 			<div class="<?php echo $urlImg == false ? 'fundo-gradiente' : 'fundo-branco'; ?>">
 				<div class="blog-element" style="background-image: url(<?php echo $urlImg; ?>);"></div>
 			</div>
-
-			<div class="thumbnail">
+			</a>
 				<div class="novidades-content">
 					<p>
 						<?php echo get_the_date(); ?>
 					</p>
 					<?php 
 							if ( is_sticky() ) {
-								the_title(sprintf('<h2 class="entry-title"><a href="%s"><span class="dashicons dashicons-sticky"></span>', esc_url(get_permalink())), '</a></h2>');
+								the_title(sprintf('<h4 class="entry-title"><a href="%s"><span class="dashicons dashicons-sticky"></span>', esc_url(get_permalink())), '</a></h4>');
 							} else {
-								the_title(sprintf('<h2 class="entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h2>');
+								the_title(sprintf('<h4 class="entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h4>');
 							}
 						?>
 					<p>
@@ -44,7 +44,6 @@
 						<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e('Leia Mais', 'twentyfifteen-child') ?></a>
 					</div>
 				</div>
-			</div>
 		</div>
 
 	<?php

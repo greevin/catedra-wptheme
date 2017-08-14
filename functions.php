@@ -189,7 +189,7 @@ function twentyfifteen_child_customizer_css()
     $css .= '.panel-title-container { background-color: ' . $inside_page_color . ' !important; }';
 
     $inside_page_text_color = get_theme_mod('inside-page-text-color', '#ffffff');
-    $css .= '.panel-title-container, .entry-projects-content p, .people-content p, .news-content p { color: ' . $inside_page_text_color . '; }';
+    $css .= '.panel-title-container, .entry-projects-content p, .people-content p { color: ' . $inside_page_text_color . '; }';
 
     return $css;
 }
