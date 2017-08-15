@@ -44,6 +44,8 @@ function add_projects_info_meta_box_callback($post)
 
     $posts = get_posts($args_posts);
 
+    $tags = wp_get_post_tags($post->ID);
+
 
     $agencia_financiadora = isset($value['_agencia_financiadora_input']) ? esc_attr($value['_agencia_financiadora_input'][0]) : '';
     $parceiros = isset($value['_parceiros_input']) ? esc_attr($value['_parceiros_input'][0]) : '';
@@ -57,6 +59,7 @@ function add_projects_info_meta_box_callback($post)
     $periodo_inicio_projeto = $periodo_inicio_projeto ? Carbon::createFromTimeStamp($periodo_inicio_projeto)->format(get_option('date_format')) : '';
     $periodo_fim_projeto = $periodo_fim_projeto ? Carbon::createFromTimeStamp($periodo_fim_projeto)->format(get_option('date_format')) : ''; ?>
 	 <table class="form-table">
+    
     <tr>
         <td class="person_meta_box_td" colspan="2">
             <label for="agencia_financiadora_input"><b><?php _e('Agência(s) financiadora(s)', 'twentyfifteen-child')?></b></label>
@@ -103,7 +106,7 @@ function add_projects_info_meta_box_callback($post)
     </tr>
 
     <tr>
-        <td class="person_meta_box_td" colspan="2">
+        <td class="person_meta_box_td" colspan="2" style="vertical-align: top;">
             <label for="people[]"><b><?php _e('Coodernador(es)', 'twentyfifteen-child')?></b></label>
         </td>
         <td colspan="4">
@@ -124,7 +127,7 @@ function add_projects_info_meta_box_callback($post)
     </tr>
 
     <tr>
-        <td class="person_meta_box_td" colspan="2">
+        <td class="person_meta_box_td" colspan="2" style="vertical-align: top;">
             <label for="equipe[]"><b><?php _e('Equipe', 'twentyfifteen-child')?></b></label>
         </td>
         <td colspan="4">
@@ -144,8 +147,27 @@ function add_projects_info_meta_box_callback($post)
         </td>
     </tr>
 
+    <!-- <tr>
+        <td class="person_meta_box_td" colspan="2" style="vertical-align: top;">
+            <label for="tags_news[]"><b><?php _e('Tags', 'twentyfifteen-child')?></b></label>
+        </td>
+        <td colspan="4">
+            <?php
+                foreach ( $tags as $tag ) {
+             ?>
+            <label for="<?php echo $tag->name; ?>">
+                <input type="radio" name="situacao_input" id="<?php echo $tag->name; ?>" value="<?php echo $tag->name; ?>" <?php checked($tag->name, 1); ?>>
+                <?php echo $tag->name; ?>
+                <span>(<?php echo $tag->count; ?>)</span>
+                </br>
+            </label>
+            <?php } ?>
+
+        </td>
+    </tr> -->
+
     <tr>
-        <td class="person_meta_box_td" colspan="2">
+        <td class="person_meta_box_td" colspan="2" style="vertical-align: top;">
             <label for="post_news[]"><b><?php _e('Notícias', 'twentyfifteen-child')?></b></label>
         </td>
         <td colspan="4">

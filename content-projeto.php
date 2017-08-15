@@ -61,12 +61,12 @@
 					<td><?php echo $agencia_financiadora; ?></td>
 				</tr>
 				<?php endif; ?>
-				<?php if (! empty($parceiros)) : ?>
+				<!-- <?php if (! empty($parceiros)) : ?>
 				<tr>
 					<td><b><?php _e('Parceiros', 'twentyfifteen-child')?></b></td>
 					<td><?php echo $parceiros; ?></td>
 				</tr>
-				<?php endif; ?>
+				<?php endif; ?> -->
 				<?php if (! empty($periodo_inicio || $periodo_fim)) : ?>
 				<tr>
 					<td><b><?php _e('Período', 'twentyfifteen-child')?></b></td>

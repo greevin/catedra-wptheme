@@ -63,7 +63,7 @@ function adicionar_pessoa_info_meta_box_callback($post)
     </tr>
 
     <tr>
-        <td class="person_meta_box_td" colspan="2">
+        <td class="person_meta_box_td" colspan="2" style="vertical-align: top">
             <label for="projetos[]"><b><?php _e('Projetos', 'twentyfifteen-child')?></b></label>
         </td>
         <td colspan="4">
