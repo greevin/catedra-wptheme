@@ -59,8 +59,8 @@ get_header(); ?>
 			</section>
 		</div>
 		<?php
-        } // fim do foreach
 		wp_reset_postdata();
+        } // fim do foreach
         ?>
 	</main><!-- .site-main -->
 </div><!-- .content-area -->

@@ -27,23 +27,35 @@ get_header(); ?>
 		</article>
 
 		<?php
-            
-        	global $paged;
 
-            query_posts(array(
-            'post_type' => 'post', // can be custom post type
-            'showposts' => get_option('posts_per_page'),
-            'paged' => $paged
-        ));
+			$sticky_posts = get_option( 'sticky_posts' );
+			$posts_per_page = (int) get_option( 'posts_per_page' );
+
+			if ($paged == 0 && !empty($sticky_posts)) {
+				$args = array(
+					'paged' => $paged,
+					'posts_per_page' => $posts_per_page - count($sticky_posts)
+				);
+				
+			} else {
+				$args = array(
+					'paged'		=> $paged,
+					'posts_per_page' => $posts_per_page,
+				);
+				
+			}
+            
+        	$wp_query = new WP_Query($args); 
+
         ?>
 
 		<div class="entry-content row-equal news-content">
 			<div class="row-equal">
 				<?php
 
-        if (have_posts()):
+        if ($wp_query->have_posts()):
 
-        while (have_posts()): the_post(); ?>
+        while ($wp_query->have_posts()): $wp_query->the_post(); ?>
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 post-content fix-safari">
 				<?php $urlImg = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())); ?>
 				<div class="<?php echo $urlImg == false ? 'fundo-gradiente' : 'fundo-branco'; ?>">
