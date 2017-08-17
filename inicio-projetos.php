@@ -30,13 +30,11 @@
 			<div>
 				<div class="project-content">
 					<?php the_title(sprintf('<h4 class="entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h4>'); ?>
-					<?php 
-						if (! has_excerpt()) {
-							echo _get_excerpt(35);
-						} else {
-							the_excerpt();
-						} 
-					?>
+					<?php if ( ! has_excerpt() ) { ?>
+      							<p><?php echo wp_trim_words( get_the_content(), 30, '...' ); ?></p>
+							 <?php } else { 
+								the_excerpt();
+							} ?>
 					<div class="more-link-container">
 						<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e('Leia Mais', 'twentyfifteen-child') ?></a>
 					</div>

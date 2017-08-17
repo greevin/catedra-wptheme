@@ -17,7 +17,7 @@ use Carbon\Carbon;
 
 			if( $periodo_fim >= Carbon::now()->timestamp || $situacao == 1 ) :
 		?>
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix-safari">
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix-safari-3">
 			<?php $urlImg = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())); ?>
 			<div class="circle-img <?php echo $urlImg == false ? 'fundo-gradiente' : 'fundo-branco'; ?>">
 				<a href="<?php the_permalink(); ?>">
@@ -42,13 +42,11 @@ use Carbon\Carbon;
 						<?php the_title(); ?>
 					</a>
 				</h4>
-				<p>
-					 <?php if ( ! has_excerpt() ) {
-      						echo wp_trim_words( get_the_content(), 30, '...' );
-						} else { 
-							the_excerpt();
-						} ?>
-				</p>
+				<?php if ( ! has_excerpt() ) { ?>
+      							<p><?php echo wp_trim_words( get_the_content(), 30, '...' ); ?></p>
+							 <?php } else { 
+								the_excerpt();
+							} ?>
 				<div class="more-link-container">
 					<a href="<?php the_permalink(); ?>"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e( 'Leia Mais', 'twentyfifteen-child' ) ?></a>
 				</div>

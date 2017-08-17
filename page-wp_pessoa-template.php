@@ -37,7 +37,7 @@ get_header(); ?>
             if ($loop->have_posts()):
 
             while ($loop->have_posts()): $loop->the_post(); ?>
-				<div class="col-sm-12 col-md-6 col-lg-6 fix-safari">
+				<div class="col-sm-12 col-md-6 col-lg-6 fix-safari-3" style="width: 100%;">
 					<div style="text-align: center;">
 						<?php $urlImg = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())); ?>
 						<div class="circle-img <?php echo $urlImg == false ? 'fundo-gradiente' : 'fundo-branco'; ?>">
@@ -63,9 +63,9 @@ get_header(); ?>
 							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 						</h4>
 						<div class="content-pessoa">
-							<?php if ( ! has_excerpt() ) {
-      							echo wp_trim_words( get_the_content(), 30, '...' );
-							} else { 
+							 <?php if ( ! has_excerpt() ) { ?>
+      							<p><?php echo wp_trim_words( get_the_content(), 30, '...' ); ?></p>
+							 <?php } else { 
 								the_excerpt();
 							} ?>
 							<div class="more-link-container">
