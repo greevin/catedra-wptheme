@@ -15,16 +15,7 @@
 		<div>
 			<h1><?php the_title( ); ?></h1>
 		</div>
-		<div class="sideText">
-			<?php if (get_the_post_thumbnail() != '') : ?>
-			<div class="align-image">
-				<?php the_post_thumbnail( 'medium' ); ?>
-			</div>
-			<p><?php the_content( ); ?></p>
-				<?php else : ?>
-			<p><?php the_content( ); ?></p>
-				<?php endif; ?>  
-		</div>
+		<p><?php the_content( ); ?></p>
 	<div>
 	<?php
 		// Author bio.
