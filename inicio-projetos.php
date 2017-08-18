@@ -20,9 +20,10 @@
             if ($periodo_fim >= Carbon::now()->timestamp || $situacao == 1) :
         ?>
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 fix-safari">
-			<div class="fundo-gradiente">
+			<?php $urlImg = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())); ?>
+			<div class="<?php echo $urlImg == false ? 'fundo-gradiente' : 'fundo-branco'; ?>">
 				<a href="<?php the_permalink(); ?>">
-				<?php $urlImg = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())); ?>
+				
 				<div class="blog-element" style="background-image: url(<?php echo $urlImg; ?>);"></div>
 				</a>
 			</div>
