@@ -31,19 +31,24 @@ get_header(); ?>
 			$sticky_posts = get_option( 'sticky_posts' );
 			$posts_per_page = (int) get_option( 'posts_per_page' );
 
-			if ($paged == 0 && !empty($sticky_posts)) {
-				$args = array(
+			// if ($paged == 0 && !empty($sticky_posts)) {
+			// 	$args = array(
+			// 		'paged' => $paged,
+			// 		'posts_per_page' => $posts_per_page - count($sticky_posts)
+			// 	);
+				
+			// } else {
+			// 	$args = array(
+			// 		'paged'		=> $paged,
+			// 		'posts_per_page' => $posts_per_page,
+			// 	);
+				
+			// }
+
+			$args = array(
 					'paged' => $paged,
-					'posts_per_page' => $posts_per_page - count($sticky_posts)
+					'posts_per_page' => $posts_per_page
 				);
-				
-			} else {
-				$args = array(
-					'paged'		=> $paged,
-					'posts_per_page' => $posts_per_page,
-				);
-				
-			}
             
         	$wp_query = new WP_Query($args); 
 

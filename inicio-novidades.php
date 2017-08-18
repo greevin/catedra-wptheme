@@ -11,7 +11,7 @@
             
 			$args = array(
 				// 'ignore_sticky_posts' => 1,
-				'posts_per_page' =>  $posts_per_page - $sticky_posts,
+				// 'posts_per_page' =>  $posts_per_page - $sticky_posts,
 				'paged' => $paged
 			);
         	$wp_query = new WP_Query($args); 
