@@ -778,7 +778,7 @@ input[type="submit"]:focus {
 }
 
 .content-area .hentry {
-    padding: 3% 0;
+    padding: 2% 0;
 }
 
 .projects-content h4,
@@ -1225,6 +1225,9 @@ input[type="submit"]:focus {
     @include reduce-sidebar-size-large();
     body {
         padding-bottom: 25rem;
+    }
+    .entry-header {
+        padding: 0 1%;
     }
     .site-footer {
         width: 80%;
