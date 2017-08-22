@@ -54,7 +54,8 @@ function add_projects_info_meta_box_callback($post)
     $periodo_inicio_projeto = isset($value['_periodo_inicio_projeto_input']) ? esc_attr($value['_periodo_inicio_projeto_input'][0]) : '';
     $periodo_fim_projeto = isset($value['_periodo_fim_projeto_input']) ? esc_attr($value['_periodo_fim_projeto_input'][0]) : '';
     $situacao = isset($value['_situacao_input']) ? esc_attr($value['_situacao_input'][0]) : '';
-    $noticias = isset($value['_checked_posts']) ? get_post_meta($post->ID, '_checked_posts', true) : array();
+    $tags_news = isset($value['_tags_news_input']) ? esc_attr($value['_tags_news_input'][0]) : '';
+    // $noticias = isset($value['_checked_posts']) ? get_post_meta($post->ID, '_checked_posts', true) : array();
 
     $periodo_inicio_projeto = $periodo_inicio_projeto ? Carbon::createFromTimeStamp($periodo_inicio_projeto)->format(get_option('date_format')) : '';
     $periodo_fim_projeto = $periodo_fim_projeto ? Carbon::createFromTimeStamp($periodo_fim_projeto)->format(get_option('date_format')) : ''; ?>
@@ -147,26 +148,27 @@ function add_projects_info_meta_box_callback($post)
         </td>
     </tr>
 
-    <!-- <tr>
+     <tr>
         <td class="person_meta_box_td" colspan="2" style="vertical-align: top;">
-            <label for="tags_news[]"><b><?php _e('Tags', 'twentyfifteen-child')?></b></label>
+            <label for="tags_news[]"><b><?php _e('Notícias', 'twentyfifteen-child')?></b></label>
         </td>
         <td colspan="4">
+            <p class="description"><?php _e('Selecione a tag principal com as notícias relacionadas desse projeto', 'twentyfifteen-child')?></p>
             <?php
                 foreach ( $tags as $tag ) {
              ?>
             <label for="<?php echo $tag->name; ?>">
-                <input type="radio" name="situacao_input" id="<?php echo $tag->name; ?>" value="<?php echo $tag->name; ?>" <?php checked($tag->name, 1); ?>>
+                <input type="radio" name="tags_news_input" id="<?php echo $tag->name; ?>" value="<?php echo $tag->slug; ?>" <?php checked($tags_news, $tag->slug); ?>>
                 <?php echo $tag->name; ?>
-                <span>(<?php echo $tag->count; ?>)</span>
+                <span>(<?php echo $tag->count - 1; ?> posts)</span>
                 </br>
             </label>
             <?php } ?>
 
         </td>
-    </tr> -->
+    </tr> 
 
-    <tr>
+    <!-- <tr>
         <td class="person_meta_box_td" colspan="2" style="vertical-align: top;">
             <label for="post_news[]"><b><?php _e('Notícias', 'twentyfifteen-child')?></b></label>
         </td>
@@ -185,7 +187,7 @@ function add_projects_info_meta_box_callback($post)
             <?php
                 endif; ?>
         </td>
-    </tr>
+    </tr> -->
 
 </table>
 
@@ -251,12 +253,17 @@ function save_project_info_meta_box_data($post_id)
         update_post_meta($post_id, '_equipes', $equipes);
     }
 
-    if (isset($_POST['post_news'])) {
-        $posts_news = (array) ($_POST['post_news']);
-        $posts_news = array_map('sanitize_text_field', $posts_news);
-
-        update_post_meta($post_id, '_checked_posts', $posts_news);
+    if (isset($_POST['tags_news_input']) && $_POST['tags_news_input'] != '') {
+        $tags_news_input = sanitize_text_field($_POST['tags_news_input']);
+        update_post_meta($post_id, '_tags_news_input', $tags_news_input);
     }
+
+    // if (isset($_POST['post_news'])) {
+    //     $posts_news = (array) ($_POST['post_news']);
+    //     $posts_news = array_map('sanitize_text_field', $posts_news);
+
+    //     update_post_meta($post_id, '_checked_posts', $posts_news);
+    // }
 }
 
 add_action('save_post', 'save_project_info_meta_box_data');
