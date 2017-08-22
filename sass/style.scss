@@ -161,8 +161,9 @@ $border-radius: 100%;
 }
 
 .align-image {
-    float: right;
-    margin: 5px 0 10px 10px;
+    float: none;
+    text-align: center;
+    margin: 0;
 }
 
 .go-top {
@@ -933,6 +934,10 @@ input[type="submit"]:focus {
             padding-right: 10%;
         }
     }
+    .align-image {
+        float: right;
+        margin: 5px 0 10px 10px;
+    }
     .site-footer {
         margin: 0;
         padding: 3%;
@@ -976,6 +981,10 @@ input[type="submit"]:focus {
         line-height: 1.75;
         margin-left: -1.05em;
         padding-left: 0.85em;
+    }
+    .align-image {
+        float: right;
+        margin: 5px 0 10px 10px;
     }
     .entry-title,
     .widecolumn h2 {
@@ -1025,6 +1034,10 @@ input[type="submit"]:focus {
         padding-left: 0.85em;
     }
     @include fix-safari();
+    .align-image {
+        float: right;
+        margin: 5px 0 10px 10px;
+    }
     .widget_mslswidget {
         position: absolute;
         top: 20px;
@@ -1056,6 +1069,10 @@ input[type="submit"]:focus {
     }
     body {
         padding-bottom: 20rem;
+    }
+    .align-image {
+        float: right;
+        margin: 5px 0 10px 10px;
     }
     .entry-content,
     .entry-summary {
@@ -1152,6 +1169,10 @@ input[type="submit"]:focus {
             padding: 0 3%;
         }
     }
+    .align-image {
+        float: right;
+        margin: 5px 0 10px 10px;
+    }
     .entry-title,
     .widecolumn h2 {
         font-size: 41px;
@@ -1225,6 +1246,10 @@ input[type="submit"]:focus {
     @include reduce-sidebar-size-large();
     body {
         padding-bottom: 25rem;
+    }
+    .align-image {
+        float: right;
+        margin: 5px 0 10px 10px;
     }
     .entry-header {
         padding: 0 1%;
