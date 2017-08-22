@@ -152,7 +152,12 @@
 
 .page-projetos .entry-content,
 .page-novidades .entry-content {
-  padding: 1% 3% 0;
+  padding: 5% 0;
+}
+
+.page-sobre .entry-content,
+.page-pessoas .entry-content {
+  padding: 3% 0;
 }
 
 .person-entry-content,
@@ -982,7 +987,7 @@ input[type="submit"]:focus {
 
   .entry-content,
   .entry-summary {
-    padding: 1% 5% 0;
+    padding: 1%;
   }
 
   .site-main {
@@ -995,7 +1000,7 @@ input[type="submit"]:focus {
   }
 
   .entry-header {
-    padding: 0 5%;
+    padding: 0 1%;
   }
 
   .entry-people > div,
