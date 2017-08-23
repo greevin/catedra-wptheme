@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-23 17:58+0000\n"
+"POT-Creation-Date: 2017-08-08 18:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -19,85 +19,75 @@ msgstr ""
 msgid "Comentando como <a href=\"%1$s\">%2$s</a>."
 msgstr ""
 
-#. %s: Name of current post
-#: content-archive.php:29 content-search.php:28 functions.php:62
-#: inicio-novidades.php:46 inicio-pessoas.php:51 inicio-projetos.php:40
-#: page-blog-template.php:85 page-wp_pessoa-template.php:72
-#: page-wp_projeto-template.php:65
-msgid "Leia Mais"
-msgstr ""
-
-#: content-pessoa.php:58 inc/custom-fields-pessoa.php:49
+#: content-pessoa.php:56 inc/custom-fields-pessoa.php:50
 msgid "Instituição"
 msgstr ""
 
-#: content-pessoa.php:64 inc/custom-fields-pessoa.php:58
+#: content-pessoa.php:62 inc/custom-fields-pessoa.php:59
 msgid "E-mail de Contato"
 msgstr ""
 
-#: content-pessoa.php:70 content-projeto.php:73 inc/custom-fields-pessoa.php:93
-#: inc/custom-fields-project.php:83
+#: content-pessoa.php:68 content-projeto.php:63 inc/custom-fields-pessoa.php:97
+#: inc/custom-fields-project.php:71
 msgid "Período"
 msgstr ""
 
-#: content-pessoa.php:72 content-projeto.php:75
+#: content-pessoa.php:70
 msgid "atual"
 msgstr ""
 
-#: content-pessoa.php:78 inc/custom-fields-pessoa.php:84
+#: content-pessoa.php:76 inc/custom-fields-pessoa.php:88
 msgid "Linhas de pesquisa"
 msgstr ""
 
-#: content-pessoa.php:84 inc/custom-fields-pessoa.php:67
+#: content-pessoa.php:82 inc/custom-fields-pessoa.php:68
 #: inc/wp-projeto-custom-post-type.php:6
 msgid "Projetos"
 msgstr ""
 
-#: content-pessoa.php:95 content-projeto.php:135
-#: inc/custom-fields-pessoa.php:105 inc/custom-fields-project.php:95
+#: content-pessoa.php:93 content-projeto.php:102
+#: inc/custom-fields-pessoa.php:109 inc/custom-fields-project.php:83
 msgid "Situação"
 msgstr ""
 
-#: content-pessoa.php:97 content-projeto.php:137
-#: inc/custom-fields-pessoa.php:110 inc/custom-fields-project.php:100
+#: content-pessoa.php:95 inc/custom-fields-pessoa.php:114
+#: inc/custom-fields-project.php:88
 msgid "Ativo"
 msgstr ""
 
-#: content-pessoa.php:97 content-projeto.php:137
-#: inc/custom-fields-pessoa.php:114 inc/custom-fields-project.php:104
+#: content-pessoa.php:95 inc/custom-fields-pessoa.php:118
+#: inc/custom-fields-project.php:92
 msgid "Inativo"
 msgstr ""
 
-#: content-projeto.php:61 inc/custom-fields-project.php:66
+#: content-projeto.php:57 inc/custom-fields-project.php:62
 msgid "Agência(s) financiadora(s)"
 msgstr ""
 
-#: content-projeto.php:67 inc/custom-fields-project.php:74
-msgid "Parceiros"
-msgstr ""
-
-#: content-projeto.php:81 inc/custom-fields-project.php:111
+#: content-projeto.php:69 inc/custom-fields-project.php:99
 msgid "Coodernador(es)"
 msgstr ""
 
-#: content-projeto.php:92 inc/custom-fields-project.php:132
+#: content-projeto.php:80 inc/custom-fields-project.php:123
 msgid "Equipe"
 msgstr ""
 
-#: content-projeto.php:103 content-projeto.php:116
-#: inc/custom-fields-project.php:153 inc/custom-fields-project.php:173
+#: content-projeto.php:91 inc/custom-fields-project.php:147
 msgid "Notícias"
 msgstr ""
 
-#: front-page.php:45
-msgid "Ver todos"
-msgstr ""
-
-#: functions.php:54
+#: functions.php:52
 msgid "Páginas internas"
 msgstr ""
 
-#: functions.php:136
+#. %s: Name of current post
+#: functions.php:59 inicio-novidades.php:32 inicio-pessoas.php:50
+#: inicio-projetos.php:31 page-blog-template.php:64
+#: page-wp_pessoa-template.php:67 page-wp_projeto-template.php:65
+msgid "Leia Mais"
+msgstr ""
+
+#: functions.php:127
 msgid "Comentário"
 msgstr ""
 
@@ -117,19 +107,19 @@ msgstr ""
 msgid "Informações da Pessoa"
 msgstr ""
 
-#: inc/custom-fields-pessoa.php:96 inc/custom-fields-project.php:86
+#: inc/custom-fields-pessoa.php:100 inc/custom-fields-project.php:74
 msgid "de"
 msgstr ""
 
-#: inc/custom-fields-pessoa.php:97 inc/custom-fields-project.php:87
+#: inc/custom-fields-pessoa.php:101 inc/custom-fields-project.php:75
 msgid "Data de Início"
 msgstr ""
 
-#: inc/custom-fields-pessoa.php:98 inc/custom-fields-project.php:88
+#: inc/custom-fields-pessoa.php:102 inc/custom-fields-project.php:76
 msgid "até"
 msgstr ""
 
-#: inc/custom-fields-pessoa.php:99 inc/custom-fields-project.php:89
+#: inc/custom-fields-pessoa.php:103 inc/custom-fields-project.php:77
 msgid "Data de Término"
 msgstr ""
 
@@ -137,47 +127,43 @@ msgstr ""
 msgid "Informações do Projeto"
 msgstr ""
 
-#: inc/custom-fields-project.php:124 inc/custom-fields-project.php:145
+#: inc/custom-fields-project.php:114 inc/custom-fields-project.php:138
 msgid "Nenhuma pessoa criada no menu \"Pessoas\""
 msgstr ""
 
-#: inc/custom-fields-project.php:156
-msgid "Selecione a tag principal com as notícias relacionadas desse projeto"
-msgstr ""
-
-#: inc/custom-fields-project.php:186
+#: inc/custom-fields-project.php:162
 msgid "Nenhuma notícia criada no menu \"Posts\""
 msgstr ""
 
-#: inc/twentyfifteen-child-customizer.php:24
+#: inc/twentyfifteen-child-customizer.php:25
 msgid "Cor do rodapé"
 msgstr ""
 
-#: inc/twentyfifteen-child-customizer.php:36
+#: inc/twentyfifteen-child-customizer.php:37
 msgid "Cor do texto do rodapé"
 msgstr ""
 
-#: inc/twentyfifteen-child-customizer.php:49
+#: inc/twentyfifteen-child-customizer.php:50
 msgid "Cor de fundo do post"
 msgstr ""
 
-#: inc/twentyfifteen-child-customizer.php:61
+#: inc/twentyfifteen-child-customizer.php:62
 msgid "Cor do texto do post"
 msgstr ""
 
-#: inc/twentyfifteen-child-customizer.php:73
+#: inc/twentyfifteen-child-customizer.php:74
 msgid "Cor de fundo do Mais Informações"
 msgstr ""
 
-#: inc/twentyfifteen-child-customizer.php:85
+#: inc/twentyfifteen-child-customizer.php:86
 msgid "Cor do texto do Mais Informações"
 msgstr ""
 
-#: inc/twentyfifteen-child-customizer.php:97
+#: inc/twentyfifteen-child-customizer.php:98
 msgid "Cor do fundo do cabeçalho das páginas internas"
 msgstr ""
 
-#: inc/twentyfifteen-child-customizer.php:109
+#: inc/twentyfifteen-child-customizer.php:110
 msgid "Cor do texto do cabeçalho das páginas internas"
 msgstr ""
 

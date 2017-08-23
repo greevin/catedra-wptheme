@@ -79,6 +79,23 @@ $border-radius: 100%;
     }
 }
 
+@mixin reduce-sidebar-size-xlarge() {
+    body:before {
+        max-width: 15%;
+        box-shadow: 0 0 0;
+    }
+    .site {
+        max-width: 100%;
+    }
+    .site-content {
+        margin-left: 15%;
+        width: 85%;
+    }
+    .sidebar {
+        width: 15%;
+    }
+}
+
 @mixin fix-safari() {
     .fix-safari {
         flex: 0 1 50%;
@@ -268,16 +285,15 @@ $border-radius: 100%;
 
 .page-sobre .entry-content,
 .page-pessoas .entry-content {
-    padding: 3% 0;
+    padding: 3%;
 }
 
-.person-entry-content,
-.projects-entry-content,
-.archive-entry-content,
-.search-entry-content {
-    padding: 3% 3% !important;
-}
-
+// .person-entry-content,
+// .projects-entry-content,
+// .archive-entry-content,
+// .search-entry-content {
+//     padding: 3% 3% !important;
+// }
 .person-content,
 .project-content,
 .novidades-content,
@@ -370,6 +386,17 @@ $border-radius: 100%;
     min-height: 100vh;
 }
 
+.site-header {
+    padding: 3% 7%;
+}
+
+.read-more {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: -40px;
+}
+
 
 /**
  * Typography
@@ -392,6 +419,10 @@ a,
 a:hover {
     font-weight: normal;
     font-style: normal;
+}
+
+a:hover {
+    opacity: 0.8;
 }
 
 h1,
@@ -803,11 +834,10 @@ input[type="submit"]:focus {
     margin: 2% 0 0;
 }
 
-.content-area .text-content,
-.content-area .news-content {
-    padding: 5% 3%;
-}
-
+// .content-area .text-content,
+// .content-area .news-content {
+//     padding: 5% 3%;
+// }
 // Pagination
 .pagination {
     margin: 0 25% 8.333%;
@@ -858,7 +888,7 @@ input[type="submit"]:focus {
 }
 
 .dashicons-arrow-right-alt:before {
-    line-height: 1.3 !important;
+    line-height: 1.4 !important;
 }
 
 .dashicons-sticky:before {
@@ -919,6 +949,14 @@ input[type="submit"]:focus {
     color: white;
 }
 
+#pagina-inicial .entry-content p {
+    font-size: 2rem;
+}
+
+.entry-header {
+    padding: 0;
+}
+
 
 /**
  * 16.1 Mobile Large 620px
@@ -930,7 +968,10 @@ input[type="submit"]:focus {
         padding: 1% 5% 0;
     }
     .entry-header {
-        padding: 0 5%;
+        padding: 0;
+    }
+    #pagina-inicial .entry-content p {
+        font-size: 3rem;
     }
     .widget_mslswidget {
         position: initial;
@@ -1165,6 +1206,9 @@ input[type="submit"]:focus {
         padding-bottom: 20rem;
     }
     @include reduce-sidebar-size();
+    #pagina-inicial .entry-content p {
+        font-size: 5rem;
+    }
     .fix-safari-3 {
         flex: 0 1 33.33%;
         &:nth-child(odd) {
@@ -1196,11 +1240,8 @@ input[type="submit"]:focus {
     .entry-people>div,
     .page-pessoas>div {
         padding: 3%;
-        width: 100%; // margin-bottom: 0;
-    } // .entry-projects>div {
-    //     padding: 0 2% 2%;
-    //     width: 100%;
-    // }
+        width: 100%;
+    }
     .entry-news>div {
         padding: 0 2% 2%;
         width: 100%;
@@ -1240,6 +1281,16 @@ input[type="submit"]:focus {
             cursor: pointer;
         }
     }
+    .link-to {
+        width: 35px;
+        height: 25px;
+        font-size: 35px;
+        margin-left: -10px;
+    }
+    .page-sobre .entry-content,
+    .page-pessoas .entry-content {
+        padding: 3% 0;
+    }
 }
 
 
@@ -1248,9 +1299,12 @@ input[type="submit"]:focus {
  */
 
 @media screen and (min-width: 87.6875em) {
-    @include reduce-sidebar-size-large();
+    @include reduce-sidebar-size-xlarge();
     body {
         padding-bottom: 25rem;
+    }
+    #pagina-inicial .entry-content p {
+        font-size: 7rem;
     }
     .align-image {
         float: right;
@@ -1260,8 +1314,8 @@ input[type="submit"]:focus {
         padding: 0 1%;
     }
     .site-footer {
-        width: 80%;
-        margin: 0px 0 0 20%;
+        width: 85%;
+        margin: 0px 0 0 15%;
     }
     .entry-projects>div {
         padding: 0 2% 2%;
@@ -1271,14 +1325,24 @@ input[type="submit"]:focus {
         display: block;
         background-position: center center;
         background-repeat: no-repeat;
-        background-size: 75%;
+        background-size: 100%;
         width: 100%;
-        height: 250px;
+        height: 350px;
         overflow: hidden;
         &:hover {
             opacity: 0.8;
             cursor: pointer;
         }
+    }
+    .link-to {
+        width: 35px;
+        height: 25px;
+        font-size: 35px;
+        margin-left: -10px;
+    }
+    .page-sobre .entry-content,
+    .page-pessoas .entry-content {
+        padding: 3% 0;
     }
 }
 

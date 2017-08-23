@@ -39,11 +39,11 @@ get_header(); ?>
 				<!-- Layout padrão de página -->
 				<div class="entry-header">
 					<h1 class="entry-title">
-						<a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title; ?></a>
-						<!-- <?php if ($page->post_name == 'novidades') : ?> -->
-						<!-- <a href="<?php echo get_page_link($page->ID); ?>" class="leia-mais-<?php echo $page->post_name; ?>"><span class="dashicons dashicons-arrow-right-alt"></span><?php _e('Ler todas', 'twentyfifteen-child') ?></a> -->
-						<!-- <?php endif; ?> -->
+						<a href="<?php echo get_page_link($page->ID); ?>" class="link-<?php echo $page->post_name; ?>"><?php echo $page->post_title; ?></a>
 					</h1>
+					<div class="read-more">
+						<a href="<?php echo get_page_link($page->ID); ?>" class="link-<?php echo $page->post_name; ?>"><span class="dashicons dashicons-arrow-right-alt"></span><?php _e('Ver todos', 'twentyfifteen-child')?></a>
+					</div>
 					<?php if (! empty($image_url)) : ?>
 						<img src="<?php echo $image_url; ?>">
 					<?php endif; ?>
