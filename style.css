@@ -253,8 +253,8 @@
 .read-more {
   display: flex;
   justify-content: flex-end;
-  margin-right: 40px;
-  margin-top: -40px;
+  margin-right: 20px;
+  margin-top: -30px;
 }
 
 /**
@@ -1238,6 +1238,13 @@ input[type="submit"]:focus {
   .page-sobre .entry-content,
   .page-pessoas .entry-content {
     padding: 3% 0;
+  }
+
+  .read-more {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: -40px;
   }
 }
 /**
