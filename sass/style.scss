@@ -108,6 +108,18 @@ $border-radius: 100%;
     }
 }
 
+@mixin fix-safari-3() {
+    .fix-safari {
+        flex: 0 1 33.33%;
+        &:nth-child(odd) {
+            padding: 0 3%;
+        }
+        &:nth-child(even) {
+            padding: 0 3%;
+        }
+    }
+}
+
 @mixin fix-footer() {
     /**
  * Body Styles
@@ -1206,17 +1218,9 @@ input[type="submit"]:focus {
         padding-bottom: 20rem;
     }
     @include reduce-sidebar-size();
+    @include fix-safari();
     #pagina-inicial .entry-content p {
         font-size: 5rem;
-    }
-    .fix-safari-3 {
-        flex: 0 1 33.33%;
-        &:nth-child(odd) {
-            padding: 0 3%;
-        }
-        &:nth-child(even) {
-            padding: 0 3%;
-        }
     }
     .align-image {
         float: right;
@@ -1306,6 +1310,7 @@ input[type="submit"]:focus {
 
 @media screen and (min-width: 87.6875em) {
     @include reduce-sidebar-size-xlarge();
+    @include fix-safari-3();
     body {
         padding-bottom: 25rem;
     }
@@ -1333,7 +1338,7 @@ input[type="submit"]:focus {
         background-repeat: no-repeat;
         background-size: 100%;
         width: 100%;
-        height: 350px;
+        height: 200px;
         overflow: hidden;
         &:hover {
             opacity: 0.8;
