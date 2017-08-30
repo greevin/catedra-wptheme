@@ -30,17 +30,7 @@
 			<div>
 				<h1><?php the_title( ); ?></h1>
 			</div>
-				<div class="sideText">
-					<?php if (get_the_post_thumbnail() != '') : ?>
-					<div class="align-image">
-						<?php the_post_thumbnail('medium'); ?>
-					</div>
-				<div>
-					<?php the_content(); ?>
-				</div>
-				<?php else : ?>
-					 <p><?php the_content(); ?></p>
-					 <?php endif; ?>
+			<p><?php the_content(); ?></p>
 		<div>
 	</div><!-- .entry-content -->
 
