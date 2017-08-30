@@ -26,29 +26,17 @@
 ?>
 
 	<div class="entry-content">
-		<div class="post-content fix-safari" style="height: 100%;margin-bottom: 0px;">
+		<div class="post-content fix-safari" style="height: 100%;margin-bottom: 0px;padding:0">
 			<div>
 				<h1><?php the_title( ); ?></h1>
 			</div>
-			<p><?php the_content(); ?></p>
-		<div>
-	</div><!-- .entry-content -->
-
-	<?php
-        // Author bio.
-        if (is_single() && get_the_author_meta('description')) :
-            get_template_part('author-bio');
-        endif;
-    ?>
-</article><!-- #post-## -->
-
-<?php if ($project_info == true) : ?>
+			<?php if ($project_info == true) : ?>
 <section class="entry-section project-table">
 	<table>
 			<tbody>
 				<?php if (! empty($agencia_financiadora)) : ?>
 				<tr>
-					<td><b><?php _e('Agência(s) financiadora(s)', 'twentyfifteen-child')?></b></td>
+					<td><b><?php _e('Financiamento', 'twentyfifteen-child')?></b></td>
 					<td><?php echo $agencia_financiadora; ?></td>
 				</tr>
 				<?php endif; ?>
@@ -131,3 +119,14 @@
 		</table>
 </section>
 <?php endif; ?>
+			<p><?php the_content(); ?></p>
+		<div>
+	</div><!-- .entry-content -->
+
+	<?php
+        // Author bio.
+        if (is_single() && get_the_author_meta('description')) :
+            get_template_part('author-bio');
+        endif;
+    ?>
+</article><!-- #post-## -->
