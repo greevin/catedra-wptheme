@@ -55,7 +55,7 @@ function add_projects_info_meta_box_callback($post)
     $periodo_fim_projeto = isset($value['_periodo_fim_projeto_input']) ? esc_attr($value['_periodo_fim_projeto_input'][0]) : '';
     $situacao = isset($value['_situacao_input']) ? esc_attr($value['_situacao_input'][0]) : '';
     $tags_news = isset($value['_tags_news_input']) ? esc_attr($value['_tags_news_input'][0]) : '';
-    // $noticias = isset($value['_checked_posts']) ? get_post_meta($post->ID, '_checked_posts', true) : array();
+    $publicacoes_zotero = isset($value['_publicacoes_input']) ? esc_attr($value['_publicacoes_input'][0]) : '';
 
     $periodo_inicio_projeto = $periodo_inicio_projeto ? Carbon::createFromTimeStamp($periodo_inicio_projeto)->format(get_option('date_format')) : '';
     $periodo_fim_projeto = $periodo_fim_projeto ? Carbon::createFromTimeStamp($periodo_fim_projeto)->format(get_option('date_format')) : ''; ?>
@@ -63,7 +63,7 @@ function add_projects_info_meta_box_callback($post)
     
     <tr>
         <td class="person_meta_box_td" colspan="2">
-            <label for="agencia_financiadora_input"><b><?php _e('Agência(s) financiadora(s)', 'twentyfifteen-child')?></b></label>
+            <label for="agencia_financiadora_input"><b><?php _e('Financiamento', 'twentyfifteen-child')?></b></label>
         </td>
         <td colspan="4">
             <input type="text" name="agencia_financiadora_input" class="regular-text" value="<?php echo $agencia_financiadora; ?>">
@@ -168,26 +168,14 @@ function add_projects_info_meta_box_callback($post)
         </td>
     </tr> 
 
-    <!-- <tr>
+    <tr>
         <td class="person_meta_box_td" colspan="2" style="vertical-align: top;">
-            <label for="post_news[]"><b><?php _e('Notícias', 'twentyfifteen-child')?></b></label>
+            <label for="post_news[]"><b><?php _e('Publicações', 'twentyfifteen-child')?></b></label>
         </td>
         <td colspan="4">
-            <?php
-                if (! empty($posts)) :
-                foreach ($posts as $post) {
-                    $post = get_the_title($post->ID); ?>
-            <label>
-                <input type="checkbox" name="post_news[]" value="<?php echo $post; ?>" <?php checked((in_array($post, $noticias)) ? $post : '', $post); ?> /><?php echo $post; ?> <br />
-            </label>
-            <?php
-                } else :
-            ?>
-            <span><?php _e('Nenhuma notícia criada no menu "Posts"', 'twentyfifteen-child')?></span>
-            <?php
-                endif; ?>
+            <textarea rows="4" cols="50" name="publicacoes_input" class="regular-text"><?php echo $publicacoes_zotero; ?></textarea>
         </td>
-    </tr> -->
+    </tr>
 
 </table>
 
@@ -210,31 +198,31 @@ function save_project_info_meta_box_data($post_id)
     }
 
     // cria o meta_key no banco
-    if (isset($_POST['agencia_financiadora_input']) && $_POST['agencia_financiadora_input'] != '') {
+    if (isset($_POST['agencia_financiadora_input']) || $_POST['agencia_financiadora_input'] != '') {
         $agencia_financiadora_input = sanitize_text_field($_POST['agencia_financiadora_input']);
         update_post_meta($post_id, '_agencia_financiadora_input', $agencia_financiadora_input);
     }
 
-    if (isset($_POST['parceiros_input']) && $_POST['parceiros_input'] != '') {
+    if (isset($_POST['parceiros_input']) || $_POST['parceiros_input'] != '') {
         $parceiros_input = sanitize_text_field($_POST['parceiros_input']);
         update_post_meta($post_id, '_parceiros_input', $parceiros_input);
     }
 
-    if (isset($_POST['periodo_inicio_input']) && $_POST['periodo_inicio_input'] != '') {
+    if (isset($_POST['periodo_inicio_input']) || $_POST['periodo_inicio_input'] != '') {
         $periodo_inicio_projeto_input = sanitize_text_field($_POST['periodo_inicio_input']);
         $periodo_data_inicio_projeto = $periodo_inicio_projeto_input ? Carbon::createFromFormat(get_option('date_format'), $periodo_inicio_projeto_input, get_option('timezone_string'))->timestamp : '';
 
         update_post_meta($post_id, '_periodo_inicio_projeto_input', $periodo_data_inicio_projeto);
     }
 
-    if (isset($_POST['periodo_fim_input']) && $_POST['periodo_fim_input'] != '') {
+    if (isset($_POST['periodo_fim_input']) || $_POST['periodo_fim_input'] != '') {
         $periodo_fim_projeto_input = sanitize_text_field($_POST['periodo_fim_input']);
         $periodo_data_fim_projeto = $periodo_fim_projeto_input ? Carbon::createFromFormat(get_option('date_format'), $periodo_fim_projeto_input, get_option('timezone_string'))->timestamp : '';
 
         update_post_meta($post_id, '_periodo_fim_projeto_input', $periodo_data_fim_projeto);
     }
 
-    if (isset($_POST['situacao_input']) && $_POST['situacao_input'] != '') {
+    if (isset($_POST['situacao_input']) || $_POST['situacao_input'] != '') {
         $situacao_input = sanitize_text_field($_POST['situacao_input']);
         update_post_meta($post_id, '_situacao_input', $situacao_input);
     }
@@ -258,12 +246,10 @@ function save_project_info_meta_box_data($post_id)
         update_post_meta($post_id, '_tags_news_input', $tags_news_input);
     }
 
-    // if (isset($_POST['post_news'])) {
-    //     $posts_news = (array) ($_POST['post_news']);
-    //     $posts_news = array_map('sanitize_text_field', $posts_news);
-
-    //     update_post_meta($post_id, '_checked_posts', $posts_news);
-    // }
+    if (isset($_POST['publicacoes_input'])) {
+        $publicacoes = sanitize_text_field($_POST['publicacoes_input']);
+        update_post_meta($post_id, '_publicacoes_input', $publicacoes);
+    }
 }
 
 add_action('save_post', 'save_project_info_meta_box_data');
