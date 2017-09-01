@@ -65,7 +65,7 @@
 					<td class="projects-link"><?php
                         foreach ($coordenadores as $person) {
                             $post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
-                            echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $person . '<br />';
+                            echo '<a href="' . $post_url . '">' . $person . '<br />';
                         }
                      ?></td>
 				</tr>
@@ -77,7 +77,7 @@
 					<td class="projects-link"><?php
                         foreach ($equipes as $equipe) {
                             $post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$equipe' AND post_status = 'publish' ");
-                            echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt"></span> ' . $equipe . '<br />';
+                            echo '<a href="' . $post_url . '">' . $equipe . '<br />';
                         }
                      ?></td>
 				</tr>
@@ -93,7 +93,7 @@
                         if ( $the_query->have_posts() ) {
 							while ( $the_query->have_posts() ) {
 								$the_query->the_post();
-								echo '<a href="' . get_the_permalink() .'"><span class="dashicons dashicons-arrow-right-alt"></span>' . get_the_title() . '<br />';
+								echo '<a href="' . get_the_permalink() .'">' . get_the_title() . '<br />';
 							}
 						} 
 						wp_reset_postdata();

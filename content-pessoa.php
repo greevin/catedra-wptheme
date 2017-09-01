@@ -85,7 +85,7 @@
 					<td class="projects-link"><?php
                         foreach ($projetos as $person) {
                             $post_url=$wpdb->get_var("SELECT post_name FROM $wpdb->posts WHERE post_title = '$person' AND post_status = 'publish' ");
-                            echo '<a href="' . $post_url . '"><span class="dashicons dashicons-arrow-right-alt" style="margin-top: 3px;"></span>' . $person . '</a></br>';
+                            echo '<a href="' . $post_url . '">' . $person . '</a></br>';
                         }
                      ?></td>
 				</tr>
