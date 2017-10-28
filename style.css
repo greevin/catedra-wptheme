@@ -668,7 +668,7 @@ input[type="submit"]:focus {
 }
 
 .content-area .hentry {
-  padding: 2% 0;
+  padding: 2% 0 2% 2%;
 }
 
 .projects-content h4,
@@ -1002,7 +1002,7 @@ input[type="submit"]:focus {
 
   .entry-content,
   .entry-summary {
-    padding: 1%;
+    padding: 3% 3% 3% 1%;
   }
 
   .site-main {
@@ -1237,7 +1237,7 @@ input[type="submit"]:focus {
 
   .page-sobre .entry-content,
   .page-pessoas .entry-content {
-    padding: 3% 0;
+    padding: 3% 3% 3% 0;
   }
 
   .read-more {
