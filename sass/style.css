@@ -191,7 +191,7 @@
     text-transform: uppercase;
     transition: all 0.5s ease 0s;
     cursor: pointer;
-    font-family: "news_cyclebold", sans-serif !important; }
+    font-family: "news_cycleregular", sans-serif; }
   .more-link-container a:hover {
     margin-left: 20px;
     cursor: pointer; }
@@ -387,11 +387,11 @@ a:focus {
   letter-spacing: 0;
   text-transform: none; }
 
-.post a, .page p a, .entry-section a, .wp_projeto a, .wp_pessoa a {
-  border-bottom: 2px solid #DF7E7F;
-  display: inline-block;
-  line-height: 1.25em; }
+.entry-content > a {
+  border-bottom: 3px solid #DF7E7F;
+  font-family: "news_cycleregular", sans-serif; }
 
+.entry-content a,
 .entry-summary a,
 .page-content a,
 .comment-content a,

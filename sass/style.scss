@@ -368,7 +368,7 @@ $border-radius: 100%;
         text-transform: uppercase;
         transition: all 0.5s ease 0s;
         cursor: pointer;
-        font-family: $font-text;
+        font-family: $font-text-bold !important;
     }
     & a:hover {
         margin-left: 20px;
@@ -610,7 +610,12 @@ a:focus {
     text-transform: none;
 }
 
-.entry-content a,
+.post a, .page p a, .entry-section a, .wp_projeto a, .wp_pessoa a {
+    border-bottom: 2px solid #DF7E7F;
+    display: inline-block;
+    line-height: 1.25em;
+}
+
 .entry-summary a,
 .page-content a,
 .comment-content a,
